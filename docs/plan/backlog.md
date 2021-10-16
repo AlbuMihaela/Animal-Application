@@ -25,6 +25,7 @@
 - project
 - sprint
 - task
+- mihaela
 
 # 4. create backlog
 - add user stories
