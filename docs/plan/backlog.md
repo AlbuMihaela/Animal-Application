@@ -64,6 +64,7 @@
 ## manage adoptions
 - view adoption page and form
 - submit adoption 
+-MMMMMMMMMMMMMMMMMMMMMMM
 
 
 ## manage user
