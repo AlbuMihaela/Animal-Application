@@ -64,8 +64,7 @@
 ## manage adoptions
 - view adoption page and form
 - submit adoption 
--MMMMMMMMMMMMMMMMMMMMMMM
-- test
+
 
 ## manage user
 - view users page
