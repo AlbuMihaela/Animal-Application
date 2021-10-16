@@ -26,6 +26,7 @@
 - sprint
 - task
 - mihaela/miki
+- mada
 
 # 4. create backlog
 - add user stories
