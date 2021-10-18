@@ -63,8 +63,7 @@
 
 ## manage adoptions
 - view adoption page and form
-- submit adoption 
-
+- submit adoption
 
 ## manage user
 - view users page
