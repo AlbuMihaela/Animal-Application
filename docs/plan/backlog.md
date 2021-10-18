@@ -45,13 +45,13 @@
 
 ## register
 - view register page
-- register with email and password
+- register with email and password ?
 - login with email and password
-- logout
+- logout ?
 
 ## forgot password
-- view forgot password page
-- reset password
+- view forgot password page ?
+- reset password ?
 
 ## manage pets
 - view pets list
