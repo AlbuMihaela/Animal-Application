@@ -12,8 +12,8 @@
 
 ## admin
     admin can create, update, delete data
-    admin can confirm the appointments and adoptions
 
+    admin can confirm the appointments and adoptions
 ## pet
     can be filtered by category, name
 
