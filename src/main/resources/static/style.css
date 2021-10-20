@@ -1,0 +1,9 @@
+/* registration style */
+
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 200vh !important;
+    }
+}
+
+/* submit button style */
