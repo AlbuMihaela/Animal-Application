@@ -1,0 +1,9 @@
+/* registration style */
+
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 210vh !important;
+    }
+}
+
+/*  footer img style */
