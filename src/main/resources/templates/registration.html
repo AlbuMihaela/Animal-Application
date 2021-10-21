@@ -9,30 +9,30 @@
     <script crossorigin="anonymous"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="./static/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/style.css" rel="stylesheet" type="text/css">
 
     <title>Title</title>
 </head>
 <body>
 
-<section class="h-100 h-custom" style="background-color: #8fc4b7 ;">
-    <div class="container py-2 h-100">
+<section class="h-110 h-custom" style="background-color: #8fc4b7 ;">
+    <div class="container py-1 h-80">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-8 col-xl-5">
-                <div class="card rounded-3">
+                <div class="card rounded-2">
                     <img alt="Sample photo"
                          class="w-100"
                          src="https://judyburger.com/wp-content/uploads/2019/01/Pets-in-a-Divorce-Property-or-Part-of-the-Family.jpg"
                          style="border-top-left-radius: .4rem; border-top-right-radius: .4rem;">
-                    <div>
-                        <img alt="why is not working????" src="Untitled.png">
+                    <div class="d-flex justify-content-center">
+                        <img alt="logo" height="115px" src="images/Untitled.png" width="115px">
                     </div>
-                    <div class="card-body p-4 p-md-5">
-                        <h3 class="d-flex justify-content-center mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Sign up!</h3>
+                    <div class="card-body p-1 p-md-1">
+                        <h3 class="d-flex justify-content-center mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Sign up</h3>
 
-                        <form class="px-md-1">
+                        <form class="px-md-0">
 
-                            <div class="form-outline mb-2">
+                            <div class="form-outline mb-0">
                                 <label class="form-label" for="firstName">First name</label>
                                 <input class="form-control" id="firstName" type="text"/>
 
@@ -47,7 +47,7 @@
                                 <input class="form-control" id="email" type="text"/>
 
                             </div>
-                            <div class="form-outline mb-4">
+                            <div class="form-outline mb-2">
                                 <label class="form-label" for="password">Password</label>
                                 <input class="form-control" id="password" type="text"/>
 
@@ -57,7 +57,10 @@
                                 <button class="btn btn-success" type="button">Sign up</button>
                                 <button class="btn btn-secondary" type="cancel">Cancel</button>
                             </div>
-
+                            <p class="text-center text-muted mt-1 mb-0">Have already an account? <a
+                                    class="fw-bold text-body"
+                                    href="/login"><u>Login
+                                here</u></a></p>
                         </form>
 
                     </div>
