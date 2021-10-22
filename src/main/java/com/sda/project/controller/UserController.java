@@ -28,15 +28,28 @@ public class UserController {
         return "registration";
     }
 
-    @PostMapping(value = "/registraion")
+    @PostMapping(value = "/registration")
     public String postRegistrationPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
         userValidator.validate(userDto, bindingResult);
         if (!bindingResult.hasErrors()) {
             userService.addUser(userDto);
             return "redirect:/login";
+//            change redirect registration to redirect login
         }
         return "registration";
+    }
 
+    @GetMapping(value = "/login")
+    public String getLoginPage() {
+//        UserDto userDto = new UserDto();
+//        model.addAttribute("userDto", userDto);
+//        System.out.println("registration");
+        return "login";
+    }
+
+    @GetMapping(value = "/landing")
+    public String getLandingPage() {
+        return "landing";
     }
 
 
