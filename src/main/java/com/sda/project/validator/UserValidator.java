@@ -4,6 +4,7 @@ import com.sda.project.dto.UserDto;
 import com.sda.project.model.User;
 import com.sda.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -15,6 +16,9 @@ public class UserValidator {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     public void validate(UserDto userDto, BindingResult bindingResult) {
@@ -36,7 +40,7 @@ public class UserValidator {
 
         Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
         if (optionalUser.isPresent()) {
-            FieldError fieldError = new FieldError("userDto", "email", "Your email is already used");
+            FieldError fieldError = new FieldError("userDto", "email", "Your e-mail is already used.");
             bindingResult.addError(fieldError);
         }
 
@@ -51,6 +55,20 @@ public class UserValidator {
             FieldError fieldError = new FieldError("userDto", "password", "Your password must contain at least 1 letter and 1 digit.");
             bindingResult.addError(fieldError);
         }
+
+    }
+
+    public void validateLogin(UserDto userDto, BindingResult bindingResult) {
+
+        Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
+        if (!optionalUser.isPresent()) {
+            FieldError fieldError = new FieldError("userDto", "email", "You are not registered. Please sign up!");
+            bindingResult.addError(fieldError);
+        } else if (!bCryptPasswordEncoder.matches(userDto.getPassword(), optionalUser.get().getPassword())) {
+            FieldError fieldError = new FieldError("userDto", "password", "Invalid password!");
+            bindingResult.addError(fieldError);
+        }
+
 
     }
 }

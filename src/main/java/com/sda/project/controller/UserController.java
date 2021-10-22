@@ -34,22 +34,34 @@ public class UserController {
         if (!bindingResult.hasErrors()) {
             userService.addUser(userDto);
             return "redirect:/login";
-//            change redirect registration to redirect login
         }
         return "registration";
     }
 
     @GetMapping(value = "/login")
-    public String getLoginPage() {
-//        UserDto userDto = new UserDto();
-//        model.addAttribute("userDto", userDto);
-//        System.out.println("registration");
+    public String getLoginPage(Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute("userDto", userDto);
+        return "login";
+    }
+
+    @PostMapping(value = "/login")
+    public String postLoginPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
+        userValidator.validateLogin(userDto, bindingResult);
+        if (!bindingResult.hasErrors()) {
+            return "redirect:/user";
+        }
         return "login";
     }
 
     @GetMapping(value = "/landing")
     public String getLandingPage() {
         return "landing";
+    }
+
+    @GetMapping(value = "/user")
+    public String getUserPage() {
+        return "user";
     }
 
 
