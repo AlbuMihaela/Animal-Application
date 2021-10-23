@@ -7,41 +7,41 @@
     <script crossorigin="anonymous"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <script src="./js/login.js"></script>
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
     <title>Login</title>
 </head>
 <body>
+<div class="d-flex justify-content-center">
+    <img src="images/Untitled.png" alt="logo" width="113px" height="113px">
+</div>
+
 <div class="wrapper">
     <div class="card">
-        <form action="/login" class="d-flex flex-column" method="post" th:object="${userDto}">
-            <div class="h3 text-center text-white">Login</div>
-            <div class="d-flex align-items-center input-field my-3 mb-4">
-                <span class="far fa-user p-2"></span>
-                <input class="form-control" placeholder="E-mail" required th:field="*{email}" type="text">
+        <form action="/login" class="px-md-0" method="post" th:object="${userDto}">
+<div><h2 class="d-flex justify-content-center mb-4 pb-2 pb-md-0 mb-md-0 px-md-2">Log in</h2></div>
+            <div class="form-outline mb-1">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" id="email" th:field="*{email}" type="text"/>
                 <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
                        th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></label>
-            </div>
 
-            <div class="d-flex align-items-center input-field mb-4">
-                <span class="fas fa-lock p-2"></span>
-                <input class="form-control" id="pwd" placeholder="Password" required th:field="*{password}"
-                       type="password">
-                <button class="btn" onclick="showPassword()">
-                    <span class="fas fa-eye-slash"></span>
-                </button>
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" id="password" th:field="*{password}" type="password"/>
                 <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
-                       th:errors="*{password}" th:if="${#fields.hasErrors('password')}">
-                </label>
+                       th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></label>
 
             </div>
 
-            <div class="d-flex justify-content-center my-3">
-                <input class="btn btn-primary" type="submit" value="Login">
+            <div class="d-grid gap-2 col-6 mx-auto form-outline mb-2">
+                <button class="btn btn-outline-success" type="submit">Sign in</button>
+                <a class="btn btn-outline-secondary" href="/landing" type="button">Cancel</a>
+
             </div>
-            <div class="d-flex justify-content-center mb-3">
-                <span class="text-light-white">Don't have an account?</span>
-                <a href="/registration" type="button">Sign Up</a>
+            <div class="d-flex justify-content-center mb-1 d-grid gap-2 col-6 mx-auto ">
+                <span class="text-center text-muted mt-1 mb-0">Don't have an account?</span>
+                <a class="fw-bold text-body" href="/registration" type="button">Sign Up</a>
             </div>
         </form>
 

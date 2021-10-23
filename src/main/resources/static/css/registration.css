@@ -1,0 +1,10 @@
+/* registration style */
+
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 101vh !important;
+
+    }
+
+}
+

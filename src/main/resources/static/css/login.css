@@ -1,0 +1,24 @@
+/* login style */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    background-image: url('https://myhomewatch.com.au/wp-content/uploads/revslider/pet-watch/my-pet-watch-slider-3-1000x600.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.wrapper {
+    max-width: 500px;
+    margin: 50px auto
+}
+
+.wrapper .card {
+    max-width: 500px;
+    min-height: 105px;
+    overflow: hidden;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 0.8rem
+
+}
