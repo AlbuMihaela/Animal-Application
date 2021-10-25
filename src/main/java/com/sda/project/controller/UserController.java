@@ -1,7 +1,6 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.UserDto;
-
 import com.sda.project.service.UserService;
 import com.sda.project.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,9 +65,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/donation")
-    public String getDonationPage(Model model){
+    public String getDonationPage(Model model) {
         UserDto userDto = new UserDto();
-        model.addAttribute("userDto",userDto);
+        model.addAttribute("userDto", userDto);
         return "donation";
     }
 
@@ -81,4 +80,16 @@ public class UserController {
         return "/donation";
     }
 
+    @GetMapping(value = "/adoption")
+    public String getAdoptionPage() {
+        return "adoption";
+    }
+
+    @PostMapping(value = "/adoption")
+    public String postAdoptionPage() {
+        return "adoption";
+    }
 }
+
+
+
