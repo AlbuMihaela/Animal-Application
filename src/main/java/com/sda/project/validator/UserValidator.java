@@ -5,6 +5,7 @@ import com.sda.project.model.User;
 import com.sda.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -18,7 +19,7 @@ public class UserValidator {
     private UserRepository userRepository;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private PasswordEncoder passwordEncoder;
 
 
     public void validate(UserDto userDto, BindingResult bindingResult) {
@@ -64,7 +65,7 @@ public class UserValidator {
         if (!optionalUser.isPresent()) {
             FieldError fieldError = new FieldError("userDto", "email", "You are not registered. Please sign up!");
             bindingResult.addError(fieldError);
-        } else if (!bCryptPasswordEncoder.matches(userDto.getPassword(), optionalUser.get().getPassword())) {
+        } else if (!passwordEncoder.matches(userDto.getPassword(), optionalUser.get().getPassword())) {
             FieldError fieldError = new FieldError("userDto", "password", "Invalid password!");
             bindingResult.addError(fieldError);
         }
