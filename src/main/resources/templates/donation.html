@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+<img
+     src="https://st3.depositphotos.com/1560516/18295/v/450/depositphotos_182951934-stock-illustration-happy-easter-bunny.jpg"
+     width="100px" height="100px">
+<p><b>Hi, we are happy to be here!</b></p>
+<h7 style="text-align: justify">To make a donation please complete the form below:</h7>
+<form method="post" action="/donation" th:object="${userDto}">
+
+<table border="2" bordercolor="#8fc4b7 "style="width:150px ">
+    <td>
+        <img src="images/Untitled.png" alt="logo" width="113px" height="113px">
+        <h3 style="text-align: center"><b>Get involved!</b></h3><br><br>
+        <div class="col-md">
+            <label class="text-field" for="firstName" type="text">First name</label>
+            <input id="firstName" type="text" size="20" style="color:#0a817f" th:field="*{firstName}"/>
+            <span>
+                <label class="text-field" for="lastName">Last name</label>
+                                <input id="lastNam" type="text" size="20" style="color:#0a817f" th:field="*{lastName}"/><br><br>
+                <label class="text-field" for="e-mail" type="text">E-mail  &nbsp; &nbsp; &nbsp;</label>
+            <input id="e-mail" type="text" size="20" style="color:#0a817f" th:field="*{email}"/>
+            <span>
+                <label class="text-field" for="lastName">Mobile &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <input id="lastName" type="text" size="20"style="color:#0a817f" th:field="*{phoneNumber}"/>
+
+            </span></span>
+        </div>
+        <br>
+        <h8>What do you want to donate? Choose from the list.</h8>
+        <br><br>
+        <div class="dropdown">
+            <button class=" btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                I want to donate
+            </button>
+            <br>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/payment">Money</a></li>
+                <li><a class="dropdown-item" href="#">Food</a></li>
+                <li><a class="dropdown-item" href="#">Toys</a></li>
+                <li><a class="dropdown-item" href="#">Drugs</a></li>
+                <li><a class="dropdown-item" href="#">Others</a></li>
+            </ul>
+        </div>
+        <br>
+        <input readonly disabled value="Address: Filimon Street 81, Bucharest, Romania"
+               style="border:0;outline:0;width:580px;"><br><br>
+        <div class="form-outline">
+            <label class="form-label" for="textAreaExample">Details</label>
+            <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+            <br>
+            <br>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
+            <button class="btn btn-outline-success" type="submit"><a href="/user"></a>Submit</button>
+<!--            <script>-->
+<!--                var pressedButton = document.getElementsByTagName("button")[1];-->
+<!--                pressedButton.addEventListener("click", function (event) {-->
+<!--                    alert("Your donation process has been successfully completed.Thank you.")-->
+<!--                })-->
+<!--            </script>-->
+            <a class="btn btn-outline-secondary" href="/user" type="button">Cancel</a>
+        </div>
+        <br><br><br>
+
+    </td>
+</table>
+</form>
+
+</body>
+</html>

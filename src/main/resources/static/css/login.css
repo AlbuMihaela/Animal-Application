@@ -5,12 +5,14 @@ body {
     background-image: url('https://myhomewatch.com.au/wp-content/uploads/revslider/pet-watch/my-pet-watch-slider-3-1000x600.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover
 }
 
 .wrapper {
     max-width: 500px;
-    margin: 50px auto
+    margin: 50px auto;
+    opacity: 85%;
+
 }
 
 .wrapper .card {
@@ -19,6 +21,7 @@ body {
     overflow: hidden;
     border-radius: 25px;
     cursor: pointer;
-    padding: 0.8rem
+    padding: 0.8rem;
+    /*border-color: #8fc4b7;*/
 
 }
