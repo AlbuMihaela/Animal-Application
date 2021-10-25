@@ -89,12 +89,13 @@ public class UserController {
     public String postAdoptionPage() {
         return "adoption";
     }
-}
+
 
     @GetMapping(value = "/payment")
     public String getPaymentPage() {
         return "payment";
     }
+}
 
 
 
