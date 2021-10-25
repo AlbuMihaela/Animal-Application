@@ -91,5 +91,10 @@ public class UserController {
     }
 }
 
+    @GetMapping(value = "/payment")
+    public String getPaymentPage() {
+        return "payment";
+    }
+
 
 
