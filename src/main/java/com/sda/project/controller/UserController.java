@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/register")
-    public String getRegistrationPage(Model model) {
+    public String getRegisterPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
         System.out.println("registration");
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
-    public String postRegistrationPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
+    public String postRegisterPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
         userValidator.validate(userDto, bindingResult);
         if (!bindingResult.hasErrors()) {
             userService.addUser(userDto);
