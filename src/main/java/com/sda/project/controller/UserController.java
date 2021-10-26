@@ -31,14 +31,14 @@ public class UserController {
             userService.save(userDto);
             return "redirect:/login";
         }
-        return "register";
+        return "user/register";
     }
 
     @GetMapping("/login")
     public String getLoginPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "login";
+        return "user/login";
     }
 
     @PostMapping("/login")
@@ -46,7 +46,7 @@ public class UserController {
         if (!bindingResult.hasErrors()) {
             return "redirect:/user";
         }
-        return "login";
+        return "user/login";
     }
 
     @GetMapping("/landing")
@@ -56,14 +56,14 @@ public class UserController {
 
     @GetMapping("/user")
     public String getUserPage() {
-        return "user";
+        return "user/user";
     }
 
     @GetMapping("/donate")
     public String getDonatePage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "donate";
+        return "user/donate";
     }
 
     @PostMapping("/donate")
@@ -71,22 +71,22 @@ public class UserController {
         if (!bindingResult.hasErrors()) {
             return "redirect:/users";
         }
-        return "donate";
+        return "return/donate";
     }
 
     @GetMapping("/adopt")
     public String getAdoptPage() {
-        return "adopt";
+        return "user/adopt";
     }
 
     @PostMapping("/adopt")
     public String postAdoptPage() {
-        return "adopt";
+        return "user/adopt";
     }
 
     @GetMapping("/transfer")
     public String getTransferPage() {
-        return "transfer";
+        return "user/transfer";
     }
 }
 
