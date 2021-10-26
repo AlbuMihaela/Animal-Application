@@ -20,15 +20,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/register")
+    @GetMapping( "/register")
     public String getRegisterPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        System.out.println("registration");
-        return "register";
+                return "register";
     }
 
-    @PostMapping(value = "/register")
+    @PostMapping( "/register")
     public String postRegisterPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
         userValidator.validate(userDto, bindingResult);
         if (!bindingResult.hasErrors()) {
@@ -38,14 +37,14 @@ public class UserController {
         return "register";
     }
 
-    @GetMapping(value = "/login")
+    @GetMapping( "/login")
     public String getLoginPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
         return "login";
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping( "/login")
     public String postLoginPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
         userValidator.validateLogin(userDto, bindingResult);
         if (!bindingResult.hasErrors()) {
@@ -54,45 +53,45 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping(value = "/landing")
+    @GetMapping( "/landing")
     public String getLandingPage() {
         return "landing";
     }
 
-    @GetMapping(value = "/user")
+    @GetMapping( "/user")
     public String getUserPage() {
         return "user";
     }
 
-    @GetMapping(value = "/donation")
-    public String getDonationPage(Model model) {
+    @GetMapping( "/donate")
+    public String getDonatePage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "donation";
+        return "donate";
     }
 
-    @PostMapping(value = "/donation")
-    public String postDonationPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
+    @PostMapping("/donate")
+    public String postDonatePage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
         userValidator.validateLogin(userDto, bindingResult);
         if (!bindingResult.hasErrors()) {
             return "redirect:/users";
         }
-        return "donation";
+        return "donate";
     }
 
-    @GetMapping(value = "/adoption")
-    public String getAdoptionPage() {
-        return "adoption";
+    @GetMapping( "/adopt")
+    public String getAdoptPage() {
+        return "adopt";
     }
 
-    @PostMapping(value = "/adoption")
-    public String postAdoptionPage() {
-        return "adoption";
+    @PostMapping("/adopt")
+    public String postAdoptPage() {
+        return "adopt";
     }
 
-    @GetMapping(value = "/payment")
-    public String getPaymentPage() {
-        return "payment";
+    @GetMapping( "/transfer")
+    public String getTransferPage() {
+        return "transfer";
     }
 }
 
