@@ -20,22 +20,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/registration")
+    @GetMapping(value = "/register")
     public String getRegistrationPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
         System.out.println("registration");
-        return "registration";
+        return "register";
     }
 
-    @PostMapping(value = "/registration")
+    @PostMapping(value = "/register")
     public String postRegistrationPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
         userValidator.validate(userDto, bindingResult);
         if (!bindingResult.hasErrors()) {
             userService.addUser(userDto);
             return "redirect:/login";
         }
-        return "registration";
+        return "register";
     }
 
     @GetMapping(value = "/login")
@@ -77,7 +77,7 @@ public class UserController {
         if (!bindingResult.hasErrors()) {
             return "redirect:/users";
         }
-        return "/donation";
+        return "donation";
     }
 
     @GetMapping(value = "/adoption")
