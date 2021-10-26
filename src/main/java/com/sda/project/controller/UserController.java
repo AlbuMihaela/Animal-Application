@@ -5,7 +5,6 @@ import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,12 +25,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postRegisterPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
-        if (!bindingResult.hasErrors()) {
-            userService.save(userDto);
-            return "redirect:/login";
-        }
-        return "user/register";
+    public String postRegisterPage(@ModelAttribute("userDto") UserDto userDto) {
+        userService.save(userDto);
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -42,11 +38,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String postLoginPage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
-        if (!bindingResult.hasErrors()) {
-            return "redirect:/user";
-        }
-        return "user/login";
+    public String postLoginPage(@ModelAttribute("userDto") UserDto userDto) {
+
+        return "redirect:/user";
     }
 
     @GetMapping("/landing")
@@ -67,11 +61,9 @@ public class UserController {
     }
 
     @PostMapping("/donate")
-    public String postDonatePage(@ModelAttribute("userDto") UserDto userDto, BindingResult bindingResult) {
-        if (!bindingResult.hasErrors()) {
-            return "redirect:/users";
-        }
-        return "user/donate";
+    public String postDonatePage(@ModelAttribute("userDto") UserDto userDto) {
+
+        return "redirect:/users";
     }
 
     @GetMapping("/adopt")
