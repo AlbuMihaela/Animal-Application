@@ -35,29 +35,25 @@
                             <div class="form-outline mb-0">
                                 <label class="form-label" for="firstName">First name</label>
                                 <input class="form-control" id="firstName" th:field="*{firstName}" type="text"/>
-                                <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
-                                       th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}"></label>
+
 
                             </div>
                             <div class="form-outline mb-2">
                                 <label class="form-label" for="lastName">Last name</label>
                                 <input class="form-control" id="lastName" th:field="*{lastName}" type="text"/>
-                                <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
-                                       th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}"></label>
+
 
                             </div>
                             <div class="form-outline mb-2">
                                 <label class="form-label" for="email">Email</label>
                                 <input class="form-control" id="email" th:field="*{email}" type="text"/>
-                                <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
-                                       th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></label>
+
 
                             </div>
                             <div class="form-outline mb-2">
                                 <label class="form-label" for="password">Password</label>
                                 <input class="form-control" id="password" th:field="*{password}" type="password"/>
-                                <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
-                                       th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></label>
+
 
                             </div>
 

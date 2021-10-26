@@ -22,15 +22,13 @@
             <div class="form-outline mb-1">
                 <label class="form-label" for="email">Email</label>
                 <input class="form-control" id="email" th:field="*{email}" type="text"/>
-                <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
-                       th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></label>
+
 
             </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="password">Password</label>
                 <input class="form-control" id="password" th:field="*{password}" type="password"/>
-                <label class="col-lg-4 control-label" style="color:red;" th:class="'error'"
-                       th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></label>
+
 
             </div>
 
