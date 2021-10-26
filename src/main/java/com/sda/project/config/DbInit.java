@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Configuration
@@ -47,7 +48,10 @@ public class DbInit {
             userRepository.save(mainAdmin);
 
             User admin = createAdmin();
+            userRepository.save(admin);
+
             User user = createUser();
+            userRepository.save(user);
         };
     }
 
@@ -59,7 +63,6 @@ public class DbInit {
                 "snow");
         Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
         admin.addRole(adminRole);
-        userRepository.save(admin);
         return admin;
     }
 
@@ -71,7 +74,6 @@ public class DbInit {
                 "clinton");
         Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
         admin.addRole(adminRole);
-        userRepository.save(admin);
         return admin;
     }
 
@@ -83,7 +85,7 @@ public class DbInit {
                 "vasile");
         Role userRole = roleRepository.findByType(RoleType.USER).orElseThrow();
         user.addRole(userRole);
-        return userRepository.save(user);
+        return user;
     }
 
     @Transactional

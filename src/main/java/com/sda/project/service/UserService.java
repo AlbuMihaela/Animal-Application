@@ -3,6 +3,8 @@ package com.sda.project.service;
 import com.sda.project.config.security.UserPrincipal;
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
 import com.sda.project.controller.exception.ResourceNotFoundException;
+import com.sda.project.dto.UserDto;
+import com.sda.project.mapper.UserMapper;
 import com.sda.project.model.Role;
 import com.sda.project.model.RoleType;
 import com.sda.project.model.User;
@@ -28,28 +30,31 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserService(UserRepository userRepository,
                        RoleRepository roleRepository,
+                       UserMapper userMapper,
                        PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
-    public void save(User user) {
-        log.info("save user {}", user);
+    public void save(UserDto userDto) {
+        log.info("save user {}", userDto);
 
-        String email = user.getEmail();
+        String email = userDto.getEmail();
         userRepository.findByEmail(email)
                 .map(existingUser -> {
                     log.error("user with email {} already exists", email);
                     throw new ResourceAlreadyExistsException("user with email " + email + " already exists");
                 })
-                .orElseGet(() -> saveUser(user));
+                .orElseGet(() -> saveUser(userDto));
     }
 
     public List<User> findAll() {
@@ -122,10 +127,14 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    private User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    private User saveUser(UserDto userDto) {
         Role userRole = roleRepository.findByType(RoleType.USER)
                 .orElseThrow(() -> new ResourceNotFoundException("role not found"));
+
+        // convert user dto to user
+        User user = userMapper.map(userDto);
+        // encode password
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.addRole(userRole);
         return userRepository.save(user);
     }
