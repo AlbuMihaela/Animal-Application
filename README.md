@@ -1,6 +1,6 @@
-team soul
-
-https://github.com/2danaciupe/animal-app.git
-https://github.com/AlbuMihaela
-https://github.com/2danaciupe
-https://github.com/Madalina-Viziteu
+## PROJECT  animal-app
+## REPO     https://github.com/2danaciupe/animal-app
+## TEAM     SOUL
+- GIT       Madalina-Viziteu
+- GIT       AlbuMihaela
+- GIT       2danaciupe
