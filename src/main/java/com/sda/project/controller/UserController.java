@@ -71,7 +71,7 @@ public class UserController {
         if (!bindingResult.hasErrors()) {
             return "redirect:/users";
         }
-        return "return/donate";
+        return "user/donate";
     }
 
     @GetMapping("/adopt")
