@@ -8,16 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PetService {
 
-    @Autowired
-    private PetRepository petRepository;
+
+    private final PetRepository petRepository;
+    private final PetMapper petMapper;
 
     @Autowired
-    private PetMapper petMapper;
+    public PetService(PetRepository petRepository, PetMapper petMapper) {
+        this.petRepository = petRepository;
+        this.petMapper = petMapper;
+    }
 
     public void save(PetDto petDto) {
         Pet pet = petMapper.map(petDto);
@@ -29,8 +32,9 @@ public class PetService {
         return petRepository.findAll();
     }
 
-    public List<Pet> findbyCategory(String category) {
-        return petRepository.findAll().stream().filter(pet -> String.valueOf(pet.getCategory()).equals(category)).collect(Collectors.toList());
+    public List<Pet> findByCategory(String category) {
+//        return petRepository.findAll().stream().filter(pet -> String.valueOf(pet.getCategory()).equals(category)).collect(Collectors.toList());
+        return petRepository.findByCategory(category).get();
     }
 
 }
