@@ -39,8 +39,8 @@ public class UserController {
 
     @PostMapping("/login")
     public String postLoginPage(@ModelAttribute("userDto") UserDto userDto) {
-
-        return "redirect:/user";
+        userService.findByEmail(userDto.getEmail());
+        return "redirect: /user";
     }
 
     @GetMapping("/landing")
@@ -63,7 +63,7 @@ public class UserController {
     @PostMapping("/donate")
     public String postDonatePage(@ModelAttribute("userDto") UserDto userDto) {
 
-        return "redirect:/users";
+        return "redirect:/user";
     }
 
     @GetMapping("/adopt")

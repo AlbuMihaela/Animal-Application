@@ -25,7 +25,7 @@ public class PetController {
     @GetMapping("/pets")
     public String getPetPage(Model model) {
         model.addAttribute("pets", petService.findAll());
-        return "pets";
+        return "pet/pets";
     }
 
 }
