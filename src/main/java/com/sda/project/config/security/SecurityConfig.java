@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // common
-                .antMatchers("/", "/index", "/register", "/login").permitAll()
+                .antMatchers("/", "/index", "/register/**", "/login").permitAll()
 
                 // temporary
                 // TODO: remove this in production and move
@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // features and permissions
                 // TODO: add all features before production
                 .antMatchers("/users").hasRole("ADMIN")
-//                .antMatchers("/pets").hasAnyRole("USER", "ADMIN")
+                // .antMatchers("/pets").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated();
 
         // add custom login form
@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // after successful login go to page
         // TODO: find a way to load the correct page depending on role
-        http.formLogin().defaultSuccessUrl("/admin", true);
+        http.formLogin().defaultSuccessUrl("/home", true);
 
         // after logout go to login
         http.logout()
