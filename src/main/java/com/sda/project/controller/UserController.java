@@ -19,66 +19,64 @@ public class UserController {
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
         UserDto userDto = new UserDto();
+        // "userDto" will be used in html
+        // userDto object represents the java instance
         model.addAttribute("userDto", userDto);
         // folder / page name
         return "user/register";
     }
 
-    @PostMapping("/register")
-    public String postRegisterPage(@ModelAttribute("userDto") UserDto userDto) {
+    @PostMapping("/register/add")
+    public String register(@ModelAttribute("userDto") UserDto userDto) {
         userService.save(userDto);
         return "redirect:/login";
     }
 
+    // get page
     @GetMapping("/login")
     public String getLoginPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "user/login";
+        return "login";
     }
 
+    // action
     @PostMapping("/login")
-    public String postLoginPage(@ModelAttribute("userDto") UserDto userDto) {
+    public String login(@ModelAttribute("userDto") UserDto userDto) {
         userService.findByEmail(userDto.getEmail());
-        return "redirect: /user";
+        return "redirect: /home";
     }
 
-    @GetMapping("/landing")
-    public String getLandingPage() {
-        return "landing";
-    }
-
-    @GetMapping("/user")
-    public String getUserPage() {
-        return "user/user";
-    }
-
-    @GetMapping("/donate")
+    // FIXME: implement later
+    @GetMapping("/donations")
     public String getDonatePage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
         return "user/donate";
     }
 
-    @PostMapping("/donate")
+    // FIXME: implement later
+    @PostMapping("/donations")
     public String postDonatePage(@ModelAttribute("userDto") UserDto userDto) {
-
         return "redirect:/user";
     }
 
-    @GetMapping("/adopt")
+    // FIXME: implement later
+    @GetMapping("/adoptions")
     public String getAdoptPage() {
-        return "user/adopt";
+        return "user/adoptions";
     }
 
-    @PostMapping("/adopt")
+    // FIXME: implement later
+    @PostMapping("/adoptions")
     public String postAdoptPage() {
-        return "user/adopt";
+        return "user/adoptions";
     }
 
-    @GetMapping("/transfer")
+    // FIXME: implement later
+    @GetMapping("/transfers")
     public String getTransferPage() {
-        return "user/transfer";
+        return "user/transfers";
     }
 }
 

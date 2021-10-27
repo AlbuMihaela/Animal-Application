@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class PetService {
 
-
     private final PetRepository petRepository;
     private final PetMapper petMapper;
 
@@ -32,9 +31,9 @@ public class PetService {
         return petRepository.findAll();
     }
 
+    // TODO: remove dead code (that doesn't work)
     public List<Pet> findByCategory(String category) {
 //        return petRepository.findAll().stream().filter(pet -> String.valueOf(pet.getCategory()).equals(category)).collect(Collectors.toList());
         return petRepository.findByCategory(category).get();
     }
-
 }

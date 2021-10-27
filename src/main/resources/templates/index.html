@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- thymeleaf tag library -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- load styles: before page rendering -->
+    <!-- th:replace= file name :: fragment name -->
+    <div th:replace="fragments/head-css :: head-css"/>
+    <!-- (exception) import javascript -->
+    <title>Landing</title>
+</head>
+
+<body>
+
+<header>
+
+</header>
+
+<!-- content as a resizeable container -->
+<div class="container-fluid">
+    <div class="container">
+
+        <!-- a row that is centered -->
+        <div class="row justify-content-md-center">
+            <div class="row">
+                <h2>Agile</h2>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <!-- navigation button -->
+        <!-- must search in Controller @GetMapping("/login") -->
+        <a th:href="@{/login}">
+            <!-- gray button -->
+            <button class="btn btn-secondary" id="login" name="login" type="button">Log in</button>
+        </a>
+
+        <!-- must search in Controller @GetMapping("/register") -->
+        <a th:href="@{/register}">
+            <button class="btn btn-primary" id="register" name="register" type="button">Sign up</button>
+        </a>
+    </div>
+</div>
+
+<footer>
+
+</footer>
+
+<!-- import javascript: for faster loading -->
+<div th:replace="fragments/footer-js :: footer-js"/>
+</body>
+
+</html>

@@ -25,47 +25,44 @@
                          src="https://judyburger.com/wp-content/uploads/2019/01/Pets-in-a-Divorce-Property-or-Part-of-the-Family.jpg"
                          style="border-top-left-radius: .4rem; border-top-right-radius: .4rem;">
                     <div class="d-flex justify-content-center">
-                        <img alt="logo" height="115px" src="images/Untitled.png" width="115px">
+                        <img alt="logo" height="115px" src="images/logo.png" width="115px">
                     </div>
                     <div class="card-body p-1 p-md-1">
                         <h3 class="d-flex justify-content-center mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Sign up</h3>
 
-                        <form action="/register" class="px-md-0" method="post" th:object="${userDto}">
+                        <form class="px-md-0" method="post" th:action="@{/register/add}" th:object="${userDto}">
 
                             <div class="form-outline mb-0">
                                 <label class="form-label" for="firstName">First name</label>
                                 <input class="form-control" id="firstName" th:field="*{firstName}" type="text"/>
-
-
                             </div>
+
                             <div class="form-outline mb-2">
                                 <label class="form-label" for="lastName">Last name</label>
                                 <input class="form-control" id="lastName" th:field="*{lastName}" type="text"/>
-
-
                             </div>
+
                             <div class="form-outline mb-2">
                                 <label class="form-label" for="email">Email</label>
                                 <input class="form-control" id="email" th:field="*{email}" type="text"/>
-
-
                             </div>
+
                             <div class="form-outline mb-2">
                                 <label class="form-label" for="password">Password</label>
                                 <input class="form-control" id="password" th:field="*{password}" type="password"/>
-
-
                             </div>
 
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-success" type="submit">Sign up</button>
-                                <a class="btn btn-secondary" href="/landing" type="button">Cancel</a>
-
+                                <a th:href="@{/}">
+                                    <button class="btn btn-secondary" id="cancel" type="button">Cancel</button>
+                                </a>
+                                <button class="btn btn-success" id="save" type="submit">Sign up</button>
                             </div>
-                            <p class="text-center text-muted mt-1 mb-0">Already registered? <a
-                                    class="fw-bold text-body"
-                                    href="/login"><u>Login
-                                here</u></a></p>
+
+<!--                            <p class="text-center text-muted mt-1 mb-0">Already registered?-->
+<!--                                <a class="fw-bold text-body" href="/login"><u>Login here</u>-->
+<!--                                </a>-->
+<!--                            </p>-->
                         </form>
 
                     </div>

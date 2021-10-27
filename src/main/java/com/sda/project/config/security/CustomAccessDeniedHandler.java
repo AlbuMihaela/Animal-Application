@@ -18,13 +18,15 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
+        // get the authenticated user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        // log name and url that is forbidden
         if (authentication != null) {
-            log.info("User '" + authentication.getName()
-                    + "' attempted to access the URL: "
-                    + httpServletRequest.getRequestURI());
+            log.info("User {} attempted to access the URL: {}", authentication.getName(), httpServletRequest.getRequestURI());
         }
+
+        // redirect to access denied page
         httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/access-denied");
     }
 }

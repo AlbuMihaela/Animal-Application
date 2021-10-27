@@ -13,11 +13,11 @@ public class PetController {
     public PetService petService;
 
     /*
-    POST   /pets 			(json body)
-    GET    /pets            @GetMapping("/pets")
-    GET    /pets/{id}
-    POST   /pets/{id} 		(json body)
-    DELETE /pets/{id}
+        POST   /pets 			(json body)
+        GET    /pets            @GetMapping("/pets")
+        GET    /pets/{id}
+        POST   /pets/{id} 		(json body)
+        DELETE /pets/{id}
      */
 
     // show pet list
@@ -27,5 +27,4 @@ public class PetController {
         model.addAttribute("pets", petService.findAll());
         return "pet/pets";
     }
-
 }

@@ -12,38 +12,50 @@
 </head>
 <body>
 <div class="d-flex justify-content-center">
-    <img src="images/Untitled.png" alt="logo" width="113px" height="113px">
+    <img src="images/logo.png" alt="logo" width="113px" height="113px">
 </div>
 
 <div class="wrapper">
     <div class="card">
-        <form action="/login" class="px-md-0" method="post" th:object="${userDto}">
-<div><h2 class="d-flex justify-content-center mb-4 pb-2 pb-md-0 mb-md-0 px-md-2" >Log in</h2></div>
+        <form class="px-md-0" method="post" th:action="@{/login}" th:object="${userDto}">
+
+            <!-- form header -->
+            <div>
+                <h2 class="d-flex justify-content-center mb-4 pb-2 pb-md-0 mb-md-0 px-md-2">Log in</h2>
+            </div>
+
+            <!-- email input  -->
             <div class="form-outline mb-1">
                 <label class="form-label" for="email">Email</label>
                 <input class="form-control" id="email" th:field="*{email}" type="text"/>
-
-
             </div>
+
+            <!-- password input -->
             <div class="form-outline mb-4">
                 <label class="form-label" for="password">Password</label>
                 <input class="form-control" id="password" th:field="*{password}" type="password"/>
-
-
             </div>
 
+            <!-- form actions  -->
             <div class="d-grid gap-2 col-6 mx-auto form-outline mb-2">
-                <button class="btn btn-outline-success" type="submit">Sign in</button>
-                <a class="btn btn-outline-secondary" href="/landing" type="button">Cancel</a>
+                <!-- cancel button -->
+                <a class="btn btn-outline-secondary" th:href="@{/index}" type="button">Cancel</a>
 
+                <!-- sign up button -->
+                <button class="btn btn-outline-success" type="submit">Sign in</button>
             </div>
-            <div class="d-flex justify-content-center mb-1 d-grid gap-2 col-6 mx-auto ">
+
+            <!-- new account button -->
+            <div class="d-flex justify-content-center mb-1 d-grid gap-2 col-6 mx-auto">
                 <span class="text-center text-muted mt-1 mb-0">Don't have an account?</span>
-                <a class="fw-bold text-body" href="/register" type="button">Sign Up</a>
+                <a class="fw-bold text-body" th:href="@{/register}" type="button">Sign Up</a>
             </div>
+
         </form>
 
     </div>
 </div>
+
 </body>
+
 </html>

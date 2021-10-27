@@ -24,16 +24,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/landing", "/register", "/user", "/login", "/pet", "/adopt", "/donate", "/transfer").permitAll()
-                .antMatchers("/pet").permitAll()
-                .antMatchers("/images/**", "/js/**", "/css/**").permitAll()
+                // common
+                .antMatchers("/", "/index", "/register", "/login").permitAll()
+
+                // temporary
+                // TODO: remove this in production and move
+                .antMatchers("/home", "/admin", "/pets", "/adoptions", "/donations", "/transfers").permitAll()
+
+                // static resources
+                .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()
+
+                // features and permissions
+                // TODO: add all features before production
                 .antMatchers("/users").hasRole("ADMIN")
+//                .antMatchers("/pets").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated();
 
+        // add custom login form
         http.formLogin(form -> form.loginPage("/login").permitAll());
-        http.formLogin().usernameParameter("email");
-        http.formLogin().defaultSuccessUrl("/home", true);
 
+        // login with email as username
+        http.formLogin().usernameParameter("email");
+
+        // after successful login go to page
+        // TODO: find a way to load the correct page depending on role
+        http.formLogin().defaultSuccessUrl("/admin", true);
+
+        // after logout go to login
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
@@ -41,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .permitAll();
 
+        // add a custom access denied handler 404 unauthorized
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
     }
 
