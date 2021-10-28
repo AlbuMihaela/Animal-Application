@@ -8,10 +8,10 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background: transparent;
-    opacity: 1.0;
+    background: #8fc4b7;
+    /*opacity: 1.0;*/
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
 }

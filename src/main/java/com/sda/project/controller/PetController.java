@@ -12,6 +12,7 @@ public class PetController {
     @Autowired
     public PetService petService;
 
+
     /*
         POST   /pets 			(json body)
         GET    /pets            @GetMapping("/pets")
@@ -23,8 +24,9 @@ public class PetController {
     // show pet list
     // TODO: step 1
     @GetMapping("/pets")
-    public String getPetPage(Model model) {
+    public String getPetsPage(Model model) {
         model.addAttribute("pets", petService.findAll());
         return "pet/pets";
     }
+
 }

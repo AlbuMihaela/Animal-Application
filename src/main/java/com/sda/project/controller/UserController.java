@@ -52,7 +52,7 @@ public class UserController {
     public String getDonatePage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "user/donate";
+        return "donation";
     }
 
     // FIXME: implement later

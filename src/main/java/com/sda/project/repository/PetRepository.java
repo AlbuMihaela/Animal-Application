@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PetRepository extends JpaRepository<Pet, Integer> {
-    Optional<Pet> findByName(String name);
+    Optional<Pet> findByNameIgnoreCase(String name);
 
     Optional<List<Pet>> findByCategory(String category);
 

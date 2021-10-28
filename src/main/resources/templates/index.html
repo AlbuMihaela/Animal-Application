@@ -6,6 +6,7 @@
     <!-- load styles: before page rendering -->
     <!-- th:replace= file name :: fragment name -->
     <div th:replace="fragments/head-css :: head-css"/>
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
     <!-- (exception) import javascript -->
     <title>Landing</title>
 </head>
@@ -17,30 +18,93 @@
 </header>
 
 <!-- content as a resizeable container -->
-<div class="container-fluid">
-    <div class="container">
+<!--<div class="container-fluid">-->
+<!--    <div class="container">-->
 
-        <!-- a row that is centered -->
-        <div class="row justify-content-md-center">
-            <div class="row">
-                <h2>Agile</h2>
-            </div>
+<nav ; class="navbar navbar-expand-lg navbar-light " style="background-color:snow">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a> <img height="100px" src="images/logo.png" width="100px"></a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-success" style="margin:10px;" type="submit">
+                    <a style="text-decoration: none;color: black" th:href="@{/register}">Sign up</a>
+                </button>
+                <button class="btn btn-outline-success" style="margin:10px;" type="submit">
+                    <a style="text-decoration: none;color: black" th:href="@{/login}">Sign in</a>
+                </button>
+            </form>
         </div>
     </div>
+</nav>
 
-    <div>
-        <!-- navigation button -->
-        <!-- must search in Controller @GetMapping("/login") -->
-        <a th:href="@{/login}">
-            <!-- gray button -->
-            <button class="btn btn-secondary" id="login" name="login" type="button">Log in</button>
-        </a>
-
-        <!-- must search in Controller @GetMapping("/register") -->
-        <a th:href="@{/register}">
-            <button class="btn btn-primary" id="register" name="register" type="button">Sign up</button>
-        </a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#8fc4b7">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <div class="collapse navbar-collapse" id="navbar2">
+        </div>
+        <li class="nav-item dropdown">
+            <div class="dropdown">
+                <span style="padding-right: 350px">About us</span>
+                <div class="dropdown-content" th:width="50px">
+                    <p>ChangeLives is a small non-profit association with activity on Filimon Street 81 , Bucharest .The
+                        purpose of the ChangeLives association is to prevent the mistreatment of dogs and other pets.
+                        ChangeLives wants to prevent animal cruelty, so we work hard to provide education, awareness and
+                        laws that will help make animal cruelty something punishable by law and deeply unlikely to occur
+                        as regularly as it does now. The association has saved and protected hundreds of animals in need
+                        of help over the years, and our goal is to eventually no longer have any animals to protect and
+                        save because it’s no longer a necessity. </p>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <div class="dropdown">
+                <span style="padding-right: 300px">About adopt a pet</span>
+                <div class="dropdown-content">
+                    <p>Information about adopt a pet</p>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <div class="dropdown">
+                <span style="padding-right: 200px">About donate for pets</span>
+                <div class="dropdown-content">
+                    <p>Information about donate for pets</p>
+                </div>
+            </div>
+        </li>
     </div>
+</nav>
+
+<div class="container">
+    <img height="450" src="https://static.parade.com/wp-content/uploads/2019/04/pet-quotes.jpg"
+         style="padding-top: 60px" width="1180">
+    <div class="centered">“No matter how little money and how few possessions you own, having a pet makes you
+        feel rich.” – Louis Sabin.
+    </div>
+</div>
+</div>
+
+<!--</div>-->
+<!--</div>-->
+
+<!--    <div>-->
+<!--        &lt;!&ndash; navigation button &ndash;&gt;-->
+<!--        &lt;!&ndash; must search in Controller @GetMapping("/login") &ndash;&gt;-->
+<!--        <a th:href="@{/login}">-->
+<!--            &lt;!&ndash; gray button &ndash;&gt;-->
+<!--            <button class="btn btn-secondary" id="login" name="login" type="button">Log in</button>-->
+<!--        </a>-->
+
+<!--        &lt;!&ndash; must search in Controller @GetMapping("/register") &ndash;&gt;-->
+<!--        <a th:href="@{/register}">-->
+<!--            <button class="btn btn-primary" id="register" name="register" type="button">Sign up</button>-->
+<!--        </a>-->
+<!--    </div>-->
 </div>
 
 <footer>
