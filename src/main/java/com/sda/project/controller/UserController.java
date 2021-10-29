@@ -46,38 +46,9 @@ public class UserController {
         userService.findByEmail(userDto.getEmail());
         return "redirect: /home";
     }
-
-    // FIXME: implement later
-    @GetMapping("/donations")
-    public String getDonatePage(Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("userDto", userDto);
-        return "donation";
-    }
-
-    // FIXME: implement later
-    @PostMapping("/donations")
-    public String postDonatePage(@ModelAttribute("userDto") UserDto userDto) {
-        return "redirect:/user";
-    }
-
-    // FIXME: implement later
-    @GetMapping("/adoptions")
-    public String getAdoptPage() {
-        return "user/adoptions";
-    }
-
-    // FIXME: implement later
-    @PostMapping("/adoptions")
-    public String postAdoptPage() {
-        return "user/adoptions";
-    }
-
-    // FIXME: implement later
-    @GetMapping("/transfers")
-    public String getTransferPage() {
-        return "user/transfers";
-    }
 }
+
+
+
 
 
