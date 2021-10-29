@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -57,10 +58,10 @@ public class UserService implements UserDetailsService {
                 .orElseGet(() -> saveUser(userDto));
     }
 
-    public List<User> findAll() {
-        log.info("find users");
+    public List<UserDto> findAll() {
+        log.info("find list of userDto");
 
-        return userRepository.findAll();
+        return (userRepository.findAll().stream().map(user -> userMapper.map(user)).collect(Collectors.toList()));
     }
 
     public User findByEmail(String email) {

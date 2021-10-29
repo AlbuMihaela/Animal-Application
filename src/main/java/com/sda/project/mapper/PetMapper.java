@@ -15,4 +15,12 @@ public class PetMapper {
         pet.setDescription(petDto.getDescription());
         return pet;
     }
+
+    public PetDto map(Pet pet) {
+        PetDto petDto = new PetDto();
+        petDto.setName(pet.getName());
+        petDto.setCategory(String.valueOf(pet.getCategory()));
+        petDto.setDescription(pet.getDescription());
+        return petDto;
+    }
 }

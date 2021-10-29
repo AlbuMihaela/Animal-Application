@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PetService {
@@ -32,8 +33,8 @@ public class PetService {
     }
 
     // TODO: step 2
-    public List<Pet> findAll() {
-        return petRepository.findAll();
+    public List<PetDto> findAll() {
+        return petRepository.findAll().stream().map(pet -> petMapper.map(pet)).collect(Collectors.toList());
     }
 
     public Pet findByName(String name) {

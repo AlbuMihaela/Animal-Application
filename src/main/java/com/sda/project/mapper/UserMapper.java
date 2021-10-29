@@ -16,4 +16,14 @@ public class UserMapper {
         user.setPhoneNumber(userDto.getPhoneNumber());
         return user;
     }
+
+    public UserDto map(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
+        userDto.setPassword(user.getPassword());
+        userDto.setPhoneNumber(user.getPhoneNumber());
+        return userDto;
+    }
 }
