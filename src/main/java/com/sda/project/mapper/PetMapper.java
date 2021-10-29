@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class PetMapper {
     public Pet map(PetDto petDto) {
         Pet pet = new Pet();
+
         pet.setName(petDto.getName());
         pet.setCategory(Category.valueOf(petDto.getCategory()));
         pet.setDescription(petDto.getDescription());

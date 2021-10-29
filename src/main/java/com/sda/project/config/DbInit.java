@@ -2,6 +2,7 @@ package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
 import com.sda.project.model.*;
+import com.sda.project.repository.PetRepository;
 import com.sda.project.repository.PrivilegeRepository;
 import com.sda.project.repository.RoleRepository;
 import com.sda.project.repository.UserRepository;
@@ -13,7 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 @Configuration
@@ -29,6 +29,9 @@ public class DbInit {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PetRepository petRepository;
 
     @Bean
     public CommandLineRunner initialData() {
@@ -52,6 +55,12 @@ public class DbInit {
 
             User user = createUser();
             userRepository.save(user);
+
+            Pet dog = createDog();
+            petRepository.save(dog);
+
+            Pet cat = createCat();
+            petRepository.save(cat);
         };
     }
 
@@ -88,6 +97,22 @@ public class DbInit {
         return user;
     }
 
+    private Pet createDog() {
+        Pet pet = new Pet();
+        pet.setName("Mike");
+        pet.setCategory(Category.DOG);
+        pet.setDescription("small dog, brown with white spots");
+        return pet;
+    }
+
+    private Pet createCat() {
+        Pet pet = new Pet();
+        pet.setName("Mussy");
+        pet.setCategory(Category.CAT);
+        pet.setDescription("small cat, blue eyes");
+        return pet;
+    }
+
     @Transactional
     Role createRoleIfNotFound(RoleType type, Set<Privilege> privileges) {
         return (Role) roleRepository.findByType(type)
@@ -109,4 +134,6 @@ public class DbInit {
                 })
                 .orElseGet(() -> privilegeRepository.save(new Privilege(name)));
     }
+
+
 }
