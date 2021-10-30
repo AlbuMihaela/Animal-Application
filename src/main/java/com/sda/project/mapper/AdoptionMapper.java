@@ -18,4 +18,13 @@ public class AdoptionMapper {
         return adoption;
     }
 
+    public AdoptionDto map (Adoption adoption){
+        AdoptionDto adoptionDto = new AdoptionDto();
+        adoptionDto.setDate(String.valueOf(adoption.getDate()));
+        adoptionDto.setIdentityCard(adoption.getIdentityCard());
+        adoptionDto.setProofOfAddress(adoption.getProofOfAddress());
+        adoptionDto.setProofOfFinancialSituation(adoption.getProofOfFinancialSituation());
+        return adoptionDto;
+    }
+
 }

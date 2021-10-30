@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AdoptionService {
 
@@ -29,4 +32,9 @@ public class AdoptionService {
 
     }
 
+    public List<AdoptionDto> findAll() {
+        return adoptionRepository.findAll()
+                .stream().map(adoption -> adoptionMapper
+                        .map(adoption)).collect(Collectors.toList());
+    }
 }
