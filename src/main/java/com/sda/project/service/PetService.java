@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class PetService {
-    private static final Logger log = LoggerFactory.getLogger(UserService.class);
+    private static final Logger log = LoggerFactory.getLogger(PetService.class);
 
     private final PetRepository petRepository;
     private final PetMapper petMapper;
