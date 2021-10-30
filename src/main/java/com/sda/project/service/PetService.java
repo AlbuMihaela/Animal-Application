@@ -62,5 +62,3 @@ public class PetService {
         petRepository.delete(petMapper.map(petDto));
     }
 }
-
-// update test

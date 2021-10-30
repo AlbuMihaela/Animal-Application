@@ -27,9 +27,6 @@ public class PetController {
         DELETE /pets/{id}
      */
 
-    // TODO: implement showAddForm() -> return pet-add.html
-
-    // TODO: implement add() -> redirect to pets
 
     @GetMapping("/pets")
     public String getPetsPage(Model model) {
@@ -48,7 +45,5 @@ public class PetController {
         petService.save(petDto);
         return "redirect:/pets";
     }
-
-// update project test
 
 }
