@@ -19,4 +19,8 @@ public class Pet {
     private Category category;
     private String description;
 
+
+    @OneToOne
+    @JoinColumn(name = "adoption_id")
+    private Adoption adoption;
 }
