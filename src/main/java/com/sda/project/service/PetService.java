@@ -32,9 +32,10 @@ public class PetService {
         petRepository.save(pet);
     }
 
-    // TODO: step 2
     public List<PetDto> findAll() {
-        return petRepository.findAll().stream().map(pet -> petMapper.map(pet)).collect(Collectors.toList());
+        return petRepository.findAll().stream()
+                .map(pet -> petMapper.map(pet))
+                .collect(Collectors.toList());
     }
 
     public Pet findByName(String name) {

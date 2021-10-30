@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PetController {
 
-    @Autowired
     public PetService petService;
 
+    @Autowired
+    public PetController(PetService petService) {
+        this.petService = petService;
+    }
 
     /*
         POST   /pets 			(json body)
@@ -21,8 +24,10 @@ public class PetController {
         DELETE /pets/{id}
      */
 
-    // show pet list
-    // TODO: step 1
+    // TODO: implement showAddForm() -> return pet-add.html
+
+    // TODO: implement add() -> redirect to pets
+
     @GetMapping("/pets")
     public String getPetsPage(Model model) {
         model.addAttribute("pets", petService.findAll());

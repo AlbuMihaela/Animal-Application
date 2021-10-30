@@ -1,73 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-
-    <!-- load boostrap using cdn -->
     <div th:replace="fragments/head-css :: head-css"/>
     <title>Pets</title>
 </head>
 
 <body>
-<header>
-
-</header>
 
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/pets}" th:object="${pets}">
             <!-- table header -->
             <thead>
-            <tr>
-
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Description</th>
-            </tr>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Description</th>
+                </tr>
             </thead>
 
             <!-- table body -->
             <tbody>
-            <tr th:each="pet : ${pets}">
-                <th scope="row">1</th>
-
-                <td th:text="${pet.name}"></td>
-                <td th:text="${pet.category}"></td>
-                <td th:text="${pet.description}"></td>
-            </tr>
+                <tr th:each="pet : ${pets}">
+                    <td th:text="${pet.name}"></td>
+                    <td th:text="${pet.category}"></td>
+                    <td th:text="${pet.description}"></td>
+                </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-<footer>
-
-</footer>
-
-<!-- import javascript: for faster loading -->
 <div th:replace="fragments/footer-js :: footer-js"/>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
