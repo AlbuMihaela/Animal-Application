@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>Pet add</title>
+</head>
+
+<body>
+
+<!--<div th:replace="fragments/header :: navbar"/>-->
+
+<h2>Add pet</h2>
+
+<form class="row g-3"  th:action="@{/pet-add/add}" th:object="${petDto}" method="post">
+
+    <div>
+
+        <div class="col-md-4 form-group required">
+            <label for="name" class="form-label">Name</label>
+            <input class="form-control" id="name" placeholder="Pet name" required th:field="*{name}" type="text">
+<!--            <div class="invalid-feedback">-->
+<!--                A project name can't be empty.-->
+<!--            </div>-->
+        </div>
+
+        <div class="col-md-2 form-group required">
+            <label for="category" class="form-label">Category</label>
+            <input class="form-control" id="category" placeholder="Category" required th:field="*{category}"
+                   type="text">
+<!--            <div class="invalid-feedback">-->
+<!--                Use 2 or 3 uppercase letters.-->
+<!--            </div>-->
+        </div>
+
+        <div class="col-md-4 form-group required">
+            <label for="description" class="form-label">Description</label>
+            <input class="form-select" id="description" placeholder="Description" required th:field="*{description}">
+<!--            <div class="invalid-feedback">-->
+<!--                You need a lead for your project.-->
+<!--            </div>-->
+        </div>
+
+    </div>
+
+    <div class="col-12">
+        <a th:href="@{/pets}">
+            <button class="btn btn-secondary" id="cancel" type="button">Cancel</button>
+        </a>
+        <button class="btn btn-primary" id="save" type="submit">Add pet</button>
+    </div>
+
+</form>
+
+<!-- error -->
+<!--<div class="alert alert-danger" role="alert" th:if="${errorMessage}" th:utext="${errorMessage}"></div>-->
+
+<!--<div th:replace="fragments/footer :: footer"/>-->
+<!--<div th:replace="fragments/footer-js :: footer-js"/>-->
+<!--<script th:src="@{/js/validation.js}"></script>-->
+
+</body>
+</html>
