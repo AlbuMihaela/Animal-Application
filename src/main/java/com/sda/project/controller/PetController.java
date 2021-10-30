@@ -49,8 +49,6 @@ public class PetController {
         return "redirect:/pets";
     }
 
-// TODO: implement showAddForm() -> return pet-add.html
-
-    // TODO: implement add() -> redirect to pets
+// update project test
 
 }
