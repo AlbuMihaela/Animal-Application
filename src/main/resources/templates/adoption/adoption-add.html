@@ -12,17 +12,18 @@
 <br>
 <br>
 
-<form th:action="@{/adoptions/add}" class="row g-3" method="post" style="height: 250px;width: 550px" th:object="${adoptionDto}">
-<!--    <div class="col-md-6">-->
-<!--        <label class="form-label" for="inputFirstName">First Name</label>-->
-<!--        <input class="form-control" id="inputFirstName" type="text">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--        <label class="form-label" for="inputLastName">Last Name</label>-->
-<!--        <input class="form-control" id="inputLastName" type="text">-->
-<!--    </div>-->
-<!--    <div class="col-12">-->
-<!--        <label class="form-label" for="email">E-mail</label>-->
+<form class="row g-3" method="post" style="height: 250px;width: 550px" th:action="@{/adoption-add/add}"
+      th:object="${adoptionDto}">
+    <!--    <div class="col-md-6">-->
+    <!--        <label class="form-label" for="inputFirstName">First Name</label>-->
+    <!--        <input class="form-control" id="inputFirstName" type="text">-->
+    <!--    </div>-->
+    <!--    <div class="col-md-6">-->
+    <!--        <label class="form-label" for="inputLastName">Last Name</label>-->
+    <!--        <input class="form-control" id="inputLastName" type="text">-->
+    <!--    </div>-->
+    <!--    <div class="col-12">-->
+    <!--        <label class="form-label" for="email">E-mail</label>-->
 <!--        <input class="form-control" id="email" type="email">-->
 <!--    </div>-->
 <!--    <div class="col-12">-->
