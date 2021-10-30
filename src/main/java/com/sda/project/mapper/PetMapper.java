@@ -11,7 +11,7 @@ public class PetMapper {
         Pet pet = new Pet();
 
         pet.setName(petDto.getName());
-        pet.setCategory(Category.valueOf(petDto.getCategory()));
+        pet.setCategory(Category.valueOf(petDto.getCategory().toUpperCase()));
         pet.setDescription(petDto.getDescription());
         return pet;
     }

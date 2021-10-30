@@ -44,24 +44,19 @@ public class PetService {
     }
 
 
-    // TODO: remove dead code (that doesn't work)
     public List<Pet> findByCategory(String category) {
-//        return petRepository.findAll().stream().filter(pet -> String.valueOf(pet.getCategory()).equals(category)).collect(Collectors.toList());
         return petRepository.findByCategory(category).get();
     }
 
-    public Pet update(PetDto petDto) {
-        log.info("update pet {}", petDto);
-//        String name = pet.getName();
-//        petRepository.findByNameIgnoreCase(name)
-//                .filter(existingPet -> existingPet.getId().equals(pet.getId()))
-//                .map(existingPet -> petRepository.save(pet))
+
+//    public void update(String name) {
+//        Pet pet = petRepository.findByNameIgnoreCase(name)
 //                .orElseThrow(() -> {
-//                    log.error("project with name {} already exists", name);
-//                    throw new ResourceAlreadyExistsException("pet with name " + name + " already exists");
+//                    throw new ResourceNotFoundException("the pet " + name + " does not exist.");
 //                });
-        return petRepository.save(petMapper.map(petDto));
-    }
+//        PetDto petDto = petMapper.map(pet);
+//        save(petDto);
+//    }
 
     public void delete(PetDto petDto) {
         petRepository.delete(petMapper.map(petDto));
