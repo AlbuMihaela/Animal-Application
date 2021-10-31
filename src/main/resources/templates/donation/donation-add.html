@@ -5,63 +5,70 @@
     <title>Donation form</title>
     <div th:replace="fragments/head-css :: head-css"/>
     <script src="./js/main.js"></script>
-
 </head>
 <body>
-<img src="images/logo.png" style="width: 110px;height: 110px"><br><br><br>
-<p class="para"><b>You must know!! Important!</b> From drugs category you can donate only parasite prevention drugs and vaccines for the following diseases: canine distemper, canine hepatitis, canine parainfluenza, heartworm, lyme disease and parvovirus. </p>
-
-<h7 style="text-align: justify"><b>Donation Form:</b></h7>
+<div class="d-flex justify-content-center">
+    <img src="images/logo.png" style="width: 110px;height: 110px"><br><br><br>
+</div>
+<br>
+<p class="para" style="text-align: center">
+    <b>You must know!! Important!</b> From drugs category you can donate only parasite prevention drugs and vaccines for
+    the following diseases: canine distemper, canine hepatitis, canine parainfluenza, heartworm, lyme disease and
+    parvovirus. </p>
+<h6 style="text-align: center"><b>Donation Form:</b></h6>
 <br>
 <br>
 <br>
-<form class="row g-3" method="post" style=" height: 250px;width: 550px" th:action="@{/donation-add/add}"
- th:object="${donationDto}">
+<div class="d-flex justify-content-center">
+    <form class="row g-3" th:action="@{/donation-add/add}" th:object="${donationDto}"
+          method="post" style=" height: 250px;width: 550px">
 
-  <!--    <div class="col-md-6">-->
-<!--        <label class="form-label" for="inputFirstName">First Name</label>-->
-<!--        <input class="form-control" id="inputFirstName" type="text">-->
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
-<!--        <label class="form-label" for="inputLastName">Last Name</label>-->
-<!--        <input class="form-control" id="inputLastName" type="text">-->
-<!--    </div>-->
-<!--    <div class="col-md-6" style="margin-top: auto">-->
-<!--        <label class="form-label" for="email">E-mail</label>-->
-<!--        <input class="form-control" id="email" type="text">-->
-<!--    </div>-->
-<!--    <div class="col-md-6" style="margin-top: auto">-->
-<!--        <label class="form-label" for="phone number">Phone number</label>-->
-<!--        <input class="form-control" id="phone number" type="text">-->
-<!--    </div>-->
-    <h8><b>What do you want to donate? Choose from the list.</b></h8>
-    <select class="form-select" aria-label="Default select example" onchange="location=this.value;">
-        <option disabled selected >I want to donate</option>
-        <option value="/transfers" >Money</option>
-           </select>
-    <h8>or</h8>
-    <select class="form-select" aria-label="Default select example" th:field="*{getProducts}">
-        <option disabled selected>I want to donate</option>
-        <option value="2">Food</option>
-        <option value="2">Toys</option>
-        <option value="3">Drugs</option>
-        <option value="3">Others</option>
-    </select>
+        <!--    <div class="col-md-6">-->
+        <!--        <label class="form-label" for="inputFirstName">First Name</label>-->
+        <!--        <input class="form-control" id="inputFirstName" type="text">-->
+        <!--    </div>-->
+        <!--    <div class="col-md-6">-->
+        <!--        <label class="form-label" for="inputLastName">Last Name</label>-->
+        <!--        <input class="form-control" id="inputLastName" type="text">-->
+        <!--    </div>-->
+        <!--    <div class="col-md-6" style="margin-top: auto">-->
+        <!--        <label class="form-label" for="email">E-mail</label>-->
+        <!--        <input class="form-control" id="email" type="text">-->
+        <!--    </div>-->
+        <!--    <div class="col-md-6" style="margin-top: auto">-->
+        <!--        <label class="form-label" for="phone number">Phone number</label>-->
+        <!--        <input class="form-control" id="phone number" type="text">-->
+        <!--    </div>-->
+        <h8><b>What do you want to donate? Choose from the list.</b></h8>
+        <select class="form-select" aria-label="Default select example" onchange="location=this.value;">
+            <option disabled selected>I want to donate</option>
+            <option value="/transfers">Money</option>
+        </select>
+        <h8>or</h8>
+        <input class="form-select" id="products" placeholder="Products" required th:field="*{products}">
+        <!--        <select class="form-select" aria-label="Default select example" th:field="*{products}">-->
+        <!--            <option disabled selected>I want to donate</option>-->
+        <!--            <option th:value="'Food'" th:text="Food"></option>-->
+        <!--            <option th:value="'Toys'" th:text="Toys"></option>-->
+        <!--            <option th:value="'Drugs'" th:text="Drugs"></option>-->
+        <!--            <option th:value="'Others'" th:text="Others"></option>-->
+        <!--        </select>-->
 
-    <input readonly disabled value="Address: Filimon Street 81, Bucharest, Romania"
-           style="border:0;outline:0;width:580px;">
+        <input readonly disabled value="Address: Filimon Street 81, Bucharest, Romania"
+               style="border:0;outline:0;width:580px;">
 
-    <div class="form-outline">
-        <label class="form-label" for="textAreaExample" th:field="*{details}">Details</label>
-        <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-        <br>
-        <br>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
-
-        <button class="btn btn-outline-success" type="submit"><a href="/home"></a>Submit</button>
-        <a class="btn btn-outline-secondary" href="/home" type="button">Cancel</a>
-    </div>
-</form>
+        <div class="form-outline">
+            <label for="details" class="form-label">Details</label>
+            <input class="form-select" id="details" placeholder="Details" required th:field="*{details}">
+            <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+            <br>
+            <br>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
+            <button class="btn btn-outline-success" type="submit"><a href="/home"></a>Submit</button>
+            <a class="btn btn-outline-secondary" href="/home" type="button">Cancel</a>
+        </div>
+    </form>
+</div>
 </body>
 </html>
