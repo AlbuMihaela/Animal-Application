@@ -2,6 +2,7 @@ package com.sda.project.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,9 +20,14 @@ public class User {
     private String phoneNumber;
     private Boolean enabled;
 
-
     @OneToMany(mappedBy = "user")
     private Set<Adoption> adoptions;
+
+    @OneToMany(mappedBy = "user")
+    private List<Donation> donations;
+
+    @OneToMany(mappedBy = "user")
+    private List<Transfer> transfers;
 
     @ManyToMany
     @JoinTable(
