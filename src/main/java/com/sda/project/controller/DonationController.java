@@ -1,27 +1,41 @@
 package com.sda.project.controller;
 
-import com.sda.project.dto.UserDto;
-import org.springframework.stereotype.Service;
+import com.sda.project.dto.DonationDto;
+import com.sda.project.service.DonationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@Service
+@Controller
 public class DonationController {
 
+    private final DonationService donationService;
 
-    // FIXME: implement later
+    @Autowired
+    public DonationController(DonationService donationService) {
+        this.donationService = donationService;
+    }
+
     @GetMapping("/donations")
-    public String getDonatePage(Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("userDto", userDto);
-        return "donation";
+    public String getDonationsPage(Model model) {
+        model.addAttribute("donations", donationService.findAll());
+        return "donation/donations";
     }
 
-    // FIXME: implement later
-    @PostMapping("/donations")
-    public String postDonatePage(@ModelAttribute("userDto") UserDto userDto) {
-        return "redirect:/user";
+    @GetMapping("/donation-add")
+    public String getDonationsForm(Model model) {
+        model.addAttribute("donationDto", new DonationDto());
+        return "donation/donation-add";
     }
+
+    @PostMapping("donation-add/add")
+    public String addDonationForm(Model model, @ModelAttribute("donationDto") DonationDto donationDto){
+        donationService.save(donationDto);
+        model.addAttribute("donationDto", donationDto);
+        return "redirect:/home";
+    }
+
 }

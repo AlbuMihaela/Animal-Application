@@ -15,30 +15,32 @@
 <br>
 <br>
 <br>
-<form action="/donation" class="row g-3" method="post" style=" height: 250px;width: 550px">
-    <div class="col-md-6">
-        <label class="form-label" for="inputFirstName">First Name</label>
-        <input class="form-control" id="inputFirstName" type="text">
-    </div>
-    <div class="col-md-6">
-        <label class="form-label" for="inputLastName">Last Name</label>
-        <input class="form-control" id="inputLastName" type="text">
-    </div>
-    <div class="col-md-6" style="margin-top: auto">
-        <label class="form-label" for="email">E-mail</label>
-        <input class="form-control" id="email" type="text">
-    </div>
-    <div class="col-md-6" style="margin-top: auto">
-        <label class="form-label" for="phone number">Phone number</label>
-        <input class="form-control" id="phone number" type="text">
-    </div>
+<form class="row g-3" method="post" style=" height: 250px;width: 550px" th:action="@{/donation-add/add}"
+ th:object="${donationDto}">
+
+  <!--    <div class="col-md-6">-->
+<!--        <label class="form-label" for="inputFirstName">First Name</label>-->
+<!--        <input class="form-control" id="inputFirstName" type="text">-->
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--        <label class="form-label" for="inputLastName">Last Name</label>-->
+<!--        <input class="form-control" id="inputLastName" type="text">-->
+<!--    </div>-->
+<!--    <div class="col-md-6" style="margin-top: auto">-->
+<!--        <label class="form-label" for="email">E-mail</label>-->
+<!--        <input class="form-control" id="email" type="text">-->
+<!--    </div>-->
+<!--    <div class="col-md-6" style="margin-top: auto">-->
+<!--        <label class="form-label" for="phone number">Phone number</label>-->
+<!--        <input class="form-control" id="phone number" type="text">-->
+<!--    </div>-->
     <h8><b>What do you want to donate? Choose from the list.</b></h8>
     <select class="form-select" aria-label="Default select example" onchange="location=this.value;">
         <option disabled selected >I want to donate</option>
-        <option value="/payment" >Money</option>
+        <option value="/transfers" >Money</option>
            </select>
     <h8>or</h8>
-    <select class="form-select" aria-label="Default select example" >
+    <select class="form-select" aria-label="Default select example" th:field="*{getProducts}">
         <option disabled selected>I want to donate</option>
         <option value="2">Food</option>
         <option value="2">Toys</option>
@@ -50,14 +52,15 @@
            style="border:0;outline:0;width:580px;">
 
     <div class="form-outline">
-        <label class="form-label" for="textAreaExample">Details</label>
+        <label class="form-label" for="textAreaExample" th:field="*{details}">Details</label>
         <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
         <br>
         <br>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
-        <button class="btn btn-outline-success" type="submit"><a href="/user"></a>Submit</button>
-        <a class="btn btn-outline-secondary" href="/user" type="button">Cancel</a>
+
+        <button class="btn btn-outline-success" type="submit"><a href="/home"></a>Submit</button>
+        <a class="btn btn-outline-secondary" href="/home" type="button">Cancel</a>
     </div>
 </form>
 </body>

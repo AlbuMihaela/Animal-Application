@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>Donation</title>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <table class="table" method="get" th:action="@{/donations}" th:object="${donations}">
+            <!-- table header -->
+            <thead>
+            <tr>
+                <th scope="col">Products</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+
+            <!-- table body -->
+            <tbody>
+            <tr th:each="adoption : ${donations}">
+                <td th:field="${donation.product}"></td>
+                <td th:text="${donation.details}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
+</body>
+
+</html>
