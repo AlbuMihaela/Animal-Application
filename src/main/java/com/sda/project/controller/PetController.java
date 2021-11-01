@@ -40,10 +40,15 @@ public class PetController {
         return "pet/pet-add";
     }
 
-    @PostMapping("/pet-add/add")
+    @PostMapping("/pets/add")
     public String addPetForm(Model model, @ModelAttribute("petDto") PetDto petDto) {
         petService.save(petDto);
         return "redirect:/pets";
     }
+
+
+    //TODO how do we do update object
+
+//    public String updatePet();
 
 }

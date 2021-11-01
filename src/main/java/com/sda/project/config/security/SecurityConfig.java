@@ -29,7 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // temporary
                 // TODO: remove this in production and move
-                .antMatchers("/home", "/admin", "/pets", "/adoptions", "/donations", "/transfers", "/pet-add/**","/adoption-add/**", "/donation-add/**").permitAll()
+                .antMatchers("/home", "/admin", "/pets", "/adoptions", "/donations", "/transfers", "/appointments",
+                        "/pet-add/**", "/adoption-add/**", "/donation-add/**", "/transfer-add/**", "/appointment-add/**").permitAll()
 
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()

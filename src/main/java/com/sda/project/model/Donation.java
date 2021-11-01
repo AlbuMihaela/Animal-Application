@@ -1,11 +1,9 @@
 package com.sda.project.model;
 
-import com.sda.project.model.Product;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -16,7 +14,7 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Product products;
+    private Product products;//product// //TODO check with Mada
     private String details;
 
     @ManyToOne

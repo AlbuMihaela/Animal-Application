@@ -10,16 +10,16 @@
 
 <h2>Add pet</h2>
 
-<form class="row g-3"  th:action="@{/pet-add/add}" th:object="${petDto}" method="post">
+<form class="row g-3" method="post" th:action="@{/pets/add}" th:object="${petDto}">
 
     <div>
 
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" id="name" placeholder="Pet name" required th:field="*{name}" type="text">
-<!--            <div class="invalid-feedback">-->
-<!--                A project name can't be empty.-->
-<!--            </div>-->
+            <!--            <div class="invalid-feedback">-->
+            <!--                A project name can't be empty.-->
+            <!--            </div>-->
         </div>
 
         <div class="col-md-2 form-group required">

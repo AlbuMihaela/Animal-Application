@@ -29,6 +29,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Transfer> transfers;
 
+    @OneToMany(mappedBy = "user")
+    private List<Appointment> appointments;
+
+
     @ManyToMany
     @JoinTable(
             name = "users_roles",

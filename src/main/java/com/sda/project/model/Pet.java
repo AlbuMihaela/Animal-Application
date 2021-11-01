@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 // lombok annotations
 @Getter
@@ -23,4 +24,7 @@ public class Pet {
     @OneToOne
     @JoinColumn(name = "adoption_id")
     private Adoption adoption;
+
+    @ManyToMany(mappedBy = "pets")
+    private List<Appointment> appointments;
 }

@@ -4,7 +4,6 @@ import com.sda.project.dto.AdoptionDto;
 import com.sda.project.service.AdoptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,7 +32,7 @@ public class AdoptionController {
         return "adoption/adoption-add";
     }
 
-    @PostMapping("/adoption-add/add")
+    @PostMapping("/adoptions/add")
     public String addAdoptForm(Model model,@ModelAttribute("adoptionDto") AdoptionDto adoptionDto) {
         adoptionService.save(adoptionDto);
         model.addAttribute("adoptionDto", adoptionDto);

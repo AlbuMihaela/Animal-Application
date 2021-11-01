@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>Appointments Page</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="container">
+        <table class="table" method="get" th:action="@{/appointments}" th:object="${appointmentsDto}">
+            <!-- table header -->
+            <thead>
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Pets</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+
+            <!-- table body -->
+            <tbody>
+            <tr th:each="appointmentDto : ${appointmentsDto}">
+
+
+                <td th:text="${appointmentDto.date}"></td>
+                <td th:text="${appointmentDto.appointmentStatus}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
+</body>
+
+</html>

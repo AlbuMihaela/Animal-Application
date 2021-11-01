@@ -15,7 +15,7 @@
 <br>
 
 <div class="d-flex justify-content-center">
-    <form class="row g-3" method="post" style="height: 250px;width: 550px" th:action="@{/adoption-add/add}"
+    <form class="row g-3" method="post" style="height: 250px;width: 550px" th:action="@{/adoptions/add}"
           th:object="${adoptionDto}">
         <!--    <div class="col-md-6">-->
         <!--        <label class="form-label" for="inputFirstName">First Name</label>-->
@@ -33,12 +33,13 @@
         <!--        <label class="form-label" for="phoneNumber">Phone Number</label>-->
         <!--        <input class="form-control" id="phoneNumber" type="number">-->
         <!--    </div>-->
-        <!--    <div>-->
-        <!--        &lt;!&ndash;               <input class="span2" size="16" type="text" >&ndash;&gt;-->
-        <!--        <span class="add-on"><i class="icon-th"></i></span></div>-->
-        <!--    <label class="form-label" for="dateOfAdoption" th:field="*{date}">Date</label>-->
-        <!--    <input class="form-select" id="dateOfAdoption" type="date">-->
-        <!--    </div>-->
+        <div>
+            <input class="span2" size="16" type="text">
+            <span class="add-on"><i class="icon-th"></i></span>
+
+            <label class="form-label" for="dateOfAdoption" th:field="*{date}">Date</label>
+            <input class="form-select" id="dateOfAdoption" type="date">
+        </div>
 
         <!--    <div class="col-md-4">-->
         <!--        <label class="form-label" for="inputState">Pet</label>-->
