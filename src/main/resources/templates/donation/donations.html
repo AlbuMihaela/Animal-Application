@@ -20,8 +20,8 @@
 
             <!-- table body -->
             <tbody>
-            <tr th:each="adoption : ${donations}">
-                <td th:field="${donation.product}"></td>
+            <tr th:each="donation : ${donations}">
+                <td th:text="${donation.getProducts()}"></td>
                 <td th:text="${donation.details}"></td>
 
             </tr>
