@@ -19,14 +19,13 @@ public class AdoptionController {
         this.adoptionService = adoptionService;
     }
 
-
     @GetMapping("/adoptions")
     public String getPetsPage(Model model) {
         model.addAttribute("adoptions", adoptionService.findAll());
         return "adoption/adoptions";
     }
 
-    @GetMapping("/adoption-add")
+    @GetMapping("/adoptions/add")
     public String getAdoptionsPage(Model model) {
         model.addAttribute("adoptionDto", new AdoptionDto());
         return "adoption/adoption-add";
@@ -38,6 +37,4 @@ public class AdoptionController {
         model.addAttribute("adoptionDto", adoptionDto);
         return "redirect:/home";
     }
-
-
 }

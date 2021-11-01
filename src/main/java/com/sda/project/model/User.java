@@ -20,18 +20,19 @@ public class User {
     private String phoneNumber;
     private Boolean enabled;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Adoption> adoptions;
+    @OneToMany(
+            mappedBy = "user",
+            fetch = FetchType.LAZY)
+    private Set<Adoption> adoptions = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
-    private List<Donation> donations;
+//    @OneToMany(mappedBy = "user")
+//    private List<Donation> donations;
 
-    @OneToMany(mappedBy = "user")
-    private List<Transfer> transfers;
+//    @OneToMany(mappedBy = "user")
+//    private List<Transfer> transfers;
 
-    @OneToMany(mappedBy = "user")
-    private List<Appointment> appointments;
-
+//    @OneToMany(mappedBy = "user")
+//    private List<Appointment> appointments;
 
     @ManyToMany
     @JoinTable(
@@ -52,6 +53,15 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.enabled = true;
+    }
+
+    // helper method for bidirectional synchronization
+    public void addAdoption(Adoption adoption) {
+        // add child to parent
+        this.adoptions.add(adoption);
+
+        // add parent to child
+        adoption.setUser(this);
     }
 
     public Long getId() {
@@ -127,7 +137,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
