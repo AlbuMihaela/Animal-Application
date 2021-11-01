@@ -2,6 +2,7 @@ package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
 import com.sda.project.model.*;
+import com.sda.project.repository.AdoptionRepository;
 import com.sda.project.repository.PetRepository;
 import com.sda.project.repository.PrivilegeRepository;
 import com.sda.project.repository.RoleRepository;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Configuration
@@ -32,6 +34,9 @@ public class DbInit {
 
     @Autowired
     private PetRepository petRepository;
+
+    @Autowired
+    private AdoptionRepository adoptionRepository;
 
     @Bean
     public CommandLineRunner initialData() {
@@ -61,6 +66,10 @@ public class DbInit {
 
             Pet cat = createCat();
             petRepository.save(cat);
+
+            Adoption adoption = createAdoption();
+            admin.addAdoption(adoption);
+            adoptionRepository.save(adoption);
         };
     }
 
@@ -111,6 +120,15 @@ public class DbInit {
         pet.setCategory(Category.CAT);
         pet.setDescription("small cat, blue eyes");
         return pet;
+    }
+
+    private Adoption createAdoption() {
+        Adoption adoption = new Adoption();
+        adoption.setAdoptionDate(LocalDate.now());
+        adoption.setSocialSecurityNumber("1871230556677");
+        adoption.setProofOfAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
+        adoption.setProofOfFinancialSituation("mare boss");
+        return adoption;
     }
 
     @Transactional

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,16 +17,16 @@ public class Adoption {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private LocalDateTime date;
+    private LocalDate adoptionDate;
     private String proofOfAddress;
     private String proofOfFinancialSituation;
-    private String identityCard;
+    private String socialSecurityNumber;
 
-
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToOne(mappedBy = "adoption")
-    private Pet pet;
+//
+//    @OneToOne(mappedBy = "adoption")
+//    private Pet pet;
 }

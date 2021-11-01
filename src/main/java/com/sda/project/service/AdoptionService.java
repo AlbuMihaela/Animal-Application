@@ -14,10 +14,9 @@ import java.util.stream.Collectors;
 @Service
 public class AdoptionService {
 
-    private static final Logger log = LoggerFactory.getLogger(PetService.class);
+    private static final Logger log = LoggerFactory.getLogger(AdoptionService.class);
 
     private final AdoptionMapper adoptionMapper;
-
     private final AdoptionRepository adoptionRepository;
 
     @Autowired
@@ -27,14 +26,13 @@ public class AdoptionService {
     }
 
     public void save(AdoptionDto adoptionDto) {
-
         adoptionRepository.save(adoptionMapper.map(adoptionDto));
-
     }
 
     public List<AdoptionDto> findAll() {
         return adoptionRepository.findAll()
-                .stream().map(adoption -> adoptionMapper
-                        .map(adoption)).collect(Collectors.toList());
+                .stream().map(adoption ->
+                        adoptionMapper.map(adoption))
+                .collect(Collectors.toList());
     }
 }
