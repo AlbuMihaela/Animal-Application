@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
-    <!--    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
-    <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
     <meta charset="UTF-8">
     <div th:replace="fragments/head-css :: head-css"/>
     <title>Payment page</title>
 </head>
 <body>
 <div>
-    <div class="container" method="get" th:action="@{/transfer/transfers}">
+    <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="d-flex justify-content-center">
@@ -26,19 +24,23 @@
                                href="#"><samp></samp></a>
                             Please enter the card details
                         </div>
-                        <form class="form" role="form" autocomplete="off">
+                        <form autocomplete="off" class="form" method="post" role="form" th:action="@{/transfers/add}"
+                              th:object="${transferDto}">
                             <div class="form-group">
                                 <label for="cc_name">Card Holder's Name</label>
                                 <input type="text" class="form-control" id="cc_name" pattern="\w+ \w+.*"
-                                       title="First and last name" required="required">
+                                       required="required" th:text="${transferDto.cardholderName}"
+                                       title="First and last name">
                             </div>
                             <div class="form-group">
                                 <label>Card Number</label>
                                 <input type="text" class="form-control" autocomplete="off" maxlength="16"
-                                       pattern="\d{16}" title="Credit card number-16 digits" required="">
+                                       pattern="\d{16}" required="" th:text="${transferDto.cardNumber}"
+                                       title="Credit card number-16 digits">
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-12">Card expiration date</label>
+                                <label class="col-md-12" th:text="${transferDto.cardExpirationDate}">Card expiration
+                                    date</label>
                                 <div class="col-md-4">
                                     <select class="form-control" name="cc_exp_mo" size="0">
                                         <option value="01">01</option>
@@ -67,7 +69,7 @@
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" autocomplete="off" maxlength="3"
                                            pattern="\d{3}" title="Three digits at back of your card" required=""
-                                           placeholder="CVC">
+                                           placeholder="CVC" th:text="${transferDto.cvc}">
                                 </div>
                             </div>
                             <div class="row">
@@ -77,14 +79,14 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text">RON</span></div>
                                     <input type="text" class="form-control text-right" id="exampleInputAmount"
-                                           placeholder="00">
+                                           placeholder="00" th:text="${transferDto.amount}">
                                     <div class="input-group-append"><span class="input-group-text">.00</span></div>
                                 </div>
                             </div>
                             <hr>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <button type="reset" class="btn btn-default btn-lg btn-block">Cancel</button>
+                                    <button class="btn btn-secondary" th:href="@{/home}" type="reset">Cancel</button>
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-success btn-lg btn-block">Pay using this card
@@ -98,6 +100,11 @@
         </div>
     </div>
 </div>
+
+<p>button type=? canel sau reset???</p>
+<p>?????select data - legare de backend</p>
+<p>?????cand folosim th:text .... th:field ???? care este diferenta</p>
+<p>?????conteaza daca punem th:object in label sau input???</p>
 </body>
 </div>
 </html>
