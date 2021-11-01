@@ -1,6 +1,6 @@
 package com.sda.project.dto;
 
-import com.sda.project.model.Product;
+
 import lombok.Getter;
 import lombok.Setter;
 
