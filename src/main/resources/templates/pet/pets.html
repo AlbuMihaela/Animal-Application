@@ -9,22 +9,31 @@
 
 <div class="container-fluid">
     <div class="container">
-        <table class="table" method="get" th:action="@{/pets}" th:object="${pets}">
+        <table class="table" method="get" th:action="@{/pets}" th:object="${petsDto}">
             <!-- table header -->
             <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Description</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
 
             <!-- table body -->
             <tbody>
-                <tr th:each="pet : ${pets}">
-                    <td th:text="${pet.name}"></td>
-                    <td th:text="${pet.category}"></td>
-                    <td th:text="${pet.description}"></td>
+                <tr th:each="petDto : ${petsDto}">
+                    <td th:text="${petDto.name}"></td>
+                    <td th:text="${petDto.category}"></td>
+                    <td th:text="${petDto.description}"></td>
+                    <!-- actions -->
+                    <td>
+                        <!-- edit button -->
+                        <a th:href="@{/pets/{id}/edit (id= ${petDto.id})}">
+                            <!-- pencil icon -->
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

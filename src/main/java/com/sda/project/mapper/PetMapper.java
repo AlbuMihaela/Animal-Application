@@ -7,20 +7,32 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PetMapper {
-    public Pet map(PetDto petDto) {
-        Pet pet = new Pet();
 
-        pet.setName(petDto.getName());
-        pet.setCategory(Category.valueOf(petDto.getCategory().toUpperCase()));
-        pet.setDescription(petDto.getDescription());
-        return pet;
+    // toEntity(PetDto dto)
+    public Pet map(PetDto dto) {
+        Pet entity = new Pet();
+        entity.setName(dto.getName());
+        // TODO: use select from dropdown instead of string
+        entity.setCategory(Category.valueOf(dto.getCategory().toUpperCase()));
+        entity.setDescription(dto.getDescription());
+        return entity;
     }
 
-    public PetDto map(Pet pet) {
-        PetDto petDto = new PetDto();
-        petDto.setName(pet.getName());
-        petDto.setCategory(String.valueOf(pet.getCategory()));
-        petDto.setDescription(pet.getDescription());
-        return petDto;
+    // update(PetDto dto, Pet entity)
+    public Pet update(Pet petToUpdate, PetDto data) {
+        petToUpdate.setName(data.getName());
+        petToUpdate.setCategory(Category.valueOf(data.getCategory().toUpperCase()));
+        petToUpdate.setDescription(data.getDescription());
+        return petToUpdate;
+    }
+
+    // toDto(Pet entity)
+    public PetDto map(Pet entity) {
+        PetDto dto = new PetDto();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setCategory(String.valueOf(entity.getCategory()));
+        dto.setDescription(entity.getDescription());
+        return dto;
     }
 }

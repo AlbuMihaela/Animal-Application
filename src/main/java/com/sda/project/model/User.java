@@ -20,6 +20,9 @@ public class User {
     private String phoneNumber;
     private Boolean enabled;
 
+    // display user adoptions
+    // user knows his adoptions
+    // bidirectional one to many
     @OneToMany(
             mappedBy = "user",
             fetch = FetchType.LAZY)

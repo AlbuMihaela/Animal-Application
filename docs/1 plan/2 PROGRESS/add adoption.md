@@ -19,7 +19,6 @@ user - can add adoption
     - proof of financial situation
     - identity card
 - user clicks the `Submit` button, and the adoption should be saved in db 
-- # TODO review code
 
 - input validation *
 
@@ -33,13 +32,6 @@ user - can add adoption
     - navigation button "Cancel"
 
 # backend
-- create schema
-- database connection
-    - spring boot parent
-    - mysql connector
-    - spring data jpa
-
-- main spring boot class
 - entity
 - repository
 - service

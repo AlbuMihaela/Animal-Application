@@ -1,6 +1,7 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
+import com.sda.project.dto.PetDto;
 import com.sda.project.model.*;
 import com.sda.project.repository.AdoptionRepository;
 import com.sda.project.repository.PetRepository;
@@ -67,8 +68,13 @@ public class DbInit {
             Pet cat = createCat();
             petRepository.save(cat);
 
+            // after creating an entity relationship
+            // create parent
+            // create child
             Adoption adoption = createAdoption();
+            // set child on parent or add parent to child
             admin.addAdoption(adoption);
+            // save child or parent
             adoptionRepository.save(adoption);
         };
     }

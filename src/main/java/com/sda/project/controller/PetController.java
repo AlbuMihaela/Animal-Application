@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PetController {
 
-    public PetService petService;
+    public final PetService petService;
 
     @Autowired
     public PetController(PetService petService) {
@@ -30,7 +31,7 @@ public class PetController {
 
     @GetMapping("/pets")
     public String getPetsPage(Model model) {
-        model.addAttribute("pets", petService.findAll());
+        model.addAttribute("petsDto", petService.findAll());
         return "pet/pets";
     }
 
@@ -46,9 +47,32 @@ public class PetController {
         return "redirect:/pets";
     }
 
-
     //TODO how do we do update object
 
-//    public String updatePet();
+    /*
+        GET    /pets/{id}
+        POST   /pets/{id} 		(json body)
+     */
 
+    // show edit form
+    @GetMapping("/pets/{id}/edit")
+    public String getEditForm(Model model, @PathVariable Long id) {
+        // need pet data from db
+        PetDto petToUpdate = petService.findById(id);
+
+        // add data to model
+        model.addAttribute("petDto", petToUpdate);
+        return "pet/pet-edit";
+    }
+
+    // update
+    @PostMapping("/pets/{id}/edit")
+    public String update(@PathVariable Long id,
+                         @ModelAttribute PetDto petDto) {
+        // update
+        petService.update(petDto);
+
+        // after update
+        return "redirect:/pets";
+    }
 }

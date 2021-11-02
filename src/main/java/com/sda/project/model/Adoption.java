@@ -22,8 +22,11 @@ public class Adoption {
     private String proofOfFinancialSituation;
     private String socialSecurityNumber;
 
+    // adoption edit form, change user
+    // adoption knows his user
+    // bidirectional many to one
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
 //

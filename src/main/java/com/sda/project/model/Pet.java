@@ -15,11 +15,10 @@ public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     private Category category;
     private String description;
-
 
     @OneToOne
     @JoinColumn(name = "adoption_id")

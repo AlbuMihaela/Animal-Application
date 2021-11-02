@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class PetDto {
 
+    // needed to press Update pet
+    private Long id;
     private String name;
     private String category;
     private String description;
