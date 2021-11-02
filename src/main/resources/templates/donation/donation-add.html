@@ -40,26 +40,24 @@
         <!--        <input class="form-control" id="phone number" type="text">-->
         <!--    </div>-->
         <h8><b>What do you want to donate? Choose from the list.</b></h8>
-        <select class="form-select" aria-label="Default select example" onchange="location=this.value;">
-            <option disabled selected>I want to donate</option>
-            <option value="/transfers">Money</option>
+
+        <select name="whichpage" id="whichpage" th:field="*{products}"
+                onChange="if(this.selectedIndex==1)
+        self.location=this.options[this.selectedIndex].value">
+            <option value="Select a product" disabled selected>Please select a product
+            <option value="/transfer-add" selected>MONEY
+            <option th:each="product : ${T(com.sda.project.model.Product).values()}"
+                    th:value="${product}"
+                    th:text="${product}">
+            </option>
         </select>
-        <h8>or</h8>
-        <input class="form-select" id="products" placeholder="Products" required th:field="*{products}">
-        <!--        <select class="form-select" aria-label="Default select example" th:field="*{products}">-->
-        <!--            <option disabled selected>I want to donate</option>-->
-        <!--            <option th:value="'Food'" th:text="Food"></option>-->
-        <!--            <option th:value="'Toys'" th:text="Toys"></option>-->
-        <!--            <option th:value="'Drugs'" th:text="Drugs"></option>-->
-        <!--            <option th:value="'Others'" th:text="Others"></option>-->
-        <!--        </select>-->
+
 
         <input readonly disabled value="Address: Filimon Street 81, Bucharest, Romania"
                style="border:0;outline:0;width:580px;">
 
         <div class="form-outline">
-            <label for="details" class="form-label">Details</label>
-            <input class="form-select" id="details" placeholder="Details" required th:field="*{details}">
+            <label class="form-label" th:field="*{details}">Details</label>
             <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
             <br>
             <br>

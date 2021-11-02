@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="d-flex justify-content-center">
-                    <img alt="logo" height="150px" src="images/logo.png" width="150px" style="padding-bottom:0cm">
+                    <img alt="logo" height="110px" src="images/logo.png" width="110px" style="padding-bottom:0cm">
                 </div>
                 <!-- form card cc payment -->
                 <div class="card card-outline-secondary">
@@ -23,6 +23,7 @@
                             <a class="close font-weight-normal initialism" data-dismiss="alert"
                                href="#"><samp></samp></a>
                             Please enter the card details
+                            <br>
                         </div>
                         <form autocomplete="off" class="form" method="post" role="form" th:action="@{/transfers/add}"
                               th:object="${transferDto}">
@@ -32,6 +33,7 @@
                                        required="required" th:text="${transferDto.cardholderName}"
                                        title="First and last name">
                             </div>
+                            <br>
                             <div class="form-group">
                                 <label>Card Number</label>
                                 <input type="text" class="form-control" autocomplete="off" maxlength="16"
@@ -72,6 +74,7 @@
                                            placeholder="CVC" th:text="${transferDto.cvc}">
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
                                 <label class="col-md-12">Amount</label>
                             </div>
@@ -84,16 +87,14 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="form-group row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-secondary" th:href="@{/home}" type="reset">Cancel</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-success btn-lg btn-block">Pay using this card
-                                    </button>
-                                </div>
+                            <div class="d-grid gap-2 col-6 mx-auto form-outline mb-2">
+                                <!-- cancel button -->
+                                <a class="btn btn-outline-secondary" th:href="@{/donation-add}" type="button">Cancel</a>
+
+                                <!-- sign up button -->
+                                <button class="btn btn-outline-success" type="submit">Pay using this card</button>
                             </div>
-                        </form>
+                            </form>
                     </div>
                 </div>
             </div>

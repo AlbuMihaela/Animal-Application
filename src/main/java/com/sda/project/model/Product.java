@@ -1,7 +1,7 @@
 package com.sda.project.model;
 
 public enum Product {
-    MONEY,
+//    MONEY,
     FOOD,
     TOYS,
     DRUGS,
