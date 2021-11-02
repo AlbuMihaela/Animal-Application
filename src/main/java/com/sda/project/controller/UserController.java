@@ -46,6 +46,11 @@ public class UserController {
         userService.findByEmail(userDto.getEmail());
         return "redirect: /home";
     }
+
+    @GetMapping("/admin")
+    public String getAdminPage(){
+      return "admin/admin";
+    }
 }
 
 
