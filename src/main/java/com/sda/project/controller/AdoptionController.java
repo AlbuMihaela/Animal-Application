@@ -32,7 +32,7 @@ public class AdoptionController {
     }
 
     @PostMapping("/adoptions/add")
-    public String addAdoptForm(Model model,@ModelAttribute("adoptionDto") AdoptionDto adoptionDto) {
+    public String addAdoptForm(@ModelAttribute("adoptionDto") AdoptionDto adoptionDto) {
         adoptionService.save(adoptionDto);
         return "redirect:/home";
     }

@@ -41,7 +41,7 @@ public class PetController {
     }
 
     @PostMapping("/pets/add")
-    public String addPetForm(Model model, @ModelAttribute("petDto") PetDto petDto) {
+    public String addPetForm(@ModelAttribute("petDto") PetDto petDto) {
         petService.save(petDto);
         return "redirect:/pets";
     }

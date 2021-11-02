@@ -33,7 +33,7 @@ public class AppointmentController {
     }
 
     @PostMapping("/appointments/add")
-    public String addPetForm(Model model, @ModelAttribute("appointmentDto") AppointmentDto appointmentDto) {
+    public String addPetForm(@ModelAttribute("appointmentDto") AppointmentDto appointmentDto) {
         appointmentService.save(appointmentDto);
         return "redirect:/home";
     }

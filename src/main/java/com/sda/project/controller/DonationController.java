@@ -35,9 +35,9 @@ public class DonationController {
 
     //TODO why can't we add donation to db(submit doesn't work)
     @PostMapping("donations/add")
-    public String addDonationForm(Model model, @ModelAttribute("donationDto") DonationDto donationDto) {
+    public String addDonationForm(@ModelAttribute("donationDto") DonationDto donationDto) {
         donationService.save(donationDto);
-        model.addAttribute("donationDto", donationDto);
+//        model.addAttribute("donationDto", donationDto);
         return "redirect:/home";
     }
 
