@@ -1,45 +1,47 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Pet add</title>
+    <title>Pet update</title>
 </head>
 
 <body>
-
 <h2>Update pet</h2>
-
 <form class="row g-3" method="post" th:action="@{/pets/{id}/edit (id = ${petDto.id})}" th:object="${petDto}">
-
     <div>
-
         <!-- pet name -->
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" id="name" placeholder="Pet name" required th:field="*{name}" type="text">
         </div>
-
+        <br>
         <!-- category -->
-        <div class="col-md-2 form-group required">
-            <label for="category" class="form-label">Category</label>
-            <input class="form-control" id="category" placeholder="Category" required th:field="*{category}"
-                   type="text">
+        <div class="col-md-4 form-group required">
+            <label for="category">Category</label>
+            <br>
+            <select class="custom-select tm-select-accounts" id="category" value="Select category"
+                    th:field="*{category}" required>
+                <option value="" disabled>Select category</option>
+                <option th:each="category : ${T(com.sda.project.model.Category).values()}"
+                        th:value="${category}"
+                        th:text="${category}">
+                </option>
+            </select>
         </div>
-
+        </select>
+        <br>
         <!-- description -->
         <div class="col-md-4 form-group required">
-            <label for="description" class="form-label">Description</label>
-            <input class="form-select" id="description" placeholder="Description" required th:field="*{description}">
+            <label for="name" class="form-label">Description</label>
+            <input class="form-control" id="description" placeholder="Pet description" required
+                   th:field="*{description}" type="text">
         </div>
-
     </div>
-
     <div class="col-12">
         <a th:href="@{/pets}">
             <button class="btn btn-secondary" id="cancel" type="button">Cancel</button>
         </a>
         <button class="btn btn-primary" id="save" type="submit">Update pet</button>
     </div>
-
 </form>
 
 <div th:replace="fragments/footer-js :: footer-js"/>
