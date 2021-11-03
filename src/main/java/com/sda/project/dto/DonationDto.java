@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class DonationDto {
 
-    private String products;
+    private String product;
     private String details;
 
 }

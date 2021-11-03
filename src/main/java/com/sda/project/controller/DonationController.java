@@ -28,8 +28,6 @@ public class DonationController {
     @GetMapping("/donation-add")
     public String getDonationsForm(Model model) {
         model.addAttribute("donationDto", new DonationDto());
-//        model.addAttribute("products", new Product[5]);
-        //TODO ask Cosmin how to incorporate enums in html
         return "donation/donation-add";
     }
 
@@ -37,7 +35,6 @@ public class DonationController {
     @PostMapping("donations/add")
     public String addDonationForm(@ModelAttribute("donationDto") DonationDto donationDto) {
         donationService.save(donationDto);
-//        model.addAttribute("donationDto", donationDto);
         return "redirect:/home";
     }
 

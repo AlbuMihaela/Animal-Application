@@ -14,11 +14,14 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Product products;//product// //TODO check with Mada
+
+    @Enumerated(EnumType.STRING)
+    private Product product;//product// //TODO check with Mada
+
     private String details;
 
     @ManyToOne
-    @JoinColumn(name="userId")
+    @JoinColumn(name = "userId")
     private User user;
 
     @OneToOne(mappedBy = "donation")
