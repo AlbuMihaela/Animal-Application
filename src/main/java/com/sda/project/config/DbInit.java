@@ -1,7 +1,6 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
-import com.sda.project.controller.exception.ResourceNotFoundException;
 import com.sda.project.model.*;
 import com.sda.project.repository.*;
 import org.slf4j.Logger;
@@ -14,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
@@ -76,6 +74,12 @@ public class DbInit {
             Pet cat = createCat();
             petRepository.save(cat);
 
+            Appointment appointment = createAppointment();
+            user.addAppointment(appointment);
+            appointment.addPet(cat);
+            appointment.addPet(dog);
+            appointmentRepository.save(appointment);
+
             // after creating an entity relationship
             // create parent
             // create child
@@ -85,11 +89,6 @@ public class DbInit {
             // save child or parent
             adoptionRepository.save(adoption);
 
-            Appointment appointment = createAppointment();
-            user.addAppointment(appointment);
-            appointmentRepository.save(appointment);
-
-
             Donation donation = createDonation();
             user.addDonation(donation);
             donationRepository.save(donation);
@@ -98,7 +97,6 @@ public class DbInit {
             user.addTransfer(transfer);
             donation.addTransfer(transfer);
             transferRepository.save(transfer);
-
 
         };
     }
@@ -163,19 +161,9 @@ public class DbInit {
     }
 
     private Appointment createAppointment() {
-
         Appointment appointment = new Appointment();
         appointment.setDate(LocalDateTime.now());
         appointment.setAppointmentStatus(AppointmentStatus.SENT);
-
-        Set<Pet> pets = new HashSet<>();
-        pets.add(petRepository.findByNameIgnoreCase("Mussy")
-                .orElseThrow(() -> new ResourceNotFoundException("pet not found")));
-        pets.add(petRepository.findByNameIgnoreCase("Mike")
-                .orElseThrow(() -> new ResourceNotFoundException("pet not found")));
-
-        appointment.setPets(pets);
-
         return appointment;
     }
 
@@ -183,13 +171,12 @@ public class DbInit {
         Donation donation = new Donation();
         donation.setProduct(Product.FOOD);
         donation.setDetails("Purina One");
-
         return donation;
     }
 
     private Transfer createTransfer(User user) {
         Transfer transfer = new Transfer();
-        transfer.setCardholderName(user.getFirstName() + " " + user.getLastName());
+        transfer.setCardholderName("Mihaela Albu");
         transfer.setCardNumber("ROINGB000099997321");
         transfer.setCardExpirationDate(LocalDate.now());
         transfer.setCvc("042");

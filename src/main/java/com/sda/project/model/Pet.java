@@ -30,20 +30,13 @@ public class Pet {
             fetch = FetchType.LAZY)
     private Set<Appointment> appointments = new HashSet<>();
 
-    //TODO check this method
+    //TODO aceasta functie este identica cu setter-i field-urilor?
     public void setAdoption(Adoption adoption) {
+        this.adoption = adoption;
         adoption.setPet(this);
-    }
-
-    public void addAppointments(Set<Appointment> appointments) {
-        for (Appointment appointment : appointments) {
-            this.appointments.add(appointment);
-//            set pet list on each appointment
-            appointment.setPets(appointment.getPets());
-        }
-        //TODO please check this method
-
 
     }
 
 }
+
+
