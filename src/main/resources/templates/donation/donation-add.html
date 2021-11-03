@@ -27,6 +27,7 @@
         <!--        <label class="form-label" for="inputFirstName">First Name</label>-->
         <!--        <input class="form-control" id="inputFirstName" type="text">-->
         <!--    </div>-->
+
         <!--    <div class="col-md-6">-->
         <!--        <label class="form-label" for="inputLastName">Last Name</label>-->
         <!--        <input class="form-control" id="inputLastName" type="text">-->
@@ -41,15 +42,16 @@
         <!--    </div>-->
         <h8><b>What do you want to donate? Choose from the list.</b></h8>
 
-        <select id="whichpage" name="whichpage" onChange="if(this.selectedIndex==1)
-        self.location=this.options[this.selectedIndex].value" placeholder="Select a product"
+        <select id="whichpage" name="whichpage" onChange="if(this.selectedIndex==5)
+        self.location=this.options[this.selectedIndex].value"
                 th:field="*{product}">
-            <!--            <option value="" default="" selected="">Select a product</option>-->
-            <!--            <option  selected >Please select a product-->
-            <option value="/transfer-add">MONEY
+                        <option value="" default="" selected="">Select a product</option>
+<!--                        <option  selected >Please select a product-->
             <option th:each="product : ${T(com.sda.project.model.Product).values()}"
                     th:value="${product}"
                     th:text="${product}">
+            <option value="/transfer-add">MONEY
+
 
             </option>
         </select>
