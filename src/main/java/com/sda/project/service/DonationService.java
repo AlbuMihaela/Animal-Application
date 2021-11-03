@@ -1,6 +1,6 @@
 package com.sda.project.service;
 
-import com.sda.project.dto.DonationDto;
+import com.sda.project.dto.DonationAdd;
 import com.sda.project.mapper.DonationMapper;
 import com.sda.project.repository.DonationRepository;
 import org.slf4j.Logger;
@@ -24,13 +24,21 @@ public class DonationService {
         this.donationRepository = donationRepository;
     }
 
-    public void save(DonationDto donationDto) {
-        donationRepository.save(donationMapper.map(donationDto));
+    public void save(DonationAdd donationAdd) {
+        donationRepository.save(donationMapper.map(donationAdd));
     }
 
-    public List<DonationDto> findAll() {
+    public List<DonationAdd> findAll() {
         return donationRepository.findAll()
                 .stream().map(donation -> donationMapper
                         .map(donation)).collect(Collectors.toList());
+    }
+
+    public DonationAdd ceva() {
+        // find current user id
+        Long currentUserId = 1L;
+
+        // set current user id on dto
+        return new DonationAdd(currentUserId, null, null);
     }
 }

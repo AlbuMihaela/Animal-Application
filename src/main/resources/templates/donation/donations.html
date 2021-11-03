@@ -21,9 +21,8 @@
             <!-- table body -->
             <tbody>
             <tr th:each="donation : ${donations}">
-                <td th:text="${donation.getProducts()}"></td>
+                <td th:text="${donation.product}"></td>
                 <td th:text="${donation.details}"></td>
-
             </tr>
             </tbody>
         </table>

@@ -4,73 +4,95 @@
     <meta charset="UTF-8">
     <title>Donation form</title>
     <div th:replace="fragments/head-css :: head-css"/>
-    <script src="./js/main.js"></script>
 </head>
 <body>
 <div class="d-flex justify-content-center">
-    <img src="images/logo.png" style="width: 110px;height: 110px"><br><br><br>
+
+    <!-- load image with thymeleaf -->
+    <!-- logo -->
+    <img th:src="@{images/logo.png}">
 </div>
-<br>
-<p class="para" style="text-align: center">
-    <b>You must know!! Important!</b> From drugs category you can donate only parasite prevention drugs and vaccines for
-    the following diseases: canine distemper, canine hepatitis, canine parainfluenza, heartworm, lyme disease and
-    parvovirus. </p>
-<h6 style="text-align: center"><b>Donation Form:</b></h6>
-<br>
-<br>
-<br>
+
+<div>
+    <!-- disclaimer -->
+    <p>
+        <b>You must know!! Important!</b> From drugs category you can donate only parasite prevention drugs and vaccines for
+        the following diseases: canine distemper, canine hepatitis, canine parainfluenza, heartworm, lyme disease and
+        parvovirus.
+    </p>
+
+    <!-- form header -->
+    <h2>Donate</h2>
+</div>
+
+<!-- form -->
 <div class="d-flex justify-content-center">
-    <form class="row g-3" th:action="@{/donations/add}" th:object="${donationDto}"
-          method="post" style=" height: 250px;width: 550px">
+    <form class="row g-3" method="post" th:action="@{/donations/add}" th:object="${donation}">
 
         <div class="col-md-6">
-            <label class="form-label" for="inputFirstName">First Name</label>
-            <input class="form-control" id="inputFirstName" type="text">
+            <!-- name -->
+            <label class="form-label">Name</label>
+            <p th:text="|${loggedUser.firstName} ${loggedUser.lastName}|"></p>
+
+            <!-- phone number -->
+            <label class="form-label">Phone</label>
+            <p th:text="${loggedUser.phoneNumber}"></p>
+
+            <!-- email -->
+            <label class="form-label">Email</label>
+            <p th:text="${loggedUser.email}"></p>
         </div>
 
-        <!--    <div class="col-md-6">-->
-        <!--        <label class="form-label" for="inputLastName">Last Name</label>-->
-        <!--        <input class="form-control" id="inputLastName" type="text">-->
-        <!--    </div>-->
-        <!--    <div class="col-md-6" style="margin-top: auto">-->
-        <!--        <label class="form-label" for="email">E-mail</label>-->
-        <!--        <input class="form-control" id="email" type="text">-->
-        <!--    </div>-->
-        <!--    <div class="col-md-6" style="margin-top: auto">-->
-        <!--        <label class="form-label" for="phone number">Phone number</label>-->
-        <!--        <input class="form-control" id="phone number" type="text">-->
-        <!--    </div>-->
-        <h8><b>What do you want to donate? Choose from the list.</b></h8>
+        <!-- donation type -->
 
-        <select id="whichpage" name="whichpage" onChange="if(this.selectedIndex==5)
-        self.location=this.options[this.selectedIndex].value"
-                th:field="*{product}">
-                        <option value="" default="" selected="">Select a product</option>
-<!--                        <option  selected >Please select a product-->
-            <option th:each="product : ${T(com.sda.project.model.Product).values()}"
-                    th:value="${product}"
-                    th:text="${product}">
-            <option value="/transfer-add">MONEY
+        <!-- form group -->
+        <div class="form-group">
 
+            <!-- label -->
+            <label for="donationType" class="form-label">Donation type</label>
 
-            </option>
-        </select>
+            <!-- select -->
 
+            <!-- th:text = Money -->
+            <!-- th:value = MONEY -->
+            <select id="donationType" name="donationType" th:field="*{product}">
+                <!-- pre selected value, not a real option -->
+                <option selected th:value="null">What do you want to donate?</option>
 
-        <input readonly disabled value="Address: Filimon Street 81, Bucharest, Romania"
-               style="border:0;outline:0;width:580px;">
+                <!-- TODO: captialize not working -->
+                <!-- options from db -->
+                <option th:each="product : ${T(com.sda.project.model.Product).values()}"
+                        th:text="|${#strings.capitalize(product)}|"
+                        th:value="${product}">
+                </option>
+            </select>
+        </div>
 
+        <!-- TODO: move to my donations -->
+        <a th:href="@{/transfer/add}">
+            <button class="btn btn-secondary" id="payment" type="button">Add payment details</button>
+        </a>
+
+        <div class="alert alert-light" role="alert">
+            Address: Filimon Street 81, Bucharest, Romania"
+        </div>
+
+        <!-- details -->
         <div class="form-outline">
-            <label class="form-label" th:field="*{details}">Details</label>
-            <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-            <br>
-            <br>
+            <label class="form-label">Details</label>
+            <textarea class="form-control" id="textAreaExample" rows="4" th:field="*{details}"></textarea>
         </div>
+
+        <!-- actions -->
         <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
-            <button class="btn btn-outline-success" type="submit"><a href="/home"></a>Submit</button>
-            <a class="btn btn-outline-secondary" href="/home" type="button">Cancel</a>
+            <button class="btn btn-outline-success" type="submit">Donate</button>
+            <a th:href="@{/donations}">
+                <button class="btn btn-outline-secondary" id="cancel" name="cancel" type="button">Cancel</button>
+            </a>
+<!--            <a class="btn btn-outline-secondary" th:href="@{/donations}" type="button">Cancel</a>-->
         </div>
     </form>
 </div>
+
 </body>
 </html>
