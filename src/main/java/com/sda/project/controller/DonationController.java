@@ -31,6 +31,8 @@ public class DonationController {
         return "donation/donation-add";
     }
 
+    //TODO how can we put a placeholder in a dropdown list without saving it in database
+
     //TODO why can't we add donation to db(submit doesn't work)
     @PostMapping("donations/add")
     public String addDonationForm(@ModelAttribute("donationDto") DonationDto donationDto) {

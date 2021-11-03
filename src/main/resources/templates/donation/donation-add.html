@@ -41,14 +41,16 @@
         <!--    </div>-->
         <h8><b>What do you want to donate? Choose from the list.</b></h8>
 
-        <select name="whichpage" id="whichpage" th:field="*{products}"
-                onChange="if(this.selectedIndex==1)
-        self.location=this.options[this.selectedIndex].value">
-            <option value="Select a product" disabled selected>Please select a product
-            <option value="/transfer-add" selected>MONEY
+        <select id="whichpage" name="whichpage" onChange="if(this.selectedIndex==1)
+        self.location=this.options[this.selectedIndex].value" placeholder="Select a product"
+                th:field="*{product}">
+            <!--            <option value="" default="" selected="">Select a product</option>-->
+            <!--            <option  selected >Please select a product-->
+            <option value="/transfer-add">MONEY
             <option th:each="product : ${T(com.sda.project.model.Product).values()}"
                     th:value="${product}"
                     th:text="${product}">
+
             </option>
         </select>
 

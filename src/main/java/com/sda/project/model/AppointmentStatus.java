@@ -5,3 +5,4 @@ public enum AppointmentStatus {
     APPROVED,
     CANCELED;
 }
+//

@@ -2,7 +2,6 @@ package com.sda.project.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,14 +27,18 @@ public class User {
             fetch = FetchType.LAZY)
     private Set<Adoption> adoptions = new HashSet<>();
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Donation> donations;
+    @OneToMany(mappedBy = "user",
+            fetch = FetchType.LAZY)
+    private Set<Donation> donations = new HashSet<>();
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Transfer> transfers;
+    @OneToMany(mappedBy = "user",
+            fetch = FetchType.LAZY)
+    private Set<Transfer> transfers = new HashSet<>();
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Appointment> appointments;
+    @OneToMany
+            (mappedBy = "user",
+                    fetch = FetchType.LAZY)
+    private Set<Appointment> appointments = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -66,6 +69,22 @@ public class User {
         // add parent to child
         adoption.setUser(this);
     }
+
+    public void addAppointment(Appointment appointment) {
+        this.appointments.add(appointment);
+        appointment.setUser(this);
+    }
+
+    public void addDonation(Donation donation) {
+        this.donations.add(donation);
+        donation.setUser(this);
+    }
+
+    public void addTransfer(Transfer transfer) {
+        this.transfers.add(transfer);
+        transfer.setUser(this);
+    }
+
 
     public Long getId() {
         return id;

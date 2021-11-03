@@ -21,12 +21,16 @@ public class Transfer {
     private String cvc;
     private Double amount;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "donation_id")
     private Donation donation;
 
-    @ManyToOne
-    @JoinColumn(name="userId")
+    //todo how can we have just money as donation category in transfer????
+    // does the frontend solve the problem or do we need some java code?
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
 }

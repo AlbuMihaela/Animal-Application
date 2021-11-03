@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 // lombok annotations
 @Getter
@@ -20,10 +21,29 @@ public class Pet {
     private Category category;
     private String description;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "adoption_id")
     private Adoption adoption;
 
-    @ManyToMany(mappedBy = "pets")
-    private List<Appointment> appointments;
+    @ManyToMany(
+            mappedBy = "pets",
+            fetch = FetchType.LAZY)
+    private Set<Appointment> appointments = new HashSet<>();
+
+    //TODO check this method
+    public void setAdoption(Adoption adoption) {
+        adoption.setPet(this);
+    }
+
+    public void addAppointments(Set<Appointment> appointments) {
+        for (Appointment appointment : appointments) {
+            this.appointments.add(appointment);
+//            set pet list on each appointment
+            appointment.setPets(appointment.getPets());
+        }
+        //TODO please check this method
+
+
+    }
+
 }

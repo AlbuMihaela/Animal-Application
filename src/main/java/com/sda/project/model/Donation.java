@@ -16,14 +16,20 @@ public class Donation {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private Product product;//product// //TODO check with Mada
+    private Product product;
 
     private String details;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "donation")
+    @OneToOne(mappedBy = "donation",
+            fetch = FetchType.LAZY)
     private Transfer transfer;
+
+    public void addTransfer(Transfer transfer) {
+        this.transfer = transfer;
+        transfer.setDonation(this);
+    }
 }

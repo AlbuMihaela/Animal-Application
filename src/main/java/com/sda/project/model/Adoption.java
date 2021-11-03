@@ -6,12 +6,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "adoption")
 public class Adoption {
 
     @Id
@@ -29,7 +28,11 @@ public class Adoption {
     @JoinColumn(name = "user_id")
     private User user;
 
-//
-//    @OneToOne(mappedBy = "adoption")
-//    private Pet pet;
+
+    @OneToOne
+            (mappedBy = "adoption",
+                    fetch = FetchType.LAZY)
+    private Pet pet;
+
+
 }

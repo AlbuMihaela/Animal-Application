@@ -10,14 +10,14 @@ public class DonationMapper {
 
     public Donation map(DonationDto donationDto){
         Donation donation = new Donation();
-        donation.setProduct(Product.valueOf(donationDto.getProduct().toUpperCase()));
+        donation.setProduct(Product.valueOf(donationDto.getProduct()));
         donation.setDetails(donationDto.getDetails());
         return donation;
     }
 
     public DonationDto map(Donation donation){
         DonationDto donationDto = new DonationDto();
-        donationDto.setProduct(String.valueOf(donation.getProduct()).toLowerCase());
+        donationDto.setProduct(String.valueOf(donation.getProduct()));
         donationDto.setDetails(donation.getDetails());
         return donationDto;
     }

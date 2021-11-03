@@ -5,7 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -18,19 +19,21 @@ public class Appointment {
     private Long id;
 
     private LocalDateTime date;
+
+    @Enumerated(EnumType.STRING)
     private AppointmentStatus appointmentStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "pet_appointment",
             joinColumns = @JoinColumn(
                     name = "appointment_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "pet_id", referencedColumnName = "id"))
-    private List<Pet> pets;
+    private Set<Pet> pets = new HashSet<>();
 
 
 }

@@ -1,13 +1,9 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
-import com.sda.project.dto.PetDto;
+import com.sda.project.controller.exception.ResourceNotFoundException;
 import com.sda.project.model.*;
-import com.sda.project.repository.AdoptionRepository;
-import com.sda.project.repository.PetRepository;
-import com.sda.project.repository.PrivilegeRepository;
-import com.sda.project.repository.RoleRepository;
-import com.sda.project.repository.UserRepository;
+import com.sda.project.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
@@ -38,6 +36,15 @@ public class DbInit {
 
     @Autowired
     private AdoptionRepository adoptionRepository;
+
+    @Autowired
+    private AppointmentRepository appointmentRepository;
+
+    @Autowired
+    private DonationRepository donationRepository;
+
+    @Autowired
+    private TransferRepository transferRepository;
 
     @Bean
     public CommandLineRunner initialData() {
@@ -62,6 +69,7 @@ public class DbInit {
             User user = createUser();
             userRepository.save(user);
 
+
             Pet dog = createDog();
             petRepository.save(dog);
 
@@ -73,11 +81,28 @@ public class DbInit {
             // create child
             Adoption adoption = createAdoption();
             // set child on parent or add parent to child
-            admin.addAdoption(adoption);
+            user.addAdoption(adoption);
             // save child or parent
             adoptionRepository.save(adoption);
+
+            Appointment appointment = createAppointment();
+            user.addAppointment(appointment);
+            appointmentRepository.save(appointment);
+
+
+            Donation donation = createDonation();
+            user.addDonation(donation);
+            donationRepository.save(donation);
+
+            Transfer transfer = createTransfer(user);
+            user.addTransfer(transfer);
+            donation.addTransfer(transfer);
+            transferRepository.save(transfer);
+
+
         };
     }
+
 
     private User createMainAdmin() {
         User admin = new User(
@@ -136,6 +161,42 @@ public class DbInit {
         adoption.setProofOfFinancialSituation("mare boss");
         return adoption;
     }
+
+    private Appointment createAppointment() {
+
+        Appointment appointment = new Appointment();
+        appointment.setDate(LocalDateTime.now());
+        appointment.setAppointmentStatus(AppointmentStatus.SENT);
+
+        Set<Pet> pets = new HashSet<>();
+        pets.add(petRepository.findByNameIgnoreCase("Mussy")
+                .orElseThrow(() -> new ResourceNotFoundException("pet not found")));
+        pets.add(petRepository.findByNameIgnoreCase("Mike")
+                .orElseThrow(() -> new ResourceNotFoundException("pet not found")));
+
+        appointment.setPets(pets);
+
+        return appointment;
+    }
+
+    private Donation createDonation() {
+        Donation donation = new Donation();
+        donation.setProduct(Product.FOOD);
+        donation.setDetails("Purina One");
+
+        return donation;
+    }
+
+    private Transfer createTransfer(User user) {
+        Transfer transfer = new Transfer();
+        transfer.setCardholderName(user.getFirstName() + " " + user.getLastName());
+        transfer.setCardNumber("ROINGB000099997321");
+        transfer.setCardExpirationDate(LocalDate.now());
+        transfer.setCvc("042");
+        transfer.setAmount(300.00);
+        return transfer;
+    }
+
 
     @Transactional
     Role createRoleIfNotFound(RoleType type, Set<Privilege> privileges) {
