@@ -31,6 +31,10 @@ public class User {
             fetch = FetchType.LAZY)
     private Set<Donation> donations = new HashSet<>();
 
+    public Set<Donation> getDonations() {
+        return donations;
+    }
+
     @OneToMany(mappedBy = "user",
             fetch = FetchType.LAZY)
     private Set<Transfer> transfers = new HashSet<>();

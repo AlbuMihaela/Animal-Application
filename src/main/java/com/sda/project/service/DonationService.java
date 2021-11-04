@@ -11,7 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
+
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,17 +46,13 @@ public class DonationService {
                         .mapToDonationAddDto(donation)).collect(Collectors.toList());
     }
 
-//    public List<Donation> findByUserId(Long userId){
+    public Set<DonationAdd> findDonationByUserId(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("user not found"));
+        return user.getDonations().stream()
+                .map(donation -> donationMapper.mapToDonationAddDto(donation))
+                .collect(Collectors.toSet());
+    }
 
-
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
-////
-////        List <Donation> userDonationlist =
-//                donationRepository.findByUser(user)
-//                .orElseThrow(() -> new ResourceNotFoundException("donation not found"));
-
-//    }
 
     public DonationAdd ceva() {
         // find current user id

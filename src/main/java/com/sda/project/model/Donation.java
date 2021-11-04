@@ -24,6 +24,10 @@ public class Donation {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public User getUser() {
+        return user;
+    }
+
     @OneToOne(mappedBy = "donation",
             fetch = FetchType.LAZY)
     private Transfer transfer;
