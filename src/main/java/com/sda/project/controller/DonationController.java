@@ -55,10 +55,11 @@ public class DonationController {
 
     @GetMapping("/my-donations")
     public String getMyDonationsPage(Model model) {
+//        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("donationAddDtoSet",
+                donationService.findDonationsByUserId(userService.findLoggedUserId()));
         // TODO: find donations by user id
 
-
-        model.addAttribute("donations", donationService.findAll());
         return "donation/my-donations";
     }
 }

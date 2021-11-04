@@ -13,6 +13,7 @@ import com.sda.project.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -61,7 +62,9 @@ public class UserService implements UserDetailsService {
     public List<UserDto> findAll() {
         log.info("find list of userDto");
 
-        return (userRepository.findAll().stream().map(user -> userMapper.mapToUserDto(user)).collect(Collectors.toList()));
+        return (userRepository.findAll().stream()
+                .map(user -> userMapper.mapToUserDto(user))
+                .collect(Collectors.toList()));
     }
 
     public User findByEmail(String email) {
@@ -69,6 +72,14 @@ public class UserService implements UserDetailsService {
 
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(email + " not found"));
+    }
+
+    public Long findLoggedUserId() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email).
+                orElseThrow(()-> new ResourceNotFoundException("user not found"));
+        return user.getId();
+
     }
 
     @Transactional

@@ -1,9 +1,7 @@
 package com.sda.project.service;
 
-import com.sda.project.controller.exception.ResourceNotFoundException;
 import com.sda.project.dto.DonationAdd;
 import com.sda.project.mapper.DonationMapper;
-import com.sda.project.model.Donation;
 import com.sda.project.model.User;
 import com.sda.project.repository.DonationRepository;
 import com.sda.project.repository.UserRepository;
@@ -20,23 +18,28 @@ import java.util.stream.Collectors;
 @Service
 public class DonationService {
 
-    private static final Logger log = LoggerFactory.getLogger(PetService.class);
+    private static final Logger log = LoggerFactory.getLogger(DonationService.class);
 
     private final DonationMapper donationMapper;
     private final DonationRepository donationRepository;
     private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
     public DonationService(DonationMapper donationMapper,
                            DonationRepository donationRepository,
-                           UserRepository userRepository) {
+                           UserRepository userRepository,
+                           UserService userService) {
         this.donationMapper = donationMapper;
         this.donationRepository = donationRepository;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     public void save(DonationAdd donationAdd) {
-
+// - find id
+        Long loggedUserId = userService.findLoggedUserId();
+        donationAdd.setUserId(loggedUserId);
         donationRepository.save(donationMapper.mapToDonation(donationAdd));
     }
 
@@ -45,8 +48,8 @@ public class DonationService {
                 .stream().map(donation -> donationMapper
                         .mapToDonationAddDto(donation)).collect(Collectors.toList());
     }
-
-    public Set<DonationAdd> findDonationByUserId(Long userId) {
+//TODO use service
+    public Set<DonationAdd> findDonationsByUserId(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("user not found"));
         return user.getDonations().stream()
                 .map(donation -> donationMapper.mapToDonationAddDto(donation))

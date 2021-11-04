@@ -28,6 +28,10 @@ public class Donation {
         return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @OneToOne(mappedBy = "donation",
             fetch = FetchType.LAZY)
     private Transfer transfer;
