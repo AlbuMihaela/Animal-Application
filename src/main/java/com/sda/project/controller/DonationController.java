@@ -1,6 +1,7 @@
 package com.sda.project.controller;
 
-import com.sda.project.dto.DonationAdd;
+import com.sda.project.dto.AddDonation;
+import com.sda.project.dto.DonationInfo;
 import com.sda.project.model.User;
 import com.sda.project.service.DonationService;
 import com.sda.project.service.UserService;
@@ -11,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class DonationController {
@@ -38,28 +42,23 @@ public class DonationController {
         User loggedUser = userService.findByEmail(email);
         Long loggedUserId = loggedUser.getId();
 
-        DonationAdd donation = new DonationAdd(loggedUserId, null, null);
+        AddDonation donation = new AddDonation(loggedUserId, null, null);
         model.addAttribute("donation", donation);
         model.addAttribute("loggedUser", loggedUser);
         return "donation/donation-add";
     }
 
-    //TODO how can we put a placeholder in a dropdown list without saving it in database
-
-    //TODO why can't we add donation to db(submit doesn't work)
     @PostMapping("donations/add")
-    public String addDonationForm(@ModelAttribute("donationDto") DonationAdd donationAdd) {
-        donationService.save(donationAdd);
+    public String add(@ModelAttribute("donation") AddDonation addDonation) {
+        donationService.save(addDonation);
         return "redirect:/my-donations";
     }
 
     @GetMapping("/my-donations")
     public String getMyDonationsPage(Model model) {
-//        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        model.addAttribute("donationAddDtoSet",
-                donationService.findDonationsByUserId(userService.findLoggedUserId()));
-        // TODO: find donations by user id
-
+        // TODO: get donations from db
+        Set<DonationInfo> donations = new HashSet<>();
+        model.addAttribute("addDonationDtoSet", donations);
         return "donation/my-donations";
     }
 }

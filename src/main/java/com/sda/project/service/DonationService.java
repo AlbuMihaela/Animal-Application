@@ -1,7 +1,8 @@
 package com.sda.project.service;
 
-import com.sda.project.dto.DonationAdd;
+import com.sda.project.dto.AddDonation;
 import com.sda.project.mapper.DonationMapper;
+import com.sda.project.model.Donation;
 import com.sda.project.model.User;
 import com.sda.project.repository.DonationRepository;
 import com.sda.project.repository.UserRepository;
@@ -36,20 +37,19 @@ public class DonationService {
         this.userService = userService;
     }
 
-    public void save(DonationAdd donationAdd) {
-// - find id
-        Long loggedUserId = userService.findLoggedUserId();
-        donationAdd.setUserId(loggedUserId);
-        donationRepository.save(donationMapper.mapToDonation(donationAdd));
+    public void save(AddDonation addDonation) {
+        User loggedUser = userService.findLoggedUser();
+        Donation donationToSave = donationMapper.mapToDonation(addDonation, loggedUser);
+        donationRepository.save(donationToSave);
     }
 
-    public List<DonationAdd> findAll() {
+    public List<AddDonation> findAll() {
         return donationRepository.findAll()
                 .stream().map(donation -> donationMapper
                         .mapToDonationAddDto(donation)).collect(Collectors.toList());
     }
 //TODO use service
-    public Set<DonationAdd> findDonationsByUserId(Long userId) {
+    public Set<AddDonation> findDonationsByUserId(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("user not found"));
         return user.getDonations().stream()
                 .map(donation -> donationMapper.mapToDonationAddDto(donation))
@@ -57,11 +57,11 @@ public class DonationService {
     }
 
 
-    public DonationAdd ceva() {
+    public AddDonation ceva() {
         // find current user id
         Long currentUserId = 1L;
 
         // set current user id on dto
-        return new DonationAdd(currentUserId, null, null);
+        return new AddDonation(currentUserId, null, null);
     }
 }

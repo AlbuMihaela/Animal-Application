@@ -1,9 +1,9 @@
 package com.sda.project.mapper;
 
-import com.sda.project.dto.DonationAdd;
+import com.sda.project.dto.AddDonation;
 import com.sda.project.dto.DonationInfo;
 import com.sda.project.model.Donation;
-import com.sda.project.service.UserService;
+import com.sda.project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,28 +11,26 @@ import org.springframework.stereotype.Component;
 public class DonationMapper {
 
     private final UserMapper userMapper;
-    private final UserService userService;
 
     @Autowired
-    public DonationMapper(UserMapper userMapper, UserService userService) {
+    public DonationMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
-        this.userService = userService;
     }
 
-    public Donation mapToDonation(DonationAdd donationAddDto) {
+    public Donation mapToDonation(AddDonation addDonationDto, User user) {
         Donation entity = new Donation();
-        entity.setUser(donationAddDto.getUserId());
-        entity.setProduct(donationAddDto.getProduct());
-        entity.setDetails(donationAddDto.getDetails());
+        entity.setUser(user);
+        entity.setProduct(addDonationDto.getProduct());
+        entity.setDetails(addDonationDto.getDetails());
         return entity;
     }
 
-    public DonationAdd mapToDonationAddDto(Donation entity) {
-        DonationAdd donationAddDto = new DonationAdd();
-        donationAddDto.setUserId(entity.getUser().getId());
-        donationAddDto.setProduct(entity.getProduct());
-        donationAddDto.setDetails(entity.getDetails());
-        return donationAddDto;
+    public AddDonation mapToDonationAddDto(Donation entity) {
+        AddDonation addDonationDto = new AddDonation();
+        addDonationDto.setUserId(entity.getUser().getId());
+        addDonationDto.setProduct(entity.getProduct());
+        addDonationDto.setDetails(entity.getDetails());
+        return addDonationDto;
     }
 
     public Donation mapToDonation(DonationInfo donationInfoDto) {

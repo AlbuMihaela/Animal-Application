@@ -74,12 +74,10 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(email + " not found"));
     }
 
-    public Long findLoggedUserId() {
+    public User findLoggedUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByEmail(email).
+        return userRepository.findByEmail(email).
                 orElseThrow(()-> new ResourceNotFoundException("user not found"));
-        return user.getId();
-
     }
 
     @Transactional
