@@ -61,7 +61,7 @@ public class UserService implements UserDetailsService {
     public List<UserDto> findAll() {
         log.info("find list of userDto");
 
-        return (userRepository.findAll().stream().map(user -> userMapper.map(user)).collect(Collectors.toList()));
+        return (userRepository.findAll().stream().map(user -> userMapper.mapToUserDto(user)).collect(Collectors.toList()));
     }
 
     public User findByEmail(String email) {
@@ -133,7 +133,7 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new ResourceNotFoundException("role not found"));
 
         // convert user dto to user
-        User user = userMapper.map(userDto);
+        User user = userMapper.mapToUser(userDto);
         // encode password
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.addRole(userRole);

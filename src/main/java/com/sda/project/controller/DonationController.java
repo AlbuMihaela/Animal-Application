@@ -56,6 +56,8 @@ public class DonationController {
     @GetMapping("/my-donations")
     public String getMyDonationsPage(Model model) {
         // TODO: find donations by user id
+
+
         model.addAttribute("donations", donationService.findAll());
         return "donation/my-donations";
     }

@@ -1,8 +1,12 @@
 package com.sda.project.service;
 
+import com.sda.project.controller.exception.ResourceNotFoundException;
 import com.sda.project.dto.DonationAdd;
 import com.sda.project.mapper.DonationMapper;
+import com.sda.project.model.Donation;
+import com.sda.project.model.User;
 import com.sda.project.repository.DonationRepository;
+import com.sda.project.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +21,39 @@ public class DonationService {
 
     private final DonationMapper donationMapper;
     private final DonationRepository donationRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public DonationService(DonationMapper donationMapper, DonationRepository donationRepository) {
+    public DonationService(DonationMapper donationMapper,
+                           DonationRepository donationRepository,
+                           UserRepository userRepository) {
         this.donationMapper = donationMapper;
         this.donationRepository = donationRepository;
+        this.userRepository = userRepository;
     }
 
     public void save(DonationAdd donationAdd) {
-        donationRepository.save(donationMapper.map(donationAdd));
+
+        donationRepository.save(donationMapper.mapToDonation(donationAdd));
     }
 
     public List<DonationAdd> findAll() {
         return donationRepository.findAll()
                 .stream().map(donation -> donationMapper
-                        .map(donation)).collect(Collectors.toList());
+                        .mapToDonationAddDto(donation)).collect(Collectors.toList());
     }
+
+//    public List<Donation> findByUserId(Long userId){
+
+
+//        User user = userRepository.findById(userId)
+//                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
+////
+////        List <Donation> userDonationlist =
+//                donationRepository.findByUser(user)
+//                .orElseThrow(() -> new ResourceNotFoundException("donation not found"));
+
+//    }
 
     public DonationAdd ceva() {
         // find current user id
