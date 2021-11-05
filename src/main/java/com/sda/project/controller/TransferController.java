@@ -26,7 +26,7 @@ public class TransferController {
     }
 
     // FIXME: implement later
-    @GetMapping("/transfer-add")
+    @GetMapping("/transfers/add")
     public String getTransferForm(Model model) {
         model.addAttribute("transferDto", new TransferDto());
         return "transfer/transfer-add";

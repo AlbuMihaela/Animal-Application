@@ -26,7 +26,7 @@ public class AppointmentController {
         return "appointment/appointments";
     }
 
-    @GetMapping("/appointment-add")
+    @GetMapping("/appointments/add")
     public String getAppointmentForm(Model model) {
         model.addAttribute("appointmentDto", new AppointmentDto());
         return "appointment/appointment-add";

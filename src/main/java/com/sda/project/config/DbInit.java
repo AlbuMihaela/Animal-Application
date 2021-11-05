@@ -93,6 +93,7 @@ public class DbInit {
             user.addDonation(donation);
             donationRepository.save(donation);
 
+
             Transfer transfer = createTransfer(user);
             user.addTransfer(transfer);
             donation.addTransfer(transfer);

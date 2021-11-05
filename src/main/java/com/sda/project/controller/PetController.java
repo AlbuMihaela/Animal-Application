@@ -35,7 +35,7 @@ public class PetController {
         return "pet/pets";
     }
 
-    @GetMapping("/pet-add")
+    @GetMapping("/pets/add")
     public String getAddForm(Model model) {
         model.addAttribute("petDto", new PetDto());
         return "pet/pet-add";
