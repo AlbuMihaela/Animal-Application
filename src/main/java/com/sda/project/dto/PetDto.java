@@ -1,5 +1,7 @@
 package com.sda.project.dto;
 
+import com.sda.project.model.Adoption;
+import com.sda.project.model.Pet;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,4 +14,13 @@ public class PetDto {
     private String name;
     private String category;
     private String description;
+    private Adoption adoption;
+
+    public Adoption getAdoption() {
+        return adoption;
+    }
+
+    public void setAdoption(Adoption adoption) {
+        this.adoption = adoption;
+    }
 }

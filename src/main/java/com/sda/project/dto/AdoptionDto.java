@@ -1,5 +1,6 @@
 package com.sda.project.dto;
 
+import com.sda.project.model.Pet;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,4 +12,5 @@ public class AdoptionDto {
     private String proofOfAddress;
     private String proofOfFinancialSituation;
     private String identityCard;
+    private Pet pet;
 }

@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/transfers/**").permitAll()
                 .antMatchers("/appointments/**").permitAll()
 
-                .antMatchers("/my-pets/**").permitAll()
+//                .antMatchers("/my-pets/**").permitAll()
 
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()
@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // features and permissions
                 // TODO: add all features before production
                 .antMatchers("/users").hasRole("ADMIN")
+                .antMatchers("/my-pets").hasAnyRole("USER","ADMIN")
                 // .antMatchers("/pets").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated();
 

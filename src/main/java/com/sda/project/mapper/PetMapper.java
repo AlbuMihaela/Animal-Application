@@ -16,6 +16,7 @@ public class PetMapper {
         entity.setName(dto.getName());
         entity.setCategory(Category.valueOf(dto.getCategory()));
         entity.setDescription(dto.getDescription());
+        entity.setAdoption(dto.getAdoption());
         return entity;
     }
 
@@ -34,6 +35,7 @@ public class PetMapper {
         dto.setName(entity.getName());
         dto.setCategory(String.valueOf(entity.getCategory()));
         dto.setDescription(entity.getDescription());
+        dto.setAdoption(entity.getAdoption());
         return dto;
     }
 

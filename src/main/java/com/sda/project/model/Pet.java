@@ -31,12 +31,19 @@ public class Pet {
     private Set<Appointment> appointments = new HashSet<>();
 
     //TODO aceasta functie este identica cu setter-i field-urilor?
-    public void setAdoption(Adoption adoption) {
-        this.adoption = adoption;
-        adoption.setPet(this);
+//    public void setAdoption(Adoption adoption) {
+//        this.adoption = adoption;
+//        adoption.setPet(this);
+//
+//    }
 
+    public Adoption getAdoption() {
+        return adoption;
     }
 
+    public void setAdoption(Adoption adoption) {
+        this.adoption = adoption;
+    }
 }
 
 
