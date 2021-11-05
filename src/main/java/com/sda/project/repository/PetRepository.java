@@ -1,5 +1,6 @@
 package com.sda.project.repository;
 
+import com.sda.project.model.Category;
 import com.sda.project.model.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,7 +11,7 @@ public interface PetRepository extends JpaRepository<Pet, Long> {
 
     Optional<Pet> findByNameIgnoreCase(String name);
 
-    Optional<List<Pet>> findByCategory(String category);
+    Optional<List<Pet>> findByCategory(Category category);
 
     // TODO: step 3
 

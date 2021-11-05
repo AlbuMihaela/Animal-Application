@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>Dogs</title>
 </head>
+
 <body>
 
+<div class="container-fluid">
+    <div class="container" method="get" th:action="@{/dogs}" th:object="${dogs}">
+        <div class="card"  style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body" th:each="dog: ${dogs}">
+                <h5 class="card-title" th:text = "${dog.name}"></h5>
+                <p class="card-text" th:text = "${dog.description}"></p>
+<!--                <a href="#" class="btn btn-primary">Go somewhere</a>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
 </body>
+
 </html>

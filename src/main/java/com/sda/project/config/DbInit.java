@@ -67,9 +67,11 @@ public class DbInit {
             User user = createUser();
             userRepository.save(user);
 
-
             Pet dog = createDog();
             petRepository.save(dog);
+
+            Pet dog2 = createDog2();
+            petRepository.save(dog2);
 
             Pet cat = createCat();
             petRepository.save(cat);
@@ -140,6 +142,14 @@ public class DbInit {
         pet.setName("Mike");
         pet.setCategory(Category.DOG);
         pet.setDescription("small dog, brown with white spots");
+        return pet;
+    }
+
+    private Pet createDog2() {
+        Pet pet = new Pet();
+        pet.setName("Rex");
+        pet.setCategory(Category.DOG);
+        pet.setDescription("cute dog");
         return pet;
     }
 

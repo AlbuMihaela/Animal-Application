@@ -1,6 +1,7 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.PetDto;
+import com.sda.project.model.Category;
 import com.sda.project.model.User;
 import com.sda.project.service.PetService;
 import com.sda.project.service.UserService;
@@ -87,4 +88,35 @@ public class PetController {
         model.addAttribute("myPets", petService.findPetsByUser(user));
         return "adoption/my-pets";
     }
+
+    @GetMapping("/dogs")
+    public String getDogsPage(Model model) {
+        model.addAttribute("dogs", petService.findByCategory(Category.DOG));
+        return "pet/dogs";
+    }
+
+    @GetMapping("/cats")
+    public String getCatsPage(Model model) {
+        model.addAttribute("cats", petService.findByCategory(Category.CAT));
+        return "pet/cats";
+    }
+
+    @GetMapping("/rabbits")
+    public String getRabbitsPage(Model model) {
+        model.addAttribute("rabbits", petService.findByCategory(Category.RABBIT));
+        return "pet/rabbits";
+    }
+
+    @GetMapping("/guinea_pigs")
+    public String getGuineaPage(Model model) {
+        model.addAttribute("guinea_pigs", petService.findByCategory(Category.GUINEA_PIG));
+        return "pet/guinea_pigs";
+    }
+
+    @GetMapping("/birds")
+    public String getBirdsPage(Model model) {
+        model.addAttribute("birds", petService.findByCategory(Category.BIRD));
+        return "pet/birds";
+    }
+
 }

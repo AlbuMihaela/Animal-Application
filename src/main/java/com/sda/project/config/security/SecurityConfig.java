@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/transfers/**").permitAll()
                 .antMatchers("/appointments/**").permitAll()
 
+
 //                .antMatchers("/my-pets/**").permitAll()
 //                .antMatchers("/my-transfers/**").permitAll()
 //                .antMatchers("/my-appointments/**").permitAll()
@@ -53,7 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/my-transfers").hasAnyRole("USER")
                 .antMatchers("/my-appointments").hasAnyRole("USER")
 
-                // .antMatchers("/pets").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/dogs").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/birds").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/cats").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/rabbits").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/guinea_pigs").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated();
 
         // add custom login form

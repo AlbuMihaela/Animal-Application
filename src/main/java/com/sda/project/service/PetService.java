@@ -4,6 +4,7 @@ import com.sda.project.controller.exception.ResourceNotFoundException;
 import com.sda.project.dto.PetDto;
 import com.sda.project.dto.PetInfo;
 import com.sda.project.mapper.PetMapper;
+import com.sda.project.model.Category;
 import com.sda.project.model.Pet;
 import com.sda.project.model.User;
 import com.sda.project.repository.PetRepository;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -62,9 +64,9 @@ public class PetService {
                 .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
 
-    public List<Pet> findByCategory(String category) {
-        return petRepository.findByCategory(category).get();
-    }
+//    public List<Pet> findByCategory(String category) {
+//        return petRepository.findByCategory(category).get();
+//    }
 
     public List<PetInfo> findPetsByUser(User user) {
 //        User user = userService.findLoggedUser();
@@ -87,6 +89,14 @@ public class PetService {
                 });
     }
 
+    public Set<PetInfo> findByCategory(Category category) {
+        List<Pet> pets = petRepository.findByCategory(category).orElseThrow(() -> {
+            throw new ResourceNotFoundException("pet not found");
+        });
+        return pets.stream().map(pet -> petMapper.mapFromPetToPetInfo(pet)).collect(Collectors.toSet());
+    }
+
+
     public void update2(PetDto dto) {
         Pet petToUpdate = petRepository.findById(dto.getId())
                 .orElseThrow(() -> {
@@ -99,4 +109,6 @@ public class PetService {
     public void delete(PetDto petDto) {
         petRepository.delete(petMapper.map(petDto));
     }
+
+
 }
