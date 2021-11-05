@@ -1,6 +1,7 @@
 package com.sda.project.service;
 
 import com.sda.project.dto.AddDonation;
+import com.sda.project.dto.DonationInfo;
 import com.sda.project.mapper.DonationMapper;
 import com.sda.project.model.Donation;
 import com.sda.project.model.User;
@@ -48,7 +49,8 @@ public class DonationService {
                 .stream().map(donation -> donationMapper
                         .mapToDonationAddDto(donation)).collect(Collectors.toList());
     }
-//TODO use service
+
+    //TODO use service
     public Set<AddDonation> findDonationsByUserId(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("user not found"));
         return user.getDonations().stream()
@@ -56,12 +58,18 @@ public class DonationService {
                 .collect(Collectors.toSet());
     }
 
-
     public AddDonation ceva() {
         // find current user id
         Long currentUserId = 1L;
 
         // set current user id on dto
         return new AddDonation(currentUserId, null, null);
+    }
+
+    public Set<DonationInfo> findDonationByUser(User user) {
+       return donationRepository.findAll().stream()
+                .filter(donation -> donation.getUser().equals(user))
+               .map(donation -> donationMapper.mapFromDonationToDonationInfo(donation))
+                .collect(Collectors.toSet());
     }
 }

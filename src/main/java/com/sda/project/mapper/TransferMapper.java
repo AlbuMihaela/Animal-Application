@@ -1,6 +1,7 @@
 package com.sda.project.mapper;
 
 import com.sda.project.dto.TransferDto;
+import com.sda.project.dto.TransferInfo;
 import com.sda.project.model.Transfer;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class TransferMapper {
         transfer.setCardExpirationDate(LocalDate.parse(transferDto.getCardExpirationDate()));
         transfer.setCvc(transferDto.getCvc());
         transfer.setAmount(Double.valueOf(transferDto.getAmount()));
+        transfer.setTransferDate(transferDto.getTransferDate());
         return transfer;
     }
 
@@ -26,6 +28,14 @@ public class TransferMapper {
         transferDto.setCardExpirationDate(String.valueOf(transfer.getCardExpirationDate()));
         transferDto.setCvc(transfer.getCvc());
         transferDto.setAmount(String.valueOf(transfer.getAmount()));
+        transferDto.setTransferDate(transfer.getTransferDate());
         return transferDto;
+    }
+
+    public TransferInfo mapFromTransferToTransferInfo(Transfer transfer) {
+        TransferInfo dto = new TransferInfo();
+        dto.setTransferDate(transfer.getTransferDate());
+        dto.setAmount(transfer.getAmount());
+        return dto;
     }
 }

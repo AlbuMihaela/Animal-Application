@@ -33,11 +33,19 @@ public class DonationMapper {
         return addDonationDto;
     }
 
-    public Donation mapToDonation(DonationInfo donationInfoDto) {
+    public Donation mapFromDonationInfoToDonation(DonationInfo donationInfoDto) {
         Donation entity = new Donation();
         entity.setUser(userMapper.mapToUser(donationInfoDto.getUser()));
         entity.setProduct(donationInfoDto.getProduct());
         entity.setDetails(donationInfoDto.getDetails());
         return entity;
     }
+
+    public DonationInfo mapFromDonationToDonationInfo(Donation donation) {
+        DonationInfo dto = new DonationInfo();
+        dto.setProduct(donation.getProduct());
+        dto.setDetails(donation.getDetails());
+        return dto;
+    }
+
 }

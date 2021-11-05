@@ -20,6 +20,7 @@ public class Transfer {
     private LocalDate cardExpirationDate;
     private String cvc;
     private Double amount;
+    private LocalDate transferDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "donation_id")

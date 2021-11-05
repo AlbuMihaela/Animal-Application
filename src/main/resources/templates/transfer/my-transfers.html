@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>My Transfers</title>
 </head>
+
 <body>
 
+<div class="container-fluid">
+    <div class="container">
+        <table class="table" method="get" th:action="@{/my-transfers}" th:object="${transfersInfo}">
+            <!-- table header -->
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <!-- table body -->
+            <tbody>
+            <tr th:each="transferInfo : ${transfersInfo}">
+                <td th:text="${transferInfo.transferDate}"></td>
+                <td th:text="${transferInfo.amount}"></td>
+                <!-- actions -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
 </body>
+
 </html>

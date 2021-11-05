@@ -28,11 +28,11 @@ public class DonationController {
         this.userService = userService;
     }
 
-    @GetMapping("/donations")
-    public String getDonationsPage(Model model) {
-        model.addAttribute("donations", donationService.findAll());
-        return "donation/donations";
-    }
+        @GetMapping("/donations")
+        public String getDonationsPage(Model model) {
+            model.addAttribute("donations", donationService.findAll());
+            return "donation/donations";
+        }
 
     @GetMapping("/donations/add")
     public String getDonationsForm(Model model) {
@@ -56,9 +56,9 @@ public class DonationController {
 
     @GetMapping("/my-donations")
     public String getMyDonationsPage(Model model) {
-        // TODO: get donations from db
-        Set<DonationInfo> donations = new HashSet<>();
-        model.addAttribute("addDonationDtoSet", donations);
+        User user = userService.findLoggedUser();
+        Set<DonationInfo> donations = donationService.findDonationByUser(user);
+        model.addAttribute("myDonations", donations);
         return "donation/my-donations";
     }
 

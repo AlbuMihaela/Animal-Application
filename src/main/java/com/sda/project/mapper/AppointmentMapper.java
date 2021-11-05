@@ -1,10 +1,12 @@
 package com.sda.project.mapper;
 
 import com.sda.project.dto.AppointmentDto;
+import com.sda.project.dto.AppointmentInfo;
 import com.sda.project.model.Appointment;
 import com.sda.project.model.AppointmentStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
@@ -24,4 +26,11 @@ public class AppointmentMapper {
         return appointmentDto;
     }
 
+    public AppointmentInfo mapFromAppointmentToAppointmentInfo(Appointment appointment) {
+        AppointmentInfo dto = new AppointmentInfo();
+        dto.setDate(appointment.getDate());
+        dto.setAppointmentStatus(appointment.getAppointmentStatus());
+        dto.setPets(appointment.getPets());
+        return dto;
+    }
 }

@@ -3,6 +3,8 @@ package com.sda.project.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class TransferDto {
@@ -12,4 +14,5 @@ public class TransferDto {
     private String cardExpirationDate;
     private String cvc;
     private String amount;
+    private LocalDate transferDate;
 }

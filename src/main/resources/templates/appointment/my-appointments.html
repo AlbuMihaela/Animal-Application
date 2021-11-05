@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>My Appointments</title>
 </head>
+
 <body>
 
+<div class="container-fluid">
+    <div class="container">
+        <table class="table" method="get" th:action="@{/my-appointments}" th:object="${appointmentsInfo}">
+            <!-- table header -->
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Pets</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <!-- table body -->
+            <tbody>
+            <tr th:each="appointmentInfo : ${appointmentsInfo}">
+                <td th:text="${appointmentInfo.date}"></td>
+                <td th:text="${appointmentInfo.pets}"></td>
+                <td th:text="${appointmentInfo.appointmentStatus.name()}"></td>
+
+<!--  //TODO cum facem sa ne afiseze numele de pets din lista de mai sus  -->
+                <!-- actions -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
 </body>
+
 </html>

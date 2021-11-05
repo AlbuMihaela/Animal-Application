@@ -74,10 +74,8 @@ public class DbInit {
             Pet cat = createCat();
             petRepository.save(cat);
 
-            Appointment appointment = createAppointment();
+            Appointment appointment = createAppointment(cat, dog);
             user.addAppointment(appointment);
-            appointment.addPet(cat);
-            appointment.addPet(dog);
             appointmentRepository.save(appointment);
 
             // after creating an entity relationship
@@ -164,10 +162,12 @@ public class DbInit {
         return adoption;
     }
 
-    private Appointment createAppointment() {
+    private Appointment createAppointment(Pet pet1, Pet pet2) {
         Appointment appointment = new Appointment();
         appointment.setDate(LocalDateTime.now());
         appointment.setAppointmentStatus(AppointmentStatus.SENT);
+        appointment.addPet(pet1);
+        appointment.addPet(pet2);
         return appointment;
     }
 
@@ -185,6 +185,7 @@ public class DbInit {
         transfer.setCardExpirationDate(LocalDate.now());
         transfer.setCvc("042");
         transfer.setAmount(300.00);
+        transfer.setTransferDate(LocalDate.now());
         return transfer;
     }
 

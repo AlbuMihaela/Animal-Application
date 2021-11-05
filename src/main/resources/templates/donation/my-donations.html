@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Title</title>
+    <title>My Donations</title>
 </head>
 
 <body>
-<div>
-    <h1>My donations</h1>
+
+<div class="container-fluid">
+    <div class="container">
+        <table class="table" method="get" th:action="@{/my-donations}" th:object="${myDonations}">
+            <!-- table header -->
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <!-- table body -->
+            <tbody>
+            <tr th:each="donationInfo : ${myDonations}">
+                <td th:text="${donationInfo.product.name()}"></td>
+                <td th:text="${donationInfo.details}"></td>
+                <!-- actions -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div th:replace="fragments/footer-js :: footer-js"/>
