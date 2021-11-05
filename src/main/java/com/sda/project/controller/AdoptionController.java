@@ -14,6 +14,7 @@ public class AdoptionController {
 
     private final AdoptionService adoptionService;
 
+
     @Autowired
     public AdoptionController(AdoptionService adoptionService) {
         this.adoptionService = adoptionService;
@@ -36,4 +37,12 @@ public class AdoptionController {
         adoptionService.save(adoptionDto);
         return "redirect:/home";
     }
+
+    @GetMapping("/aboutAdoptions")
+    public String getAboutAdoptionsPage() {
+        return "adoption/aboutAdoptions";
+    }
+
+
+
 }

@@ -9,32 +9,23 @@
 
 <div class="container-fluid">
     <div class="container">
-        <table class="table" method="get" th:action="@{/pets}" th:object="${petsDto}">
+        <table class="table" method="get" th:action="@{/my-pets}" th:object="${myPets}">
             <!-- table header -->
             <thead>
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
                 <th scope="col">Description</th>
-                <th scope="col"></th>
             </tr>
             </thead>
 
             <!-- table body -->
             <tbody>
-            <tr th:each="petDto : ${petsDto}">
-                <td th:text="${petDto.name}"></td>
-                <td th:text="${petDto.category}"></td>
-                <td th:text="${petDto.description}"></td>
+            <tr th:each="petInfo : ${myPets}">
+                <td th:text="${petInfo.name}"></td>
+                <td th:text="${petInfo.category.name()}"></td>
+                <td th:text="${petInfo.description}"></td>
                 <!-- actions -->
-                <td>
-                    <!-- edit button -->
-                    <a th:href="@{/pets/{id}/edit (id= ${petDto.id})}">
-                        <!-- pencil icon -->
-<!-- //TODO cum facem ca butonul de editare sa apara doar pe pagina de admin??????-->
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </td>
             </tr>
             </tbody>
         </table>

@@ -2,6 +2,8 @@ package com.sda.project.service;
 
 import com.sda.project.dto.AdoptionDto;
 import com.sda.project.mapper.AdoptionMapper;
+import com.sda.project.model.Adoption;
+import com.sda.project.model.User;
 import com.sda.project.repository.AdoptionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +35,12 @@ public class AdoptionService {
         return adoptionRepository.findAll()
                 .stream().map(adoption ->
                         adoptionMapper.map(adoption))
+                .collect(Collectors.toList());
+    }
+
+    public List<Adoption> findAdoptionsByUser(User user) {
+        return adoptionRepository.findAll().stream()
+                .filter(adoption -> adoption.getUser().equals(user))
                 .collect(Collectors.toList());
     }
 }

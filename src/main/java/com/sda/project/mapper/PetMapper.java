@@ -1,6 +1,7 @@
 package com.sda.project.mapper;
 
 import com.sda.project.dto.PetDto;
+import com.sda.project.dto.PetInfo;
 import com.sda.project.model.Category;
 import com.sda.project.model.Pet;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,23 @@ public class PetMapper {
         dto.setDescription(entity.getDescription());
         return dto;
     }
+
+    // toEntity(PetInfo dto)
+    public Pet mapFromPetInfoToPet(PetInfo petInfo) {
+        Pet entity = new Pet();
+        entity.setName(petInfo.getName());
+        entity.setCategory(petInfo.getCategory());
+        entity.setDescription(petInfo.getDescription());
+        return entity;
+    }
+
+    // to PetInfo(Pet entity)
+    public PetInfo mapFromPetToPetInfo(Pet entity) {
+        PetInfo petInfo = new PetInfo();
+        petInfo.setName(entity.getName());
+        petInfo.setCategory(entity.getCategory());
+        petInfo.setDescription(entity.getDescription());
+        return petInfo;
+    }
+
 }

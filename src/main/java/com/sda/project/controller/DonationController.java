@@ -61,4 +61,10 @@ public class DonationController {
         model.addAttribute("addDonationDtoSet", donations);
         return "donation/my-donations";
     }
+
+    @GetMapping("/aboutDonations")
+    public String getAboutDonationsPage() {
+        return "donation/aboutDonations";
+    }
+
 }

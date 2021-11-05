@@ -38,6 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/transfers/**").permitAll()
                 .antMatchers("/appointments/**").permitAll()
 
+                .antMatchers("/my-pets/**").permitAll()
+
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()
 

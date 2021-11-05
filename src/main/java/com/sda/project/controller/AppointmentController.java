@@ -37,4 +37,8 @@ public class AppointmentController {
         appointmentService.save(appointmentDto);
         return "redirect:/home";
     }
+    @GetMapping("/aboutAppointments")
+    public String getAboutAppointmentsPage() {
+        return "appointment/aboutAppointments";
+    }
 }

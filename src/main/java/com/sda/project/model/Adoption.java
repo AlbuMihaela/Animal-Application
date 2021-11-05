@@ -28,11 +28,20 @@ public class Adoption {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @OneToOne
             (mappedBy = "adoption",
                     fetch = FetchType.LAZY)
     private Pet pet;
 
-
+    public Pet getPet() {
+        return pet;
+    }
 }

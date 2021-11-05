@@ -2,8 +2,10 @@ package com.sda.project.service;
 
 import com.sda.project.controller.exception.ResourceNotFoundException;
 import com.sda.project.dto.PetDto;
+import com.sda.project.dto.PetInfo;
 import com.sda.project.mapper.PetMapper;
 import com.sda.project.model.Pet;
+import com.sda.project.model.User;
 import com.sda.project.repository.PetRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +22,15 @@ public class PetService {
 
     private final PetRepository petRepository;
     private final PetMapper petMapper;
+    private final UserService userService;
+    private final AdoptionService adoptionService;
 
     @Autowired
-    public PetService(PetRepository petRepository, PetMapper petMapper) {
+    public PetService(PetRepository petRepository, PetMapper petMapper, UserService userService, AdoptionService adoptionService) {
         this.petRepository = petRepository;
         this.petMapper = petMapper;
+        this.userService = userService;
+        this.adoptionService = adoptionService;
     }
 
     public PetDto save(PetDto petDto) {
@@ -58,6 +64,13 @@ public class PetService {
 
     public List<Pet> findByCategory(String category) {
         return petRepository.findByCategory(category).get();
+    }
+
+    public List<PetInfo> findPetsByUser(User user) {
+//        User user = userService.findLoggedUser();
+        return adoptionService.findAdoptionsByUser(user).stream()
+                .map(adoption -> adoption.getPet()).map(pet -> petMapper.mapFromPetToPetInfo(pet))
+                .collect(Collectors.toList());
     }
 
     public void update(PetDto dto) {

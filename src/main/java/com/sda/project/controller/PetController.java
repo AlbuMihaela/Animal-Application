@@ -1,7 +1,9 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.PetDto;
+import com.sda.project.model.User;
 import com.sda.project.service.PetService;
+import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PetController {
 
-    public final PetService petService;
+    private final PetService petService;
+    private final UserService userService;
+
 
     @Autowired
-    public PetController(PetService petService) {
+    public PetController(PetService petService, UserService userService) {
         this.petService = petService;
+        this.userService = userService;
     }
 
     /*
@@ -74,5 +79,12 @@ public class PetController {
 
         // after update
         return "redirect:/pets";
+    }
+
+    @GetMapping("/my-pets")
+    public String getMyPetsPage(Model model) {
+        User user = userService.findLoggedUser();
+        model.addAttribute("myPets", petService.findPetsByUser(user));
+        return "adoption/my-pets";
     }
 }
