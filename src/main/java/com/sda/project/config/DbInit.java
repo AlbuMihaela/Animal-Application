@@ -83,9 +83,9 @@ public class DbInit {
             // after creating an entity relationship
             // create parent
             // create child
-            Adoption adoption = createAdoption(dog);
+            Adoption adoption = createAdoption(dog, user);
             // set child on parent or add parent to child
-            user.addAdoption(adoption);
+//            user.addAdoption(adoption);
 
             // save child or parent
             adoptionRepository.save(adoption);
@@ -153,13 +153,14 @@ public class DbInit {
         return pet;
     }
 
-    private Adoption createAdoption(Pet pet) {
+    private Adoption createAdoption(Pet pet, User user) {
         Adoption adoption = new Adoption();
         adoption.setAdoptionDate(LocalDate.now());
         adoption.setSocialSecurityNumber("1871230556677");
         adoption.setProofOfAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
         adoption.setProofOfFinancialSituation("mare boss");
         adoption.setPet(pet);
+        adoption.setUser(user);
         return adoption;
     }
 

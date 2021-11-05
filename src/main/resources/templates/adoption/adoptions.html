@@ -17,6 +17,7 @@
                     <th scope="col">Proof of Address</th>
                     <th scope="col">Proof of Financial Situation</th>
                     <th scope="col">Identity card</th>
+                    <th scope="col">Pet</th>
                 </tr>
             </thead>
 
@@ -27,6 +28,7 @@
                     <td th:text="${adoption.proofOfAddress}"></td>
                     <td th:text="${adoption.proofOfFinancialSituation}"></td>
                     <td th:text="${adoption.identityCard}"></td>
+                    <td th:text="${adoption.pet.getName()}"></td>
                 </tr>
             </tbody>
         </table>

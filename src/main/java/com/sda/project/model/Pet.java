@@ -21,8 +21,8 @@ public class Pet {
     private Category category;
     private String description;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "adoption_id")
+    @OneToOne(mappedBy = "pet",
+            fetch = FetchType.LAZY)
     private Adoption adoption;
 
     @ManyToMany(
@@ -34,8 +34,6 @@ public class Pet {
 //    public void setAdoption(Adoption adoption) {
 //        this.adoption = adoption;
 //        adoption.setPet(this);
-//
-//    }
 
     public Adoption getAdoption() {
         return adoption;

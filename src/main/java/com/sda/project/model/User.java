@@ -74,6 +74,10 @@ public class User {
         adoption.setUser(this);
     }
 
+    public Set<Adoption> getAdoptions() {
+        return adoptions;
+    }
+
     public void addAppointment(Appointment appointment) {
         this.appointments.add(appointment);
         appointment.setUser(this);

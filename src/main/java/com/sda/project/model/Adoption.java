@@ -36,9 +36,8 @@ public class Adoption {
         this.user = user;
     }
 
-    @OneToOne
-            (mappedBy = "adoption",
-                    fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     public void setPet(Pet pet) {

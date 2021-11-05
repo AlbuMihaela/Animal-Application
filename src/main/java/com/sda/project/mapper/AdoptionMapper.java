@@ -15,6 +15,7 @@ public class AdoptionMapper {
         adoption.setSocialSecurityNumber(adoptionDto.getIdentityCard());
         adoption.setProofOfAddress(adoptionDto.getProofOfAddress());
         adoption.setProofOfFinancialSituation(adoptionDto.getProofOfFinancialSituation());
+        adoption.setPet(adoptionDto.getPet());
         return adoption;
     }
 
@@ -24,6 +25,7 @@ public class AdoptionMapper {
         adoptionDto.setIdentityCard(adoption.getSocialSecurityNumber());
         adoptionDto.setProofOfAddress(adoption.getProofOfAddress());
         adoptionDto.setProofOfFinancialSituation(adoption.getProofOfFinancialSituation());
+        adoptionDto.setPet(adoption.getPet());
         return adoptionDto;
     }
 }
