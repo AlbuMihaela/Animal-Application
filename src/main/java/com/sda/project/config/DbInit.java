@@ -44,6 +44,10 @@ public class DbInit {
     @Autowired
     private TransferRepository transferRepository;
 
+
+
+
+
     @Bean
     public CommandLineRunner initialData() {
         return args -> {
@@ -99,6 +103,8 @@ public class DbInit {
             user.addTransfer(transfer);
             donation.addTransfer(transfer);
             transferRepository.save(transfer);
+
+
 
         };
     }
@@ -198,6 +204,8 @@ public class DbInit {
         transfer.setTransferDate(LocalDate.now());
         return transfer;
     }
+
+
 
 
     @Transactional

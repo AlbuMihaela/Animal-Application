@@ -82,6 +82,15 @@ public class PetController {
         return "redirect:/pets";
     }
 
+
+    // TODO IS NOT WORKING. PLS CHECK!
+    @GetMapping("/pets/{id}/delete")
+    public String delete(Model model, @PathVariable Long id) {
+        petService.deleteById(id);
+        return  "redirect:/pets";
+    }
+
+
     @GetMapping("/my-pets")
     public String getMyPetsPage(Model model) {
         User user = userService.findLoggedUser();
@@ -118,5 +127,6 @@ public class PetController {
         model.addAttribute("birds", petService.findByCategory(Category.BIRD));
         return "pet/birds";
     }
+
 
 }

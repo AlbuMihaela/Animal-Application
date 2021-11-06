@@ -13,6 +13,8 @@ public interface PetRepository extends JpaRepository<Pet, Long> {
 
     Optional<List<Pet>> findByCategory(Category category);
 
+
+
     // TODO: step 3
 
 }

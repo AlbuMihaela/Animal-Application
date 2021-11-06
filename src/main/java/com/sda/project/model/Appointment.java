@@ -39,4 +39,20 @@ public class Appointment {
         pets.add(pet);
         pet.getAppointments().add(this);
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
+    }
 }

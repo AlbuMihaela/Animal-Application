@@ -24,8 +24,12 @@
             <tr th:each="appointmentDto : ${appointmentsDto}">
 
 
+                <td th:text="${appointmentDto.user}"></td>
+                <td th:text="${appointmentDto.user}"></td>
+                <td th:text="${appointmentDto.pets}"></td>
                 <td th:text="${appointmentDto.date}"></td>
                 <td th:text="${appointmentDto.appointmentStatus}"></td>
+<!--                //todo cum facem cu setarea statusului???-->
             </tr>
             </tbody>
         </table>

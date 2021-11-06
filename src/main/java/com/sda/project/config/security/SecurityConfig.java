@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // temporary
                 // TODO: remove this in production and move
                 .antMatchers("/home", "/admin").permitAll()
+                //todo cum facem redirectionarea spre pagina de admin si home in fctie de userul logat??
 
                 // includes pets, pets/add, pets/edit
                 .antMatchers("/pets/**").permitAll()
@@ -49,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // features and permissions
                 // TODO: add all features before production
-                .antMatchers("/users").hasRole("ADMIN")
+//                .antMatchers("/users").hasRole("ADMIN")
                 .antMatchers("/my-pets").hasAnyRole("USER")
                 .antMatchers("/my-transfers").hasAnyRole("USER")
                 .antMatchers("/my-appointments").hasAnyRole("USER")
@@ -74,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // after logout go to login
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/index")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .permitAll();

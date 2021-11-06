@@ -21,6 +21,8 @@ public class AppointmentMapper {
 
     public AppointmentDto map(Appointment appointment) {
         AppointmentDto appointmentDto = new AppointmentDto();
+        appointmentDto.setUser(appointment.getUser());
+        appointmentDto.setPets(appointment.getPets());
         appointmentDto.setDate(String.valueOf(appointment.getDate()));
         appointmentDto.setAppointmentStatus(String.valueOf(appointment.getAppointmentStatus()));
         return appointmentDto;

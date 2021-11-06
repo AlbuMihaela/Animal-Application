@@ -1,14 +1,34 @@
 package com.sda.project.dto;
 
+import com.sda.project.model.Pet;
+import com.sda.project.model.User;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @Setter
 public class AppointmentDto {
 
-    //TODO how do we deal in the dto class about the fields from entity relations
-
+    private User user;
+    private Set<Pet> pets;
     private String date;
     private String appointmentStatus;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
+    }
 }

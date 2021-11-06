@@ -4,10 +4,10 @@ import com.sda.project.dto.PetDto;
 import com.sda.project.dto.PetInfo;
 import com.sda.project.model.Category;
 import com.sda.project.model.Pet;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
-//TODO ?????????????? @Servicec sau @Component
+@Component
 public class PetMapper {
 
     // toEntity(PetDto dto)

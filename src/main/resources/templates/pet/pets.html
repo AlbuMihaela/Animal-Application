@@ -38,6 +38,14 @@
                         <i class="fas fa-edit"></i>
                     </a>
                 </td>
+                <td>
+                    <!-- delete button -->
+                    <a th:href="@{/pets/{id}/delete (id= ${petDto.id})}">
+                        <!-- trash icon -->
+                        <!-- //TODO cum facem ca butonul de editare sa apara doar pe pagina de admin??????-->
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

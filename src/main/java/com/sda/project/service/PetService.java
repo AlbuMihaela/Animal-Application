@@ -110,5 +110,9 @@ public class PetService {
         petRepository.delete(petMapper.map(petDto));
     }
 
-
+    public void deleteById(Long id) {
+        PetDto petDto = findById(id);
+        Long petId = petMapper.map(petDto).getId();
+        petRepository.deleteById(petId);
+    }
 }
