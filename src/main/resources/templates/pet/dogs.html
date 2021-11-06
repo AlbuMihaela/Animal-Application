@@ -6,19 +6,67 @@
 </head>
 
 <body>
-
-<div class="container-fluid">
-    <div class="container" method="get" th:action="@{/dogs}" th:object="${dogs}">
-        <div class="card"  style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body" th:each="dog: ${dogs}">
-                <h5 class="card-title" th:text = "${dog.name}"></h5>
-                <p class="card-text" th:text = "${dog.description}"></p>
-<!--                <a href="#" class="btn btn-primary">Go somewhere</a>-->
-            </div>
+<!--facut de mine pe 3 coloane-->
+<div class="card-group">
+    <div class="card" th:each="dog:${dogs}">
+        <img src="" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${dog.name}" >Card title</h5>
+            <p class="card-text" th:text="${dog.description}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         </div>
+<!--        <div class="card-footer">-->
+<!--            <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </div>-->
+    </div>
+<!--    <div class="card">-->
+<!--        <img src="..." class="card-img-top" alt="...">-->
+<!--        <div class="card-body">-->
+<!--            <h5 class="card-title">Card title</h5>-->
+<!--            <p class="card-text" >This card has supporting text below as a natural lead-in to additional content.</p>-->
+<!--        </div>-->
+<!--        <div class="card-footer">-->
+<!--            <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+
     </div>
 </div>
+<!--facut de mine pe 2 coloane-->
+<!--<div class="container2 text-center">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-12 text-center">-->
+<!--            <div class="container2">-->
+<!--                <div class="row">-->
+<!--                    <div class="card text-center" th:each="dog:${dogs}" style="width: 27rem;">-->
+<!--                        <div class="card-body">-->
+<!--                            <h5 class="card-title" th:text="${dog.name}"></h5>-->
+<!--                            <p class="card-text" th:text="${dog.description}"></p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--facut de noi aseara -->
+<!--<div class="container-fluid">-->
+<!--    <div class="container" method="get" th:action="@{/dogs}" th:object="${dogs}">-->
+<!--        <div class="card"  style="width: 18rem;">-->
+<!--            <img src="..." class="card-img-top" alt="...">-->
+<!--            <div class="card-body" th:each="dog: ${dogs}">-->
+<!--                <h5 class="card-title" th:text = "${dog.name}"></h5>-->
+<!--                <p class="card-text" th:text = "${dog.description}"></p>-->
+<!--&lt;!&ndash;                <a href="#" class="btn btn-primary">Go somewhere</a>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div th:replace="fragments/footer-js :: footer-js"/>
 </body>
