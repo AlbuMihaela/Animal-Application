@@ -9,6 +9,8 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
 
+    // fields
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,11 +21,16 @@ public class User {
     private String phoneNumber;
     private Boolean enabled;
 
+    // relationships
+
+    @OneToMany(mappedBy = "user",
+            fetch = FetchType.LAZY)
+    private Set<Appointment> appointments = new HashSet<>();
+
     // display user adoptions
     // user knows his adoptions
     // bidirectional one to many
-    @OneToMany(
-            mappedBy = "user",
+    @OneToMany(mappedBy = "user",
             fetch = FetchType.LAZY)
     private Set<Adoption> adoptions = new HashSet<>();
 
@@ -31,18 +38,9 @@ public class User {
             fetch = FetchType.LAZY)
     private Set<Donation> donations = new HashSet<>();
 
-    public Set<Donation> getDonations() {
-        return donations;
-    }
-
     @OneToMany(mappedBy = "user",
             fetch = FetchType.LAZY)
     private Set<Transfer> transfers = new HashSet<>();
-
-    @OneToMany
-            (mappedBy = "user",
-                    fetch = FetchType.LAZY)
-    private Set<Appointment> appointments = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -74,9 +72,7 @@ public class User {
         adoption.setUser(this);
     }
 
-    public Set<Adoption> getAdoptions() {
-        return adoptions;
-    }
+    // helper methods
 
     public void addAppointment(Appointment appointment) {
         this.appointments.add(appointment);
@@ -93,6 +89,7 @@ public class User {
         transfer.setUser(this);
     }
 
+    // getters and setters
 
     public Long getId() {
         return id;
@@ -160,6 +157,18 @@ public class User {
 
     public void addRole(Role role) {
         this.roles.add(role);
+    }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public Set<Adoption> getAdoptions() {
+        return adoptions;
+    }
+
+    public Set<Donation> getDonations() {
+        return donations;
     }
 
     @Override

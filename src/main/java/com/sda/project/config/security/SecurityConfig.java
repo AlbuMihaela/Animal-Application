@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -27,11 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // common
                 .antMatchers("/", "/index", "/register/**", "/login").permitAll()
 
-                // temporary
-                // TODO: remove this in production and move
-                .antMatchers("/home", "/admin").permitAll()
-                //todo cum facem redirectionarea spre pagina de admin si home in fctie de userul logat??
-
                 // includes pets, pets/add, pets/edit
                 .antMatchers("/pets/**").permitAll()
                 .antMatchers("/adoptions/**").permitAll()
@@ -39,27 +35,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/transfers/**").permitAll()
                 .antMatchers("/appointments/**").permitAll()
 
-
-//                .antMatchers("/my-pets/**").permitAll()
-//                .antMatchers("/my-transfers/**").permitAll()
-//                .antMatchers("/my-appointments/**").permitAll()
-
-
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()
 
                 // features and permissions
-                // TODO: add all features before production
-//                .antMatchers("/users").hasRole("ADMIN")
-                .antMatchers("/my-pets").hasAnyRole("USER")
-                .antMatchers("/my-transfers").hasAnyRole("USER")
-                .antMatchers("/my-appointments").hasAnyRole("USER")
+                .antMatchers("/home").hasAnyRole("USER", "ADMIN")
+
+                .antMatchers("/my-pets").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/my-transfers").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/my-appointments").hasAnyRole("USER", "ADMIN")
 
                 .antMatchers("/dogs").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/birds").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/cats").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/rabbits").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/guinea_pigs").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/guinea-pigs").hasAnyRole("USER", "ADMIN")
+
+                // admin only
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/users").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         // add custom login form
@@ -69,8 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().usernameParameter("email");
 
         // after successful login go to page
-        // TODO: find a way to load the correct page depending on role
-        http.formLogin().defaultSuccessUrl("/home", true);
+        http.formLogin().successHandler(customAuthSuccessHandler());
 
         // after logout go to login
         http.logout()
@@ -113,6 +106,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler customAuthSuccessHandler(){
+        return new CustomAuthSuccessHandler();
     }
 
     @Bean

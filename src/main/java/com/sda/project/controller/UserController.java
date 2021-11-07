@@ -37,7 +37,7 @@ public class UserController {
     public String getLoginPage(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "login";
+        return "user/login";
     }
 
     // action

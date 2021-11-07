@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
     <title>Pets</title>
@@ -28,22 +29,22 @@
                 <td th:text="${petDto.category}"></td>
                 <td th:text="${petDto.description}"></td>
                 <td th:text="${petDto.adoption}"></td>
-<!--                ??TODO cum afisez aici e-mailul userului care a facut adoptia??????????????????????-->
+<!--            <-- TODO cum afisez aici e-mailul userului care a facut adoptia? -->
                 <!-- actions -->
                 <td>
                     <!-- edit button -->
                     <a th:href="@{/pets/{id}/edit (id= ${petDto.id})}">
                         <!-- pencil icon -->
-<!-- //TODO cum facem ca butonul de editare sa apara doar pe pagina de admin??????-->
-                        <i class="fas fa-edit"></i>
+<!--                    <-- TODO cum facem ca butonul de editare sa apara doar pe pagina de admin? -->
+                        <i class="fas fa-edit" sec:authorize="hasRole('ADMIN')"></i>
                     </a>
                 </td>
                 <td>
                     <!-- delete button -->
                     <a th:href="@{/pets/{id}/delete (id= ${petDto.id})}">
                         <!-- trash icon -->
-                        <!-- //TODO cum facem ca butonul de editare sa apara doar pe pagina de admin??????-->
-                        <i class="fas fa-trash"></i>
+                        <!-- TODO cum facem ca butonul de editare sa apara doar pe pagina de admin?-->
+                        <i class="fas fa-trash" sec:authorize="hasRole('ADMIN')"></i>
                     </a>
                 </td>
             </tr>

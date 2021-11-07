@@ -45,11 +45,10 @@ public class AppointmentController {
         return "redirect:/home";
     }
 
-    @GetMapping("/aboutAppointments")
-    public String getAboutAppointmentsPage() {
-        return "appointment/aboutAppointments";
+    @GetMapping("/appointments/about")
+    public String getAppointmentsAboutPage() {
+        return "appointment/appointments-about";
     }
-
 
     @GetMapping("/my-appointments")
     public String getMyAppointmentsPage(Model model) {
@@ -58,5 +57,4 @@ public class AppointmentController {
         model.addAttribute("appointmentsInfo", appointments);
         return "appointment/my-appointments";
     }
-
 }

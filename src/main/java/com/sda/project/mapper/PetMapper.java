@@ -7,8 +7,18 @@ import com.sda.project.model.Pet;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class PetMapper {
+
+    // to dtos
+    public List<PetInfo> toDtos(List<Pet> entities) {
+        return entities.stream()
+                .map(pet -> mapFromPetToPetInfo(pet))
+                .collect(Collectors.toList());
+    }
 
     // toEntity(PetDto dto)
     public Pet map(PetDto dto) {
@@ -56,5 +66,4 @@ public class PetMapper {
         petInfo.setDescription(entity.getDescription());
         return petInfo;
     }
-
 }

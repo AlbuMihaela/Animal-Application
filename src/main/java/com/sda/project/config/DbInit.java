@@ -44,10 +44,6 @@ public class DbInit {
     @Autowired
     private TransferRepository transferRepository;
 
-
-
-
-
     @Bean
     public CommandLineRunner initialData() {
         return args -> {
@@ -87,9 +83,8 @@ public class DbInit {
             // after creating an entity relationship
             // create parent
             // create child
-            Adoption adoption = createAdoption(dog, user);
             // set child on parent or add parent to child
-//            user.addAdoption(adoption);
+            Adoption adoption = createAdoption(dog, user);
 
             // save child or parent
             adoptionRepository.save(adoption);
@@ -98,14 +93,10 @@ public class DbInit {
             user.addDonation(donation);
             donationRepository.save(donation);
 
-
             Transfer transfer = createTransfer(user);
             user.addTransfer(transfer);
             donation.addTransfer(transfer);
             transferRepository.save(transfer);
-
-
-
         };
     }
 

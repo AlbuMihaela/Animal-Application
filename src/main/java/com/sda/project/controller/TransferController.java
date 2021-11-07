@@ -52,6 +52,4 @@ public class TransferController {
         model.addAttribute("transfersInfo", transfers);
         return "transfer/my-transfers";
     }
-
 }
-

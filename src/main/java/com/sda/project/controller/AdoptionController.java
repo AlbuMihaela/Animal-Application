@@ -38,9 +38,9 @@ public class AdoptionController {
         return "redirect:/home";
     }
 
-    @GetMapping("/aboutAdoptions")
+    @GetMapping("/adoptions/about")
     public String getAboutAdoptionsPage() {
-        return "adoption/aboutAdoptions";
+        return "adoption/adoptions-about";
     }
 
 }

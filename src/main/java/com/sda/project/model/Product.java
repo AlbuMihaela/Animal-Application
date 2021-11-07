@@ -7,4 +7,3 @@ public enum Product {
     DRUGS,
     OTHER;
 }
-//TODO ?? please explain html terminology from select (th:value, th:text, value:/transfer-add)

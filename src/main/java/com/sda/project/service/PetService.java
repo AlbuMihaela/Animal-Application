@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,18 +24,16 @@ public class PetService {
     private final PetRepository petRepository;
     private final PetMapper petMapper;
     private final UserService userService;
-    private final AdoptionService adoptionService;
 
     @Autowired
-    public PetService(PetRepository petRepository, PetMapper petMapper, UserService userService, AdoptionService adoptionService) {
+    public PetService(PetRepository petRepository, PetMapper petMapper, UserService userService) {
         this.petRepository = petRepository;
         this.petMapper = petMapper;
         this.userService = userService;
-        this.adoptionService = adoptionService;
     }
 
     public PetDto save(PetDto petDto) {
-        // TODO: use lambda
+        // TODO cosmin: use lambda
         Pet pet = petMapper.map(petDto);
         Pet savedPet = petRepository.save(pet);
         PetDto savedDto = petMapper.map(savedPet);
@@ -64,14 +61,11 @@ public class PetService {
                 .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
 
-//    public List<Pet> findByCategory(String category) {
-//        return petRepository.findByCategory(category).get();
-//    }
-
-    public List<PetInfo> findPetsByUser(User user) {
-//        User user = userService.findLoggedUser();
-        return adoptionService.findAdoptionsByUser(user).stream()
-                .map(adoption -> adoption.getPet()).map(pet -> petMapper.mapFromPetToPetInfo(pet))
+    public List<PetInfo> getUserPets() {
+        User user = userService.findLoggedUser();
+        return user.getAdoptions().stream()
+                .map(adoption -> adoption.getPet())
+                .map(pet -> petMapper.mapFromPetToPetInfo(pet))
                 .collect(Collectors.toList());
     }
 
@@ -84,18 +78,14 @@ public class PetService {
                 .map(pet -> petMapper.update(pet, dto)) // transform pet to pet
                 // save the updated pet
                 .map(updatedPet -> petRepository.save(updatedPet))  // pet -> save pet
-                .orElseThrow(() -> {
-                    throw new ResourceNotFoundException("pet not found");
-                });
+                .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
 
-    public Set<PetInfo> findByCategory(Category category) {
-        List<Pet> pets = petRepository.findByCategory(category).orElseThrow(() -> {
-            throw new ResourceNotFoundException("pet not found");
-        });
-        return pets.stream().map(pet -> petMapper.mapFromPetToPetInfo(pet)).collect(Collectors.toSet());
+    public List<PetInfo> findByCategory(Category category) {
+        return petRepository.findByCategory(category)
+                .map(pets -> petMapper.toDtos(pets))
+                .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
-
 
     public void update2(PetDto dto) {
         Pet petToUpdate = petRepository.findById(dto.getId())
@@ -106,13 +96,7 @@ public class PetService {
         petRepository.save(updatedPet);
     }
 
-    public void delete(PetDto petDto) {
-        petRepository.delete(petMapper.map(petDto));
-    }
-
     public void deleteById(Long id) {
-        PetDto petDto = findById(id);
-        Long petId = petMapper.map(petDto).getId();
         petRepository.deleteById(id);
     }
 }

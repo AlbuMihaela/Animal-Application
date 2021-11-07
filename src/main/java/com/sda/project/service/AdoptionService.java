@@ -2,8 +2,6 @@ package com.sda.project.service;
 
 import com.sda.project.dto.AdoptionDto;
 import com.sda.project.mapper.AdoptionMapper;
-import com.sda.project.model.Adoption;
-import com.sda.project.model.User;
 import com.sda.project.repository.AdoptionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +16,13 @@ public class AdoptionService {
 
     private static final Logger log = LoggerFactory.getLogger(AdoptionService.class);
 
-    private final AdoptionMapper adoptionMapper;
     private final AdoptionRepository adoptionRepository;
+    private final AdoptionMapper adoptionMapper;
 
     @Autowired
-    public AdoptionService(AdoptionMapper adoptionMapper, AdoptionRepository adoptionRepository) {
-        this.adoptionMapper = adoptionMapper;
+    public AdoptionService(AdoptionRepository adoptionRepository, AdoptionMapper adoptionMapper) {
         this.adoptionRepository = adoptionRepository;
+        this.adoptionMapper = adoptionMapper;
     }
 
     public void save(AdoptionDto adoptionDto) {
@@ -33,14 +31,7 @@ public class AdoptionService {
 
     public List<AdoptionDto> findAll() {
         return adoptionRepository.findAll()
-                .stream().map(adoption ->
-                        adoptionMapper.map(adoption))
-                .collect(Collectors.toList());
-    }
-
-    public List<Adoption> findAdoptionsByUser(User user) {
-        return adoptionRepository.findAll().stream()
-                .filter(adoption -> adoption.getUser().equals(user))
+                .stream().map(adoption -> adoptionMapper.map(adoption))
                 .collect(Collectors.toList());
     }
 }

@@ -62,9 +62,8 @@ public class DonationController {
         return "donation/my-donations";
     }
 
-    @GetMapping("/aboutDonations")
-    public String getAboutDonationsPage() {
-        return "donation/aboutDonations";
+    @GetMapping("/donations/about")
+    public String getDonationsAboutPage() {
+        return "donation/donations-about";
     }
-
 }

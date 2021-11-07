@@ -2,9 +2,7 @@ package com.sda.project.controller;
 
 import com.sda.project.dto.PetDto;
 import com.sda.project.model.Category;
-import com.sda.project.model.User;
 import com.sda.project.service.PetService;
-import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PetController {
 
     private final PetService petService;
-    private final UserService userService;
-
 
     @Autowired
-    public PetController(PetService petService, UserService userService) {
+    public PetController(PetService petService) {
         this.petService = petService;
-        this.userService = userService;
     }
 
     /*
@@ -33,7 +28,6 @@ public class PetController {
         POST   /pets/{id} 		(json body)
         DELETE /pets/{id}
      */
-
 
     @GetMapping("/pets")
     public String getPetsPage(Model model) {
@@ -52,13 +46,6 @@ public class PetController {
         petService.save(petDto);
         return "redirect:/pets";
     }
-
-    //TODO how do we do update object
-
-    /*
-        GET    /pets/{id}
-        POST   /pets/{id} 		(json body)
-     */
 
     // show edit form
     @GetMapping("/pets/{id}/edit")
@@ -84,15 +71,14 @@ public class PetController {
 
     // TODO IS NOT WORKING. PLS CHECK!
     @GetMapping("/pets/{id}/delete")
-    public String delete( @PathVariable Long id) {
+    public String delete(@PathVariable Long id) {
         petService.deleteById(id);
-        return  "redirect:/pets";
+        return "redirect:/pets";
     }
 
     @GetMapping("/my-pets")
     public String getMyPetsPage(Model model) {
-        User user = userService.findLoggedUser();
-        model.addAttribute("myPets", petService.findPetsByUser(user));
+        model.addAttribute("myPets", petService.getUserPets());
         return "adoption/my-pets";
     }
 
@@ -114,10 +100,10 @@ public class PetController {
         return "pet/rabbits";
     }
 
-    @GetMapping("/guinea_pigs")
+    @GetMapping("/guinea-pigs")
     public String getGuineaPage(Model model) {
-        model.addAttribute("guinea_pigs", petService.findByCategory(Category.GUINEA_PIG));
-        return "pet/guinea_pigs";
+        model.addAttribute("guinea-pigs", petService.findByCategory(Category.GUINEA_PIG));
+        return "pet/guinea-pigs";
     }
 
     @GetMapping("/birds")
@@ -125,6 +111,4 @@ public class PetController {
         model.addAttribute("birds", petService.findByCategory(Category.BIRD));
         return "pet/birds";
     }
-
-
 }

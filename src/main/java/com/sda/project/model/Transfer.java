@@ -26,14 +26,7 @@ public class Transfer {
     @JoinColumn(name = "donation_id")
     private Donation donation;
 
-    //todo how can we have just money as donation category in transfer????
-    // does the frontend solve the problem or do we need some java code?
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
 }
-
-
