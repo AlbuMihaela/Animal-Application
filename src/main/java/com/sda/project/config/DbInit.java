@@ -67,16 +67,16 @@ public class DbInit {
             User user = createUser();
             userRepository.save(user);
 
-            Pet dog = createDog();
-            petRepository.save(dog);
+            Pet mikeTheDog = createDog();
+            petRepository.save(mikeTheDog);
 
-            Pet dog2 = createDog2();
-            petRepository.save(dog2);
+            Pet rexTheDog = createDog2();
+            petRepository.save(rexTheDog);
 
             Pet cat = createCat();
             petRepository.save(cat);
 
-            Appointment appointment = createAppointment(cat, dog);
+            Appointment appointment = createAppointment(cat, mikeTheDog);
             user.addAppointment(appointment);
             appointmentRepository.save(appointment);
 
@@ -84,7 +84,7 @@ public class DbInit {
             // create parent
             // create child
             // set child on parent or add parent to child
-            Adoption adoption = createAdoption(dog, user);
+            Adoption adoption = createAdoption(mikeTheDog, user);
 
             // save child or parent
             adoptionRepository.save(adoption);
