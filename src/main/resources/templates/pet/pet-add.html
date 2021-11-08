@@ -6,13 +6,17 @@
 
 <body>
 
+<div th:replace="fragments/header :: navbar"/>
 <h2>Add pet</h2>
 
-<form class="row g-3" method="post" th:action="@{/pets/add}" th:object="${petDto}">
+<form class="row g-3 needs-validation" method="post" novalidate th:action="@{/pets/add}" th:object="${petDto}">
     <div>
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" id="name" placeholder="Pet name" required th:field="*{name}" type="text">
+            <div class="invalid-feedback">
+                A pet name can't be empty.
+            </div>
         </div>
         <br>
         <div class="col-md-2 form-group required">
@@ -30,7 +34,7 @@
         <br>
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Description</label>
-            <input class="form-control" id="description" required
+            <input class="form-control" id="description"
                    th:field="*{description}" type="text">
         </div>
     </div>
@@ -41,5 +45,8 @@
         <button class="btn btn-primary" id="save" type="submit">Add pet</button>
     </div>
 </form>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
+<script th:src="@{/js/validation.js}"></script>
 </body>
 </html>

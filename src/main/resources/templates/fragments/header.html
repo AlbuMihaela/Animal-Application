@@ -14,8 +14,8 @@
     <nav th:action="@{/home}" class="navbar navbar-expand-lg navbar-light" method="get" style="background-color: snow">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="#">
-                <img alt="" height="62px" th:src="@{images/logo.png}" width="62px">
+            <a class="navbar-brand" th:href="@{/home}">
+                <img height="62px" th:src="@{/images/logo.png}" width="62px">
             </a>
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
