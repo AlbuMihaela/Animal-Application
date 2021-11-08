@@ -46,8 +46,9 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
 
     /**
      * Redirects to:
-     *  - /home, if user role is ROLE_USER
-     *  - /admin, is user role is ROLE_ADMIN
+     * - /home, if user role is ROLE_USER
+     * - /admin, is user role is ROLE_ADMIN
+     *
      * @param authentication
      * @return
      */
@@ -56,10 +57,11 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
         roleTargetUrlMap.put("ROLE_USER", "/home");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin");
 
-        final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        for (final GrantedAuthority grantedAuthority : authorities) {
+        // check user role
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        for (GrantedAuthority grantedAuthority : authorities) {
             String authorityName = grantedAuthority.getAuthority();
-            if(roleTargetUrlMap.containsKey(authorityName)) {
+            if (roleTargetUrlMap.containsKey(authorityName)) {
                 return roleTargetUrlMap.get(authorityName);
             }
         }

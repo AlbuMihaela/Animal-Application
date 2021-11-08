@@ -32,7 +32,7 @@ public class Adoption {
     // adoption edit form, change user
     // adoption knows his user
     // bidirectional many to one
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
