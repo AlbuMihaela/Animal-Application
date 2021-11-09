@@ -3,6 +3,7 @@ package com.sda.project.service;
 import com.sda.project.config.security.UserPrincipal;
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
 import com.sda.project.controller.exception.ResourceNotFoundException;
+import com.sda.project.dto.AdoptionDto;
 import com.sda.project.dto.UserDto;
 import com.sda.project.mapper.UserMapper;
 import com.sda.project.model.Role;
@@ -79,6 +80,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email).
                 orElseThrow(()-> new ResourceNotFoundException("user not found"));
     }
+
 
     @Transactional
     @Override

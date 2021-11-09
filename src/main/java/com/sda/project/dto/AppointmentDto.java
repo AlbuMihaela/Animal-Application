@@ -5,6 +5,7 @@ import com.sda.project.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Getter
@@ -12,7 +13,9 @@ import java.util.Set;
 public class AppointmentDto {
 
     private User user;
-    private Set<Pet> pets;
+
+    private Set<PetDto> petsDto;
+
     private String date;
     private String appointmentStatus;
 
@@ -24,11 +27,11 @@ public class AppointmentDto {
         this.user = user;
     }
 
-    public Set<Pet> getPets() {
-        return pets;
+    public Set<PetDto> getPets() {
+        return petsDto;
     }
 
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
+    public void setPets(Set<PetDto> pets) {
+        this.petsDto = pets;
     }
 }

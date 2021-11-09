@@ -3,9 +3,12 @@ package com.sda.project.controller;
 import com.sda.project.dto.AppointmentDto;
 import com.sda.project.dto.AppointmentInfo;
 import com.sda.project.model.User;
+import com.sda.project.repository.PetRepository;
 import com.sda.project.service.AppointmentService;
+import com.sda.project.service.PetService;
 import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +23,13 @@ public class AppointmentController {
 
     private final AppointmentService appointmentService;
     private final UserService userService;
+    private final PetService petService;
 
     @Autowired
-    public AppointmentController(AppointmentService appointmentService, UserService userService) {
+    public AppointmentController(AppointmentService appointmentService, UserService userService, PetService petService) {
         this.appointmentService = appointmentService;
         this.userService = userService;
+        this.petService = petService;
     }
 
     @GetMapping("/appointments")
@@ -35,10 +40,16 @@ public class AppointmentController {
 
     @GetMapping("/appointments/add")
     public String getAppointmentForm(Model model) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        // TODO: map user to user info
+        User loggedUser = userService.findByEmail(email);
+//        Long loggedUserId = loggedUser.getId();
         model.addAttribute("appointmentDto", new AppointmentDto());
+        model.addAttribute("loggedUser", loggedUser);
+        model.addAttribute("pets", petService.findAll());
         return "appointment/appointment-add";
     }
-
+//TODO de ce nu putem salva un appointment in baza de date? ne da eroare!
     @PostMapping("/appointments/add")
     public String addPetForm(@ModelAttribute("appointmentDto") AppointmentDto appointmentDto) {
         appointmentService.save(appointmentDto);

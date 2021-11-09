@@ -4,15 +4,7 @@ package com.sda.project.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Getter
@@ -25,8 +17,8 @@ public class Adoption {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDate adoptionDate;
-    private String proofOfAddress;
-    private String proofOfFinancialSituation;
+    private String address;
+
     private String socialSecurityNumber;
 
     // adoption edit form, change user
@@ -39,5 +31,6 @@ public class Adoption {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pet_id")
     private Pet pet;
+
 
 }

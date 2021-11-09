@@ -129,6 +129,7 @@ public class DbInit {
                 "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
                 "alex",
                 "vasile");
+        user.setPhoneNumber("0721459099");
         Role userRole = roleRepository.findByType(RoleType.USER).orElseThrow();
         user.addRole(userRole);
         return user;
@@ -162,8 +163,7 @@ public class DbInit {
         Adoption adoption = new Adoption();
         adoption.setAdoptionDate(LocalDate.now());
         adoption.setSocialSecurityNumber("1871230556677");
-        adoption.setProofOfAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
-        adoption.setProofOfFinancialSituation("mare boss");
+        adoption.setAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
         adoption.setPet(pet);
         adoption.setUser(user);
         return adoption;
@@ -195,8 +195,6 @@ public class DbInit {
         transfer.setTransferDate(LocalDate.now());
         return transfer;
     }
-
-
 
 
     @Transactional
