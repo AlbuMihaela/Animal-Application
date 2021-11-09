@@ -1,21 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <div th:replace="fragments/head-css :: head-css"/>
     <meta charset="UTF-8">
     <title>About adoptions</title>
 </head>
 <body>
-<h2>How to adopt a pet</h2>
-<p style="text-align: justify">1. Firstly, check out all the lovely pets that are for adoption on our website.
-    If you’re interested in one, click the ‘Make an adoption’ button and fill in an application form.</p>
- <img src="/images/183508rehoming-step-one.jpg" alt="rehomng">
-<p>2. Our team will review your application and see if your lifestyle matches the needs of the dog.</p>
-<img src="/images/183510rehoming-illustration-3-(1).jpg">
-<p>3. If we mutually decide you’re a perfect match, we’ll arrange an appointment for you to take them to their forever home.</p>
-<img src="images/take%20home.png">
-<h3>How much it costs to adopt a pet?</h3>
-<p> You don't need money just a big heart and responsability to care him. </p>
-<h3> So easy! You can have a friend for life. </h3>
-<p>If you need any advice or support, we’re just a phone call away (+40736553215)</p>
+<!--navbar-->
+<div th:replace="fragments/header :: navbar"/>
+<!--content-->
+<div class="container-sm" style="background-color: khaki; border-radius: 25px">
+    <div class="row gx-5" style="text-align: center"><b>&#9829 How to adopt a pet &#9829</b></div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card">
+            <img src="/images/183508rehoming-step-one.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="color: indianred">First step</h5>
+                <div class="card-text">Firstly, check out all the lovely pets that are for adoption on our website.
+                    <div>If you’re interested in one, click the <a href="/adoptions/add" style="color: indianred">‘Make
+                        an adoption’</a> button and fill in an application form.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="/images/183510rehoming-illustration-3-(1).jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="color: indianred">Second step</h5>
+                <p class="card-text">Our team will review your application and see if your lifestyle matches the needs
+                    of the pet.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="/images/take%20home.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="color: indianred;">Third step</h5>
+                <p class="card-text"> If we mutually decide you’re a perfect match, we’ll arrange an appointment for you
+                    to take them to their forever home.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-sm col-md-8" style="background-color: khaki;border-radius: 25px;">
+        <div style="text-align: center"><b>How much it costs to adopt a pet</b>
+        </div>
+    </div>
+</div>
+
+<p class="container" style="text-align: center"> You don't need money just a big heart and responsibility to care him.</p>
+<p class="container" style="text-align: center">So easy! You can have a friend for life!</p>
+<div class="container"style="text-align: center">For any advice or support, we’re just a phone call away (+40736553215)</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
+
 </body>
 </html>

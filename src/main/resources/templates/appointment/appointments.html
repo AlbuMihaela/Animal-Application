@@ -5,6 +5,7 @@
     <title>Appointments Page</title>
 </head>
 <body>
+<div th:replace="fragments/header-admin :: navbar"/>
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/appointments}" th:object="${appointmentsDto}">

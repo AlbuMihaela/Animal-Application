@@ -1,21 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <div th:replace="fragments/head-css :: head-css"/>
     <meta charset="UTF-8">
     <title>About donations</title>
 </head>
 <body>
-<h2>How to make a donation</h2>
-<p> If you’re interested to donate, the process is very simple: click the ‘Make a donation’ button and fill in donation form.</p>
-<img src="/images/donate.png">
-<p> You can donate money, food, toys, drugs and other things. ChangeLives address is Filimon Street 81, Bucharest. </p>
-<img src="/images/cat_food.png"><img src="/images/dog_food.png">
-<img src="/images/drugs.png">
-<img src="/images/toys.png">
+<!--navbar-->
+<div th:replace="fragments/header :: navbar"/>
+<!--    content-->
 
-<p> From drugs category you can donate only parasite prevention drugs and vaccines for the following diseases: canine distemper, canine hepatitis, canine parainfluenza, heartworm, lyme disease and
-    parvovirus.</p>
-<p>Your help really matters! Thank you!</p>
+<div class="card text-center">
+    <!--    <div class="card-header">-->
+    <!--        How to donate-->
+    <!--    </div>-->
+    <div class="card-body">
+        <h5 class="card-title">How to make a donation</h5>
+        <img src="/images/donate.png" style="padding-inline: 200px">
+        <p class="card-text">If you’re interested to donate, the process is very simple: click the <a
+                href="/donations/add" style="color: indianred"> ‘Make a donation’</a> button and fill in donation form
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+    <div class="card-body">
+        <p class="card-text">You can donate money, food, toys, drugs and other things. ChangeLives address is Filimon
+            Street 81, Bucharest.</p>
+        <img src="/images/cat_food.png" style="padding-inline:20px">
+        <img src="/images/dog_food.png" style="padding-inline: 10px">
+        <img src="/images/drugs.png">
+        <img src="/images/toys.png">
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+    <div class="card-body">
+        <p class="card-text">From drugs category you can donate only parasite prevention drugs and vaccines for the
+            following diseases: canine distemper, canine hepatitis, canine parainfluenza, heartworm, lyme disease and
+            parvovirus</p>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+    <div class="card-body">
+        <p class="card-text">Your help really matters! Thank you!</p>
+    </div>
+    <div class="card-footer text-muted">
+        &#9829&#9829&#9829
+    </div>
+</div>
+<!--<div class="container-fluid" style="background-color: #8fc4b7; border-radius: 25px">-->
+<!--    <div class="row" style="text-align: center"><b>&#9829 How to make a donation &#9829</b></div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<h2>How to make a donation</h2>&ndash;&gt;-->
+<!--<div class="container-fluid" style="margin-top: 50px"> If you’re interested to donate, the process is very simple: click the <a href="/donations/add"style="color: indianred"> ‘Make a donation’</a> button and fill in donation form.</div>-->
+<!--<img src="/images/donate.png" style="padding-inline: 200px">-->
+<!--<p class="container-fluid"> You can donate money, food, toys, drugs and other things. ChangeLives address is Filimon Street 81, Bucharest. </p>-->
+<!--<img src="/images/cat_food.png" style="padding-inline:20px">-->
+<!--<img src="/images/dog_food.png"style="padding-inline: 10px">-->
+<!--<img src="/images/drugs.png">-->
+<!--<img src="/images/toys.png">-->
 
+<!--<div class="container-fluid col-md"> From drugs category you can donate only parasite prevention drugs and vaccines for the following diseases: canine distemper, canine hepatitis, canine parainfluenza, heartworm, lyme disease and-->
+<!--    parvovirus.</div>-->
+<!--<div class="container-fluid">Your help really matters! Thank you!</div>-->
+<div th:replace="fragments/footer-js :: footer-js"/>
 </body>
 </html>

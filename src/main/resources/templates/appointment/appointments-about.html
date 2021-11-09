@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <div th:replace="fragments/head-css :: head-css"/>
+
     <meta charset="UTF-8">
     <title>About appointments</title>
 </head>
 <body>
-<h2>How to make an appointments</h2>
-<p> If you’re interested visit pets in our shelter, click the ‘Make an appointment’ button and fill in an appointment form.</p>
-<img src="/images/appointment.png">
-<h3> Our pets are eager to meet you.</h3>
-<p>Visits program: from Wednesday to Sunday: 13:00-18:00</p>
-<p>If you need any advice or support, we’re just a phone call away (+40736553215).</p>
+<!--navbar-->
+<div th:replace="fragments/header :: navbar"/>
+<!-- content-->
+<div class="container-fluid" style="background-color: #8fc4b7;">
+<div style="text-align: center"><b>How to make an appointment</b></div>
+</div>
+<img src="/images/appointment.png" height="170px" width="450px" style="margin: 80px">
+<div class="appointment" style="margin: 40px"> If you’re interested visit pets in our shelter, click the <a href="/appointments/add" style="color: indianred">‘Make an appointment’</a> button and fill in an appointment form. Our pets are eager to meet you!</div>
+
+<div class="container-fluid" style="background-color: khaki">
+    <div class="row" style="text-align: center"><b>Visits program</b></div>
+</div>
+<p class="appointments" style="margin: 40px">From Wednesday to Sunday: 13:00-18:00</p>
+
+<div class="container-fluid" style="background-color: gray">
+    <div class="row" style="text-align: center" ><b> Support</b></div>
+</div>
+<p class="support" style="margin: 40px">For any advice or support, we’re just a phone call away (+40736553215).</p>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
 </body>
 </html>
