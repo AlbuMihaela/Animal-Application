@@ -20,7 +20,7 @@ public class AdoptionDto {
     private String date;
     private String address;
     private String socialSecurityNumber;
-    private Pet pet;
+    private PetDto petDto;
 
 
 

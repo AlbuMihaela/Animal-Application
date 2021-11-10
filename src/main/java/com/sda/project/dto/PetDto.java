@@ -15,6 +15,7 @@ public class PetDto {
     private String name;
     private String category;
     private String description;
+    private boolean isAvailable;
     private Adoption adoption;
 
 

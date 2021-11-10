@@ -29,7 +29,7 @@
 
     <!--    check box with multiple choices-->
     <!--    //TODO cum facem ca userul sa poata bifa doar 2 animale din toata lista?-->
-    <th:block th:object="${pets}" th:each="pet : ${pets}">
+    <th:block th:object="${pets}" th:each="pet : ${pets}" >
         <input type="checkbox" name="selectedActive" id="selectedActive" th:value="${pet.name}"/>
         <label th:text="${pet.name}"></label>
         <br/>

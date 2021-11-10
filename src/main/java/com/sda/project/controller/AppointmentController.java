@@ -2,6 +2,8 @@ package com.sda.project.controller;
 
 import com.sda.project.dto.AppointmentDto;
 import com.sda.project.dto.AppointmentInfo;
+import com.sda.project.dto.PetDto;
+import com.sda.project.model.Pet;
 import com.sda.project.model.User;
 import com.sda.project.repository.PetRepository;
 import com.sda.project.service.AppointmentService;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -44,14 +47,17 @@ public class AppointmentController {
         // TODO: map user to user info
         User loggedUser = userService.findByEmail(email);
 //        Long loggedUserId = loggedUser.getId();
+        List<PetDto> pets = petService.findAll();
         model.addAttribute("appointmentDto", new AppointmentDto());
         model.addAttribute("loggedUser", loggedUser);
-        model.addAttribute("pets", petService.findAll());
+        model.addAttribute("pets", pets);
         return "appointment/appointment-add";
     }
 //TODO de ce nu putem salva un appointment in baza de date? ne da eroare!
     @PostMapping("/appointments/add")
-    public String addPetForm(@ModelAttribute("appointmentDto") AppointmentDto appointmentDto) {
+    public String addPetForm(@ModelAttribute("appointmentDto") AppointmentDto appointmentDto,
+                             @ModelAttribute("loggedUser") User loggedUser,
+                             @ModelAttribute("pets")  List<PetDto> pets) {
         appointmentService.save(appointmentDto);
         return "redirect:/home";
     }

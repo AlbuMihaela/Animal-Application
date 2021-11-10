@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class PetMapper {
 
     // to dtos
-    public List<PetInfo> toDtos(List<Pet> entities) {
+    public List<PetInfo> mapPetsToDtos(List<Pet> entities) {
         return entities.stream()
                 .map(pet -> mapFromPetToPetInfo(pet))
                 .collect(Collectors.toList());
@@ -27,6 +27,7 @@ public class PetMapper {
         entity.setCategory(Category.valueOf(dto.getCategory()));
         entity.setDescription(dto.getDescription());
         entity.setAdoption(dto.getAdoption());
+        entity.setAvailable(dto.isAvailable());
         return entity;
     }
 
@@ -35,6 +36,7 @@ public class PetMapper {
         petToUpdate.setName(data.getName());
         petToUpdate.setCategory(Category.valueOf(data.getCategory()));
         petToUpdate.setDescription(data.getDescription());
+        petToUpdate.setAvailable(data.isAvailable());
         return petToUpdate;
     }
 
@@ -46,6 +48,7 @@ public class PetMapper {
         dto.setCategory(String.valueOf(entity.getCategory()));
         dto.setDescription(entity.getDescription());
         dto.setAdoption(entity.getAdoption());
+        dto.setAvailable(entity.isAvailable());
         return dto;
     }
 
@@ -55,6 +58,7 @@ public class PetMapper {
         entity.setName(petInfo.getName());
         entity.setCategory(petInfo.getCategory());
         entity.setDescription(petInfo.getDescription());
+        entity.setAvailable(petInfo.isAvailable());
         return entity;
     }
 
@@ -64,6 +68,7 @@ public class PetMapper {
         petInfo.setName(entity.getName());
         petInfo.setCategory(entity.getCategory());
         petInfo.setDescription(entity.getDescription());
+        petInfo.setAvailable(entity.isAvailable());
         return petInfo;
     }
 }

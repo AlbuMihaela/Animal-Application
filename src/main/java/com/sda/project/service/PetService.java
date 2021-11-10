@@ -34,6 +34,7 @@ public class PetService {
 
     public PetDto save(PetDto petDto) {
         // TODO cosmin: use lambda
+        petDto.setAvailable(true);
         Pet pet = petMapper.map(petDto);
         Pet savedPet = petRepository.save(pet);
         PetDto savedDto = petMapper.map(savedPet);
@@ -83,7 +84,7 @@ public class PetService {
 
     public List<PetInfo> findByCategory(Category category) {
         return petRepository.findByCategory(category)
-                .map(pets -> petMapper.toDtos(pets))
+                .map(pets -> petMapper.mapPetsToDtos(pets))
                 .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
 
