@@ -3,11 +3,12 @@ package com.sda.project.mapper;
 import com.sda.project.dto.TransferDto;
 import com.sda.project.dto.TransferInfo;
 import com.sda.project.model.Transfer;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-@Service
+@Component
 public class TransferMapper {
 
     public Transfer map(TransferDto transferDto) {

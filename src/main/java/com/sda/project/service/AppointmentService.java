@@ -40,11 +40,11 @@ public class AppointmentService {
         return appointmentRepository.save(appointmentMapper.map(appointmentDto));
     }
 
-    public Set<AppointmentInfo> findAppointmentsByUser(User user) {
+    public List<AppointmentInfo> findAppointmentsByUser(User user) {
         return appointmentRepository.findAll().stream()
                 .filter(appointment -> appointment.getUser().equals(user))
                 .map(appointment -> appointmentMapper.mapFromAppointmentToAppointmentInfo(appointment))
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
 
     }
 }

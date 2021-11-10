@@ -2,6 +2,7 @@ package com.sda.project.dto;
 
 import com.sda.project.model.AppointmentStatus;
 import com.sda.project.model.Pet;
+import com.sda.project.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +15,7 @@ import java.util.Set;
 public class AppointmentInfo {
 
     private LocalDateTime date;
-    private AppointmentStatus appointmentStatus;
     private Set<Pet> pets;
+    private User user;
 
 }

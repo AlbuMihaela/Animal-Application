@@ -9,27 +9,24 @@
 
 <div class="container-fluid">
     <div class="container">
-        <table class="table" method="get" th:action="@{/my-appointments}" th:object="${appointmentsInfo}">
+        <table class="table" method="get" th:action="@{/my-appointments}" th:object="${myAppointmentsInfo}">
             <!-- table header -->
             <thead>
             <tr>
                 <th scope="col">Date</th>
                 <th scope="col">Pets</th>
-                <th scope="col">Status</th>
             </tr>
             </thead>
             <!-- table body -->
             <tbody>
-            <tr th:each="appointmentInfo : ${appointmentsInfo}">
-                <td th:text="${appointmentInfo.date}"></td>
-<!--                <td th:each="pet : ${appointmentInfo.pets}">-->
-<!--                    <p text="${appointmentInfo.pet.name}"></p>-->
-<!--                </td>-->
-                <td th:text="${appointmentInfo.pets}"></td>
+            <tr th:each="myAppointmentInfo : ${myAppointmentsInfo}">
+                <td th:text="${myAppointmentInfo.date}" ></td>
+                <td th:each="pet : ${myAppointmentInfo.pets}">
+                    <p th:text="${pet.name}"></p>
+                </td>
+<!--                <td th:text="${myAppointmentInfo.pets}"></td>-->
 
-                <td th:text="${appointmentInfo.appointmentStatus.name()}"></td>
-
-                <!--  //TODO cum facem sa ne afiseze numele de pets din lista de mai sus  -->
+                     <!--  //TODO cum facem sa ne afiseze numele de pets din lista de mai sus  -->
                 <!-- actions -->
             </tr>
             </tbody>

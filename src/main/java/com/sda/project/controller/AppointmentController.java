@@ -70,8 +70,8 @@ public class AppointmentController {
     @GetMapping("/my-appointments")
     public String getMyAppointmentsPage(Model model) {
         User user = userService.findLoggedUser();
-        Set<AppointmentInfo> appointments = appointmentService.findAppointmentsByUser(user);
-        model.addAttribute("appointmentsInfo", appointments);
+        List<AppointmentInfo> myAppointments = appointmentService.findAppointmentsByUser(user);
+        model.addAttribute("myAppointmentsInfo",myAppointments);
         return "appointment/my-appointments";
     }
 }

@@ -87,7 +87,7 @@ public class DbInit {
             Adoption adoption = createAdoption(mikeTheDog, user);
 
             boolean checkPetAdoption = mikeTheDog.isAvailable();
-            System.out.println("checkPetAdoption is "+ checkPetAdoption);
+            System.out.println("checkPetAdoption is " + checkPetAdoption);
 
             // save child or parent
             adoptionRepository.save(adoption);
@@ -180,7 +180,6 @@ public class DbInit {
     private Appointment createAppointment(Pet pet1, Pet pet2) {
         Appointment appointment = new Appointment();
         appointment.setDate(LocalDateTime.now());
-        appointment.setAppointmentStatus(AppointmentStatus.SENT);
         appointment.addPet(pet1);
         appointment.addPet(pet2);
         return appointment;

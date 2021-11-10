@@ -4,11 +4,12 @@ import com.sda.project.dto.AdoptionDto;
 import com.sda.project.model.Adoption;
 import com.sda.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-@Service
+@Component
 public class AdoptionMapper {
     @Autowired
     private UserService userService;

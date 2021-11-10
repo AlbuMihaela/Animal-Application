@@ -17,7 +17,6 @@ public class AppointmentDto {
     private Set<PetDto> petsDto;
 
     private String date;
-    private String appointmentStatus;
 
     public User getUser() {
         return user;

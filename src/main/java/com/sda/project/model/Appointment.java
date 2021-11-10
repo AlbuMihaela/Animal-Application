@@ -20,9 +20,6 @@ public class Appointment {
 
     private LocalDateTime date;
 
-    @Enumerated(EnumType.STRING)
-    private AppointmentStatus appointmentStatus;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

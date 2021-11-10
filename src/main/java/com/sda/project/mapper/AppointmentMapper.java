@@ -6,13 +6,14 @@ import com.sda.project.dto.PetDto;
 import com.sda.project.model.Appointment;
 import com.sda.project.model.AppointmentStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
-@Service
+@Component
 public class AppointmentMapper {
     @Autowired
     private  PetMapper petMapper;
@@ -20,7 +21,6 @@ public class AppointmentMapper {
     public Appointment map(AppointmentDto appointmentDto) {
         Appointment appointment = new Appointment();
         appointment.setDate(LocalDateTime.parse(appointmentDto.getDate()));
-        appointment.setAppointmentStatus(AppointmentStatus.valueOf(appointmentDto.getAppointmentStatus()));
         return appointment;
     }
 
@@ -29,15 +29,14 @@ public class AppointmentMapper {
         appointmentDto.setUser(appointment.getUser());
         appointmentDto.setPetsDto(appointment.getPets().stream().map(pet-> petMapper.map(pet)).collect(Collectors.toSet()));
         appointmentDto.setDate(String.valueOf(appointment.getDate()));
-        appointmentDto.setAppointmentStatus(String.valueOf(appointment.getAppointmentStatus()));
         return appointmentDto;
     }
 
     public AppointmentInfo mapFromAppointmentToAppointmentInfo(Appointment appointment) {
         AppointmentInfo dto = new AppointmentInfo();
         dto.setDate(appointment.getDate());
-        dto.setAppointmentStatus(appointment.getAppointmentStatus());
         dto.setPets(appointment.getPets());
+        dto.setUser(appointment.getUser());
         return dto;
     }
 }
