@@ -1,0 +1,16 @@
+- ## admin
+- tabelul din view pets nu pastreaza coloanele
+- la edit  pet - adaugam availability*****************
+- donation - user email (sau name) - nu id
+- appointments - scoatem status
+- appointments - sa afiseza numele pet-urilor
+- adoption - sa afiseze neme(e-mail) al userului
+- ## user home
+- aceeasi pagina sa aiba chestii diferite
+- view all- vrem cu carduri
+- view all - vrem poze
+- view pets by category - cu carduri
+- vrem sa avem buton adopt, appointment pt fiecare pet
+-make a donation - problema cu money??????????/
+- navbar pe forms si pe my-**
+- my-appointments - eliminam status, sa apara numele pet-ului

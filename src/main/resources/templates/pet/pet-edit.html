@@ -35,6 +35,15 @@
             <input class="form-control" id="description" placeholder="Pet description" required
                    th:field="*{description}" type="text">
         </div>
+
+        <div class="col-md-4 form-group required">
+            <label for="availability" class="form-label">Available</label>
+            <input id="availability"type="checkbox" class="custom-control-input" th:checked="${petDto.isAvailable()}"
+                   th:id="|${petDto.isAvailable()}-${!petDto.isAvailable()}|" />
+
+        </div>
+<!--        //TODO acum merge, dar schimba o soingura data... daca ii dau din nou update, nu ma lasa, nu schimba setarea
+-->
     </div>
     <div class="col-12">
         <a th:href="@{/pets}">
