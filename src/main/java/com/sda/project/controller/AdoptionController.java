@@ -43,7 +43,7 @@ public class AdoptionController {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         // TODO: map user to user info
         User loggedUser = userService.findByEmail(email);
-        List<PetDto> pets = petService.findAll();
+        List<PetDto> pets = petService.getUserPetsAvailable();
         AdoptionDto adoptionDto = new AdoptionDto(loggedUser.getId(), null, null, null, null);
         model.addAttribute("adoptionDto", new AdoptionDto());
         model.addAttribute("loggedUser", loggedUser);

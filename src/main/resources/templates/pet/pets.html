@@ -30,10 +30,10 @@
                 <td th:text="${petDto.category}"></td>
                 <td th:text="${petDto.description}"></td>
                 <td th:if="${petDto.adoption}" >
-                    <!-- TODO cum afisez aici e-mailul userului care a facut adoptia? -->
+                    <!--  cum afisez aici e-mailul userului care a facut adoptia? -->
                     <p th:text="${petDto.adoption.user.email}"></p>
                 </td>
-                <td th:text="${petDto.isAvailable()}"></td>
+                <td th:text="${petDto.isAvailable}"></td>
                 <!-- actions -->
                 <td>
                     <!-- edit button -->

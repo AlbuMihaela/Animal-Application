@@ -70,6 +70,15 @@ public class PetService {
                 .collect(Collectors.toList());
     }
 
+    public List<PetDto> getUserPetsAvailable() {
+        User user = userService.findLoggedUser();
+        return user.getAdoptions().stream()
+                .map(adoption -> adoption.getPet())
+                .map(pet -> petMapper.map(pet))
+                .filter(petInfo -> petInfo.isAvailable())
+                .collect(Collectors.toList());
+    }
+
     public void update(PetDto dto) {
         log.info("updating pet with id {} with data {}", dto.getId(), dto);
 

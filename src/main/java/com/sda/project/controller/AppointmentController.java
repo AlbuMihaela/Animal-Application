@@ -47,7 +47,7 @@ public class AppointmentController {
         // TODO: map user to user info
         User loggedUser = userService.findByEmail(email);
 //        Long loggedUserId = loggedUser.getId();
-        List<PetDto> pets = petService.findAll();
+        List<PetDto> pets = petService.getUserPetsAvailable();
         model.addAttribute("appointmentDto", new AppointmentDto());
         model.addAttribute("loggedUser", loggedUser);
         model.addAttribute("pets", pets);

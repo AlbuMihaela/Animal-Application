@@ -47,9 +47,10 @@
         </div>
         <th:block th:object="${pets}" th:each="pet : ${pets}">
             <input type="checkbox" name="selectedActive" id="selectedActive" th:value="${pet.name}"/>
-            <label th:text="${pet.name}"></label>
+            <label th:text="${pet.name}">Pets</label>
             <br/>
         </th:block>
+
         <!--            <div class="col-md-4">-->
         <!--                <label class="form-label" for="inputState">Pet</label>-->
         <!--                <select class="form-select" id="inputState">-->
@@ -59,7 +60,7 @@
         <!--            </div>-->
        <div class="col-12">
             <button class="btn btn-primary" type="submit">Submit</button>
-            <a class="btn btn-secondary" th:href="@{/user}" type="button">Cancel</a>
+            <a class="btn btn-secondary" th:href="@{/home}" type="button">Cancel</a>
         </div>
     </form>
 </div>
