@@ -12,6 +12,8 @@ import java.time.LocalDate;
 public class AdoptionMapper {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PetMapper petMapper;
 
     public Adoption map(AdoptionDto adoptionDto) {
         Adoption adoption = new Adoption();
@@ -19,7 +21,7 @@ public class AdoptionMapper {
         adoption.setAdoptionDate(LocalDate.parse(adoptionDto.getDate()));
         adoption.setSocialSecurityNumber(adoptionDto.getSocialSecurityNumber());
         adoption.setAddress(adoptionDto.getAddress());
-        adoption.setPet(adoptionDto.getPet());
+        adoption.setPet(petMapper.map(adoptionDto.getPetDto()));
         adoption.setUser(userService.findById(adoptionDto.getUserId()));
         return adoption;
     }
@@ -29,7 +31,7 @@ public class AdoptionMapper {
         adoptionDto.setDate(String.valueOf(adoption.getAdoptionDate()));
         adoptionDto.setSocialSecurityNumber(adoption.getSocialSecurityNumber());
         adoptionDto.setAddress(adoption.getAddress());
-        adoptionDto.setPet(adoption.getPet());
+        adoptionDto.setPetDto(petMapper.map(adoption.getPet()));
         adoptionDto.setUserId(adoption.getUser().getId());
         return adoptionDto;
     }

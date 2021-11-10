@@ -20,6 +20,7 @@ public class Pet {
     private String name;
     private Category category;
     private String description;
+    private boolean isAvailable;
 
     @OneToOne(mappedBy = "pet",
             fetch = FetchType.LAZY)

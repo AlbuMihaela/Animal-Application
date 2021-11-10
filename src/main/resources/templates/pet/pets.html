@@ -17,7 +17,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
                 <th scope="col">Description</th>
-                <th scope="col">Adoption</th>
+                <th scope="col">User</th>
+                <th scope="col">Availability</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -28,11 +29,11 @@
                 <td th:text="${petDto.name}"></td>
                 <td th:text="${petDto.category}"></td>
                 <td th:text="${petDto.description}"></td>
-                <td th:if="${petDto.adoption}">
+                <td th:if="${petDto.adoption}" >
                     <!-- TODO cum afisez aici e-mailul userului care a facut adoptia? -->
                     <p th:text="${petDto.adoption.user.email}"></p>
                 </td>
-
+                <td th:text="${petDto.isAvailable()}"></td>
                 <!-- actions -->
                 <td>
                     <!-- edit button -->

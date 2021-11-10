@@ -22,10 +22,14 @@
             <tbody>
             <tr th:each="appointmentInfo : ${appointmentsInfo}">
                 <td th:text="${appointmentInfo.date}"></td>
+<!--                <td th:each="pet : ${appointmentInfo.pets}">-->
+<!--                    <p text="${appointmentInfo.pet.name}"></p>-->
+<!--                </td>-->
                 <td th:text="${appointmentInfo.pets}"></td>
+
                 <td th:text="${appointmentInfo.appointmentStatus.name()}"></td>
 
-<!--  //TODO cum facem sa ne afiseze numele de pets din lista de mai sus  -->
+                <!--  //TODO cum facem sa ne afiseze numele de pets din lista de mai sus  -->
                 <!-- actions -->
             </tr>
             </tbody>

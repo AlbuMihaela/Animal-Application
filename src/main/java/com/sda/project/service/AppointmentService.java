@@ -18,12 +18,14 @@ public class AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
     private final AppointmentMapper appointmentMapper;
+    private final UserService userService;
 
     @Autowired
     public AppointmentService(AppointmentRepository appointmentRepository,
-                              AppointmentMapper appointmentMapper) {
+                              AppointmentMapper appointmentMapper, UserService userService) {
         this.appointmentRepository = appointmentRepository;
         this.appointmentMapper = appointmentMapper;
+        this.userService = userService;
     }
 
 
@@ -34,6 +36,7 @@ public class AppointmentService {
     }
 
     public Appointment save(AppointmentDto appointmentDto) {
+        userService.updateByUserId(appointmentDto.getUser().getId());
         return appointmentRepository.save(appointmentMapper.map(appointmentDto));
     }
 

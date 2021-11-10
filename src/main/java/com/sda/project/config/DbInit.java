@@ -86,6 +86,9 @@ public class DbInit {
             // set child on parent or add parent to child
             Adoption adoption = createAdoption(mikeTheDog, user);
 
+            boolean checkPetAdoption = mikeTheDog.isAvailable();
+            System.out.println("checkPetAdoption is "+ checkPetAdoption);
+
             // save child or parent
             adoptionRepository.save(adoption);
 
@@ -140,6 +143,7 @@ public class DbInit {
         pet.setName("Mike");
         pet.setCategory(Category.DOG);
         pet.setDescription("small dog, brown with white spots");
+        pet.setAvailable(true);
         return pet;
     }
 
@@ -148,6 +152,7 @@ public class DbInit {
         pet.setName("Rex");
         pet.setCategory(Category.DOG);
         pet.setDescription("cute dog");
+        pet.setAvailable(true);
         return pet;
     }
 
@@ -156,6 +161,7 @@ public class DbInit {
         pet.setName("Mussy");
         pet.setCategory(Category.CAT);
         pet.setDescription("small cat, blue eyes");
+        pet.setAvailable(true);
         return pet;
     }
 
@@ -165,7 +171,9 @@ public class DbInit {
         adoption.setSocialSecurityNumber("1871230556677");
         adoption.setAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
         adoption.setPet(pet);
+        pet.setAvailable(false);
         adoption.setUser(user);
+
         return adoption;
     }
 
