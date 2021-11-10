@@ -17,58 +17,49 @@
 <div class="d-flex justify-content-center">
     <form class="row g-3" method="post" style="height: 250px;width: 550px" th:action="@{/adoptions/add}"
           th:object="${adoptionDto}">
-            <div class="col-md-6">
-                <label class="form-label" for="inputFirstName" >First Name</label>
-                <input class="form-control" id="inputFirstName" type="text" th:field="${loggedUser.firstName}">
-            </div>
-            <div class="col-md-6">
-                <label class="form-label" for="inputLastName">Last Name</label>
-                <input class="form-control" id="inputLastName" type="text"th:field="${loggedUser.lastName}">
-            </div>
-            <div class="col-12">
-                <label class="form-label" for="email">E-mail</label>
-                <input class="form-control" id="email" type="email" th:field="${loggedUser.email}">
-            </div>
-            <div class="col-12">
-                <label class="form-label" for="phoneNumber">Phone Number</label>
-                <input class="form-control" id="phoneNumber" type="text" th:field="${loggedUser.phoneNumber}">
-            </div>
-        <div>
-            <input class="span2" size="16" type="text">
-            <span class="add-on"><i class="icon-th"></i></span>
-
-            <label class="form-label" for="dateOfAdoption" >Date</label>
-            <input class="form-select" id="dateOfAdoption" type="date"th:field="*{date}">
+        <div class="col-md-6">
+            <label class="form-label" for="inputFirstName">First Name</label>
+            <input class="form-control" id="inputFirstName" type="text" th:field="${loggedUser.firstName}">
         </div>
-
-
+        <div class="col-md-6">
+            <label class="form-label" for="inputLastName">Last Name</label>
+            <input class="form-control" id="inputLastName" type="text" th:field="${loggedUser.lastName}">
+        </div>
+        <div class="col-12">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-control" id="email" type="email" th:field="${loggedUser.email}">
+        </div>
+        <div class="col-12">
+            <label class="form-label" for="phoneNumber">Phone Number</label>
+            <input class="form-control" id="phoneNumber" type="text" th:field="${loggedUser.phoneNumber}">
+        </div>
         <div class="mb-3">
-            <label class="form-label" for="formFile1" >Address</label>
+            <label class="form-label" for="formFile1">Address</label>
             <input class="form-control" id="formFile1" type="text" th:field="*{address}">
         </div>
-
-        <div class="mb-3">
-            <label class="form-label" for="formFile3" >Social Security Number</label>
-            <input class="form-control" id="formFile3"  type="text" th:field="*{socialSecurityNumber}">
+        <div>
+            <label class="form-label" for="dateOfAdoption">Date</label>
+            <input class="form-select" id="dateOfAdoption" type="date" th:field="*{date}">
         </div>
-
+        <div class="mb-3">
+            <label class="form-label" for="formFile3">Social Security Number</label>
+            <input class="form-control" id="formFile3" type="text" th:field="*{socialSecurityNumber}">
+        </div>
         <th:block th:object="${pets}" th:each="pet : ${pets}">
             <input type="checkbox" name="selectedActive" id="selectedActive" th:value="${pet.name}"/>
             <label th:text="${pet.name}"></label>
             <br/>
         </th:block>
-<!--            <div class="col-md-4">-->
-<!--                <label class="form-label" for="inputState">Pet</label>-->
-<!--                <select class="form-select" id="inputState">-->
-<!--                    <option selected>Choose...</option>-->
-<!--                    <option>...</option>-->
-<!--                </select>-->
-<!--            </div>-->
-
-        <div class="col-12">
+        <!--            <div class="col-md-4">-->
+        <!--                <label class="form-label" for="inputState">Pet</label>-->
+        <!--                <select class="form-select" id="inputState">-->
+        <!--                    <option selected>Choose...</option>-->
+        <!--                    <option>...</option>-->
+        <!--                </select>-->
+        <!--            </div>-->
+       <div class="col-12">
             <button class="btn btn-primary" type="submit">Submit</button>
             <a class="btn btn-secondary" th:href="@{/user}" type="button">Cancel</a>
-
         </div>
     </form>
 </div>

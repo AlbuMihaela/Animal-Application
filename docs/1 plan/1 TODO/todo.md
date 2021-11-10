@@ -14,3 +14,4 @@
 -make a donation - problema cu money??????????/
 - navbar pe forms si pe my-**
 - my-appointments - eliminam status, sa apara numele pet-ului
+- formatare data in frontend
