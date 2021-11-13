@@ -1,8 +1,13 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
+import com.sda.project.dto.PetDto;
+import com.sda.project.mapper.AdoptionMapper;
+import com.sda.project.mapper.PetMapper;
 import com.sda.project.model.*;
 import com.sda.project.repository.*;
+import com.sda.project.service.AdoptionService;
+import com.sda.project.service.PetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +41,9 @@ public class DbInit {
     private AdoptionRepository adoptionRepository;
 
     @Autowired
+    private AdoptionMapper adoptionMapper;
+
+    @Autowired
     private AppointmentRepository appointmentRepository;
 
     @Autowired
@@ -43,6 +51,14 @@ public class DbInit {
 
     @Autowired
     private TransferRepository transferRepository;
+
+    @Autowired
+    private PetMapper petMapper;
+
+    @Autowired
+    private PetService petService;
+
+
 
     @Bean
     public CommandLineRunner initialData() {
@@ -76,20 +92,21 @@ public class DbInit {
             Pet cat = createCat();
             petRepository.save(cat);
 
+            PetDto catDto = createPetDto();
+            petService.update2(catDto);
+
             Appointment appointment = createAppointment(cat, mikeTheDog);
             user.addAppointment(appointment);
             appointmentRepository.save(appointment);
 
             // after creating an entity relationship
-            // create parent
+            // create paren
             // create child
             // set child on parent or add parent to child
+
             Adoption adoption = createAdoption(mikeTheDog, user);
+                   // save child or parent
 
-            boolean checkPetAdoption = mikeTheDog.isAvailable();
-            System.out.println("checkPetAdoption is " + checkPetAdoption);
-
-            // save child or parent
             adoptionRepository.save(adoption);
 
             Donation donation = createDonation();
@@ -165,6 +182,8 @@ public class DbInit {
         return pet;
     }
 
+
+
     private Adoption createAdoption(Pet pet, User user) {
         Adoption adoption = new Adoption();
         adoption.setAdoptionDate(LocalDate.now());
@@ -172,6 +191,7 @@ public class DbInit {
         adoption.setAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
         adoption.setPet(pet);
         pet.setAvailable(false);
+
         adoption.setUser(user);
 
         return adoption;
@@ -190,6 +210,16 @@ public class DbInit {
         donation.setProduct(Product.FOOD);
         donation.setDetails("Purina One");
         return donation;
+    }
+
+    private PetDto createPetDto(){
+        PetDto pet = new PetDto();
+        pet.setId(3L);
+        pet.setName("Mussy");
+        pet.setCategory(String.valueOf(Category.CAT));
+        pet.setDescription("big cat, green eyes");
+        pet.setAvailable(true);
+        return pet;
     }
 
     private Transfer createTransfer(User user) {

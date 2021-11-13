@@ -43,18 +43,18 @@ public class AdoptionController {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         // TODO: map user to user info
         User loggedUser = userService.findByEmail(email);
-        List<PetDto> pets = petService.getUserPetsAvailable();
-        AdoptionDto adoptionDto = new AdoptionDto(loggedUser.getId(), null, null, null, null);
-        model.addAttribute("adoptionDto", new AdoptionDto());
+//        List<PetDto> pets = petService.getUserPetsAvailable();
+        AdoptionDto adoptionDto = new AdoptionDto(loggedUser, null, null, null, null);
+        model.addAttribute("adoptionDto", adoptionDto);
         model.addAttribute("loggedUser", loggedUser);
-        model.addAttribute("pets", pets);
+//        model.addAttribute("pets", pets);
         return "adoption/adoption-add";
     }
 
     @PostMapping("/adoptions/add")
-    public String addAdoptForm(@ModelAttribute("adoptionDto") AdoptionDto adoptionDto,
-                               @ModelAttribute("loggedUser") User loggedUser,
-                               @ModelAttribute("pets") List<PetDto> pets )   {
+    public String addAdoptForm(@ModelAttribute("adoptionDto") AdoptionDto adoptionDto ){
+
+//        adoptionDto.setPetDto(petDto);
         adoptionService.save(adoptionDto);
         return "redirect:/home";
     }

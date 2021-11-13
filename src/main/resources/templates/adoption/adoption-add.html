@@ -16,10 +16,10 @@
 
 <div class="d-flex justify-content-center">
     <form class="row g-3" method="post" style="height: 250px;width: 550px" th:action="@{/adoptions/add}"
-          th:object="${adoptionDto}">
+          th:object="${adoptionDto}" >
         <div class="col-md-6">
             <label class="form-label" for="inputFirstName">First Name</label>
-            <input class="form-control" id="inputFirstName" type="text" th:field="${loggedUser.firstName}">
+            <input class="form-control" id="inputFirstName" type="text" th:field="${loggedUser.firstName}" >
         </div>
         <div class="col-md-6">
             <label class="form-label" for="inputLastName">Last Name</label>
@@ -35,21 +35,26 @@
         </div>
         <div class="mb-3">
             <label class="form-label" for="formFile1">Address</label>
-            <input class="form-control" id="formFile1" type="text" th:field="*{address}">
+            <input class="form-control" id="formFile1" type="text" th:field="${adoptionDto.address}">
         </div>
-        <div>
-            <label class="form-label" for="dateOfAdoption">Date</label>
-            <input class="form-select" id="dateOfAdoption" type="date" th:field="*{date}">
-        </div>
+<!--        <div>-->
+<!--            <label class="form-label" for="dateOfAdoption">Date</label>-->
+<!--            <input class="form-select" id="dateOfAdoption" type="date" th:field="*{date}">-->
+<!--        </div>-->
         <div class="mb-3">
             <label class="form-label" for="formFile3">Social Security Number</label>
             <input class="form-control" id="formFile3" type="text" th:field="*{socialSecurityNumber}">
         </div>
-        <th:block th:object="${pets}" th:each="pet : ${pets}">
-            <input type="checkbox" name="selectedActive" id="selectedActive" th:value="${pet.name}"/>
-            <label th:text="${pet.name}">Pets</label>
-            <br/>
-        </th:block>
+
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label" for="formFile4">Pet Name</label>-->
+<!--            <input class="form-control" id="formFile4" type="text" th:field="*{pet.name}">-->
+<!--        </div>-->
+<!--        <th:block th:object="${pets}" th:each="pet : ${pets}">-->
+<!--            <input type="checkbox" name="selectedActive" id="selectedActive" th:value="${pet.name}"/>-->
+<!--            <label th:text="${pet.name}">Pets</label>-->
+<!--            <br/>-->
+<!--        </th:block>-->
 
         <!--            <div class="col-md-4">-->
         <!--                <label class="form-label" for="inputState">Pet</label>-->

@@ -71,11 +71,8 @@ public class PetService {
     }
 
     public List<PetDto> getUserPetsAvailable() {
-        User user = userService.findLoggedUser();
-        return user.getAdoptions().stream()
-                .map(adoption -> adoption.getPet())
-                .map(pet -> petMapper.map(pet))
-                .filter(petInfo -> petInfo.isAvailable())
+        return findAll().stream()
+                .filter(petDto -> petDto.isAvailable())
                 .collect(Collectors.toList());
     }
 
@@ -97,13 +94,16 @@ public class PetService {
                 .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
 
-    public void update2(PetDto dto) {
+    public Pet update2(PetDto dto) {
         Pet petToUpdate = petRepository.findById(dto.getId())
                 .orElseThrow(() -> {
                     throw new ResourceNotFoundException("pet not found");
                 });
-        Pet updatedPet = petMapper.update(petToUpdate, dto);
-        petRepository.save(updatedPet);
+        petToUpdate.setName(dto.getName());
+        petToUpdate.setDescription(dto.getDescription());
+        petToUpdate.setAvailable(dto.isAvailable());
+
+       return petRepository.save( petToUpdate);
     }
 
     public void deleteById(Long id) {

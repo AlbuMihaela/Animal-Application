@@ -16,12 +16,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AdoptionDto {
 
 
-    private Long userId;
+    private User user;
     private String date;
     private String address;
     private String socialSecurityNumber;
-    private PetDto petDto;
+    private Pet pet;
 
+    public Pet getPet() {
+        return pet;
+    }
 
-
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
 }

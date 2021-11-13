@@ -19,11 +19,11 @@ public class AdoptionMapper {
     public Adoption map(AdoptionDto adoptionDto) {
         Adoption adoption = new Adoption();
 
-        adoption.setAdoptionDate(LocalDate.parse(adoptionDto.getDate()));
+//        adoption.setAdoptionDate(LocalDate.parse(adoptionDto.getDate()));
         adoption.setSocialSecurityNumber(adoptionDto.getSocialSecurityNumber());
         adoption.setAddress(adoptionDto.getAddress());
-        adoption.setPet(petMapper.map(adoptionDto.getPetDto()));
-        adoption.setUser(userService.findById(adoptionDto.getUserId()));
+//        adoption.setPet(adoptionDto.getPet());
+        adoption.setUser(adoptionDto.getUser());
         return adoption;
     }
 
@@ -32,8 +32,8 @@ public class AdoptionMapper {
         adoptionDto.setDate(String.valueOf(adoption.getAdoptionDate()));
         adoptionDto.setSocialSecurityNumber(adoption.getSocialSecurityNumber());
         adoptionDto.setAddress(adoption.getAddress());
-        adoptionDto.setPetDto(petMapper.map(adoption.getPet()));
-        adoptionDto.setUserId(adoption.getUser().getId());
+        adoptionDto.setPet(adoption.getPet());
+        adoptionDto.setUser(adoption.getUser());
         return adoptionDto;
     }
 

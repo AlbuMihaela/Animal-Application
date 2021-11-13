@@ -55,9 +55,7 @@ public class AppointmentController {
     }
 //TODO de ce nu putem salva un appointment in baza de date? ne da eroare!
     @PostMapping("/appointments/add")
-    public String addPetForm(@ModelAttribute("appointmentDto") AppointmentDto appointmentDto,
-                             @ModelAttribute("loggedUser") User loggedUser,
-                             @ModelAttribute("pets")  List<PetDto> pets) {
+    public String addPetForm(@ModelAttribute("appointmentDto") AppointmentDto appointmentDto){
         appointmentService.save(appointmentDto);
         return "redirect:/home";
     }
