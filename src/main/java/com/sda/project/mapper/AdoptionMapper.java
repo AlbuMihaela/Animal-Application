@@ -22,7 +22,7 @@ public class AdoptionMapper {
 //        adoption.setAdoptionDate(LocalDate.parse(adoptionDto.getDate()));
         adoption.setSocialSecurityNumber(adoptionDto.getSocialSecurityNumber());
         adoption.setAddress(adoptionDto.getAddress());
-//        adoption.setPet(adoptionDto.getPet());
+        adoption.setPet(adoptionDto.getPet());
         adoption.setUser(adoptionDto.getUser());
         return adoption;
     }
