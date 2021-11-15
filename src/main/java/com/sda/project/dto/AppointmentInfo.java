@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 public class AppointmentInfo {
 
-    private LocalDate date;
+    private LocalDateTime date;
     private Set<Pet> pets;
     private User user;
 

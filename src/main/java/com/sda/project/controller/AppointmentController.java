@@ -53,7 +53,7 @@ public class AppointmentController {
         model.addAttribute("appointmentDto", appointmentDto);
         model.addAttribute("loggedUser", loggedUser);
         model.addAttribute("pets", pets);
-        model.addAttribute("localDate", LocalDate.now());
+        model.addAttribute("localDateTime", LocalDateTime.now());
         return "appointment/appointment-add";
     }
 

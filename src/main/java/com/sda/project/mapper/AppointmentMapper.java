@@ -19,7 +19,7 @@ public class AppointmentMapper {
     public Appointment map(AppointmentDto appointmentDto) {
         Appointment appointment = new Appointment();
         appointment.setUser(appointmentDto.getUser());
-        appointment.setDate(LocalDate.parse(appointmentDto.getDate()));
+        appointment.setDate(LocalDateTime.parse(appointmentDto.getDate()));
 
         appointment.setPets(appointmentDto.getPets());
         return appointment;
@@ -37,7 +37,6 @@ public class AppointmentMapper {
         AppointmentInfo dto = new AppointmentInfo();
         dto.setDate(appointment.getDate());
         dto.setPets(appointment.getPets());
-
         dto.setUser(appointment.getUser());
         return dto;
     }

@@ -30,16 +30,16 @@
 
         <div class="form-outline mb-2">
             <label class="form-label" for="appointment-date">Date</label>
-            <input class="form-select" id="appointment-date" th:field="${appointmentDto.date}" type="date">
+            <input class="form-select" id="appointment-date" th:field="${appointmentDto.date}" type="datetime-local">
             <!--               th:text="${#temporals.format(localDateTime, 'yyyy,mm,dd,hh,mm')}">-->
 
         </div>
 
         <!--    check box with multiple choices-->
         <!--    //TODO cum facem ca userul sa poata bifa doar 2 animale din toata lista?-->
-            <th:block th:field="${appointmentDto.pets}" th:each="pet : ${pets}" >
-                <input type="checkbox" name="selectedActive" id="selectedActive" th:text="${pet.name}"/>
-                <label th:value="${pet.id}"></label>
+            <th:block th:each="pet : ${pets}" >
+                <input type="checkbox" name="selectedActive" th:text="${pet.name}" th:value="${pet.id}" th:field="${appointmentDto.pets}">
+                <label  th:value="${pet.id}"></label>
                 <br/>
             </th:block>
 
