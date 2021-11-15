@@ -8,41 +8,52 @@
     <title>Appointment form</title>
 </head>
 <body>
+<div class="d-flex justify-content-center">
+    <img src="/images/logo.png" style="width: 110px;height: 110px"><br>
+</div>
+<br>
+<h6 style="text-align:center"><b>Appointment Form:</b></h6>
+<br>
 
-<form class="px-md-0" method="post" th:action="@{/appointments/add}" th:object="${appointmentDto}">
+<div class="d-flex justify-content-center">
+    <form class="px-md-0" method="post" th:action="@{/appointments/add}" th:object="${appointmentDto}">
 
-    <div class="form-outline mb-0">
-        <label class="form-label" for="firstName">First name</label>
-        <input class="form-control" id="firstName" th:field="${loggedUser.firstName}" type="text"/>
-    </div>
+        <div class="form-outline mb-0">
+            <label class="form-label" for="firstName">First name</label>
+            <input class="form-control" id="firstName" th:field="${loggedUser.firstName}" type="text"/>
+        </div>
 
-    <div class="form-outline mb-2">
-        <label class="form-label" for="lastName">Last name</label>
-        <input class="form-control" id="lastName" th:field="${loggedUser.lastName}" type="text"/>
-    </div>
+        <div class="form-outline mb-2">
+            <label class="form-label" for="lastName">Last name</label>
+            <input class="form-control" id="lastName" th:field="${loggedUser.lastName}" type="text"/>
+        </div>
 
-    <div class="form-outline mb-2">
-        <label class="form-label" for="appointment-date">Data</label>
-        <input class="form-select" id="appointment-date" th:field="*{date}" type="datetime-local"/>
-        <span class="add-on"><i class="icon-th"></i></span>
-    </div>
+        <div class="form-outline mb-2">
+            <label class="form-label" for="appointment-date">Date</label>
+            <input class="form-select" id="appointment-date" th:field="${appointmentDto.date}" type="date">
+            <!--               th:text="${#temporals.format(localDateTime, 'yyyy,mm,dd,hh,mm')}">-->
 
-    <!--    check box with multiple choices-->
-    <!--    //TODO cum facem ca userul sa poata bifa doar 2 animale din toata lista?-->
-    <th:block th:object="${pets}" th:each="pet : ${pets}" >
-        <input type="checkbox" name="selectedActive" id="selectedActive" th:value="${pet.name}"/>
-        <label th:text="${pet.name}"></label>
-        <br/>
-    </th:block>
+        </div>
 
-    <div class="d-grid gap-2 col-6 mx-auto">
-        <a th:href="@{/home}">
-            <button class="btn btn-secondary" id="cancel" type="button" width="30px">Cancel
-            </button>
-        </a>
-        <button class="btn btn-success" id="save" type="submit" width="30px">Add appointment</button>
-    </div>
-</form>
+        <!--    check box with multiple choices-->
+        <!--    //TODO cum facem ca userul sa poata bifa doar 2 animale din toata lista?-->
+            <th:block th:field="${appointmentDto.pets}" th:each="pet : ${pets}" >
+                <input type="checkbox" name="selectedActive" id="selectedActive" th:text="${pet.name}"/>
+                <label th:value="${pet.id}"></label>
+                <br/>
+            </th:block>
 
+        <div class="d-grid gap-2 col-6 mx-auto">
+
+            <button class="btn btn-success" id="save" type="submit" width="30px">Add appointment</button>
+
+            <a th:href="@{/home}">
+                <button class="btn btn-secondary" id="cancel" type="button" width="30px">Cancel
+                </button>
+            </a>
+
+        </div>
+    </form>
+</div>
 </body>
 </html>

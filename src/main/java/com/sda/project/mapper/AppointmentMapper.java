@@ -15,19 +15,20 @@ import java.util.stream.Collectors;
 
 @Component
 public class AppointmentMapper {
-    @Autowired
-    private  PetMapper petMapper;
 
     public Appointment map(AppointmentDto appointmentDto) {
         Appointment appointment = new Appointment();
-        appointment.setDate(LocalDateTime.parse(appointmentDto.getDate()));
+        appointment.setUser(appointmentDto.getUser());
+        appointment.setDate(LocalDate.parse(appointmentDto.getDate()));
+
+        appointment.setPets(appointmentDto.getPets());
         return appointment;
     }
 
     public AppointmentDto map(Appointment appointment) {
         AppointmentDto appointmentDto = new AppointmentDto();
         appointmentDto.setUser(appointment.getUser());
-        appointmentDto.setPetsDto(appointment.getPets().stream().map(pet-> petMapper.map(pet)).collect(Collectors.toSet()));
+        appointmentDto.setPets(appointment.getPets());
         appointmentDto.setDate(String.valueOf(appointment.getDate()));
         return appointmentDto;
     }
@@ -36,6 +37,7 @@ public class AppointmentMapper {
         AppointmentInfo dto = new AppointmentInfo();
         dto.setDate(appointment.getDate());
         dto.setPets(appointment.getPets());
+
         dto.setUser(appointment.getUser());
         return dto;
     }

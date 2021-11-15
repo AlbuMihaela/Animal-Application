@@ -36,7 +36,8 @@ public class AppointmentService {
     }
 
     public Appointment save(AppointmentDto appointmentDto) {
-        userService.updateByUserId(appointmentDto.getUser().getId());
+        appointmentDto.setUser(userService.findLoggedUser());
+
         return appointmentRepository.save(appointmentMapper.map(appointmentDto));
     }
 

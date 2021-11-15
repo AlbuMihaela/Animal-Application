@@ -199,7 +199,7 @@ public class DbInit {
 
     private Appointment createAppointment(Pet pet1, Pet pet2) {
         Appointment appointment = new Appointment();
-        appointment.setDate(LocalDateTime.now());
+        appointment.setDate(LocalDate.now());
         appointment.addPet(pet1);
         appointment.addPet(pet2);
         return appointment;

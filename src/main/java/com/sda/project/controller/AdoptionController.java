@@ -62,7 +62,6 @@ public class AdoptionController {
 
     @PostMapping("/adoptions/add")
     public String addAdoptForm( AdoptionDto adoptionDto) {
-
             adoptionService.save(adoptionDto);
             return "redirect:/home";
 

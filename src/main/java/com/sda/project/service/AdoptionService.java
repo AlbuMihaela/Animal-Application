@@ -39,11 +39,6 @@ public class AdoptionService {
 
     public void save(AdoptionDto adoptionDto) {
         adoptionDto.getPet().setAvailable(false);
-//        Pet petToUpdate = petRepository.findByNameIgnoreCase(adoptionDto.getPet().getName())
-//                .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
-//        adoptionDto.setPet(petToUpdate);
-//        petToUpdate.setAvailable(false);
-//        petService.update2(petMapper.map(adoptionDto.getPet()));
 
         adoptionDto.setUser(userService.findLoggedUser());
         adoptionRepository.save(adoptionMapper.map(adoptionDto));

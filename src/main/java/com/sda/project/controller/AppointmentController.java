@@ -1,5 +1,6 @@
 package com.sda.project.controller;
 
+import com.sda.project.dto.AdoptionDto;
 import com.sda.project.dto.AppointmentDto;
 import com.sda.project.dto.AppointmentInfo;
 import com.sda.project.dto.PetDto;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -44,18 +47,19 @@ public class AppointmentController {
     @GetMapping("/appointments/add")
     public String getAppointmentForm(Model model) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        // TODO: map user to user info
         User loggedUser = userService.findByEmail(email);
-//        Long loggedUserId = loggedUser.getId();
         List<PetDto> pets = petService.getUserPetsAvailable();
-        model.addAttribute("appointmentDto", new AppointmentDto());
+        AppointmentDto appointmentDto = new AppointmentDto(loggedUser, null, null);
+        model.addAttribute("appointmentDto", appointmentDto);
         model.addAttribute("loggedUser", loggedUser);
         model.addAttribute("pets", pets);
+        model.addAttribute("localDate", LocalDate.now());
         return "appointment/appointment-add";
     }
-//TODO de ce nu putem salva un appointment in baza de date? ne da eroare!
+
+    //TODO de ce nu putem salva un appointment in baza de date? ne da eroare!
     @PostMapping("/appointments/add")
-    public String addPetForm(@ModelAttribute("appointmentDto") AppointmentDto appointmentDto){
+    public String addAppointmentForm(AppointmentDto appointmentDto) {
         appointmentService.save(appointmentDto);
         return "redirect:/home";
     }
@@ -69,7 +73,7 @@ public class AppointmentController {
     public String getMyAppointmentsPage(Model model) {
         User user = userService.findLoggedUser();
         List<AppointmentInfo> myAppointments = appointmentService.findAppointmentsByUser(user);
-        model.addAttribute("myAppointmentsInfo",myAppointments);
+        model.addAttribute("myAppointmentsInfo", myAppointments);
         return "appointment/my-appointments";
     }
 }
