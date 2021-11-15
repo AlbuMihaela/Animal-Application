@@ -38,10 +38,12 @@
             <label class="form-label" for="formFile1">Address</label>
             <input class="form-control" id="formFile1" type="text" th:field="${adoptionDto.address}">
         </div>
-        <!--        <div>-->
-        <!--            <label class="form-label" for="dateOfAdoption">Date</label>-->
-        <!--            <input class="form-select" id="dateOfAdoption" type="date" th:field="*{date}">-->
-        <!--        </div>-->
+                <div>
+                    <label class="form-label" for="dateOfAdoption">Date</label>
+                    <input class="form-select" id="dateOfAdoption" type="date" th:field="${adoptionDto.date}"
+                           th:text="${#temporals.format(localDate, 'dd-MM-yyyy')}">
+
+                </div>
         <div class="mb-3">
             <label class="form-label" for="formFile3">Social Security Number</label>
             <input class="form-control" id="formFile3" type="text" th:field="*{socialSecurityNumber}">

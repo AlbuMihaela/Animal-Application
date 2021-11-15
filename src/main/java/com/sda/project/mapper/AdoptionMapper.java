@@ -19,7 +19,7 @@ public class AdoptionMapper {
     public Adoption map(AdoptionDto adoptionDto) {
         Adoption adoption = new Adoption();
 
-//        adoption.setAdoptionDate(LocalDate.parse(adoptionDto.getDate()));
+        adoption.setAdoptionDate(LocalDate.parse(adoptionDto.getDate()));
         adoption.setSocialSecurityNumber(adoptionDto.getSocialSecurityNumber());
         adoption.setAddress(adoptionDto.getAddress());
         adoption.setPet(adoptionDto.getPet());

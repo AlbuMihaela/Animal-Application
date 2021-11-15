@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -54,6 +55,7 @@ public class AdoptionController {
         model.addAttribute("adoptionDto", adoptionDto);
         model.addAttribute("loggedUser", loggedUser);
         model.addAttribute("pets", pets);
+        model.addAttribute("localDate", LocalDate.now());
 
         return "adoption/adoption-add";
     }
