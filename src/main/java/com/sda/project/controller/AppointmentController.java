@@ -1,12 +1,9 @@
 package com.sda.project.controller;
 
-import com.sda.project.dto.AdoptionDto;
 import com.sda.project.dto.AppointmentDto;
 import com.sda.project.dto.AppointmentInfo;
 import com.sda.project.dto.PetDto;
-import com.sda.project.model.Pet;
 import com.sda.project.model.User;
-import com.sda.project.repository.PetRepository;
 import com.sda.project.service.AppointmentService;
 import com.sda.project.service.PetService;
 import com.sda.project.service.UserService;
@@ -15,13 +12,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 
 @Controller
