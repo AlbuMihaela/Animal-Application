@@ -63,6 +63,8 @@ public class PetService {
     }
 
     public List<PetInfo> getUserPets() {
+        log.info("get user pets");
+
         User user = userService.findLoggedUser();
         return user.getAdoptions().stream()
                 .map(adoption -> adoption.getPet())
@@ -70,7 +72,9 @@ public class PetService {
                 .collect(Collectors.toList());
     }
 
-    public List<PetDto> getUserPetsAvailable() {
+    public List<PetDto> getAvailablePets() {
+        log.info("get available pets");
+
         return findAll().stream()
                 .filter(petDto -> petDto.isAvailable())
                 .collect(Collectors.toList());
@@ -89,6 +93,8 @@ public class PetService {
     }
 
     public List<PetInfo> findByCategory(Category category) {
+        log.info("find pets by category {}", category);
+
         return petRepository.findByCategory(category)
                 .map(pets -> petMapper.mapPetsToDtos(pets))
                 .orElseThrow(() -> new ResourceNotFoundException("pet not found"));

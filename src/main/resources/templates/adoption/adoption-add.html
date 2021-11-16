@@ -4,62 +4,75 @@
     <meta charset="UTF-8">
     <title>Adoption form</title>
     <div th:replace="fragments/head-css :: head-css"/>
-
 </head>
+
 <body>
+
 <div class="d-flex justify-content-center">
     <img src="/images/logo.png" style="width: 110px;height: 110px"><br>
 </div>
-<br>
-<h6 style="text-align:center"><b>Adoption Form:</b></h6>
-<br>
+
+<h6 style="text-align:center">Adoption Form</h6>
 
 <div class="d-flex justify-content-center">
-    <form class="row g-3" method="post" style="height: 250px;width: 550px" th:object="${adoptionDto}"
-          th:action="@{/adoptions/add}">
 
+    <form class="row g-3" method="post" style="height: 250px;width: 550px" th:action="@{/adoptions/add}"
+          th:object="${adoptionDto}">
+
+        <!-- first name -->
         <div class="col-md-6">
             <label class="form-label" for="inputFirstName">First Name</label>
             <input class="form-control" id="inputFirstName" type="text" th:field="${loggedUser.firstName}">
         </div>
+
+        <!-- last name -->
         <div class="col-md-6">
             <label class="form-label" for="inputLastName">Last Name</label>
             <input class="form-control" id="inputLastName" type="text" th:field="${loggedUser.lastName}">
         </div>
+
+        <!-- email -->
         <div class="col-12">
             <label class="form-label" for="email">E-mail</label>
             <input class="form-control" id="email" type="email" th:field="${loggedUser.email}">
         </div>
+
+        <!-- phone number -->
         <div class="col-12">
             <label class="form-label" for="phoneNumber">Phone Number</label>
             <input class="form-control" id="phoneNumber" type="text" th:field="${loggedUser.phoneNumber}">
         </div>
 
+        <!-- social security number -->
         <div class="mb-3">
-            <label class="form-label" for="formFile1">Address</label>
-            <input class="form-control" id="formFile1" type="text" th:field="${adoptionDto.address}">
+            <label class="form-label" for="address">Address</label>
+            <input class="form-control" id="address" th:field="${adoptionDto.address}" type="text">
         </div>
 
+        <!-- adoption date -->
         <div>
-            <label class="form-label" for="dateOfAdoption">Date</label>
-            <input class="form-select" id="dateOfAdoption" th:field="${adoptionDto.date}"
-                   type="date">
+            <label class="form-label" for="adoptionDate">Date</label>
+            <input class="form-select" id="adoptionDate" th:field="${adoptionDto.date}" type="date">
             <!--&lt;!&ndash;&ndash;&gt;th:text="${#temporals.format(localDate, 'dd-MM-yyyy')}"-->
         </div>
 
+        <!-- social security number -->
         <div class="mb-3">
-            <label class="form-label" for="formFile3">Social Security Number</label>
-            <input class="form-control" id="formFile3" type="text" th:field="*{socialSecurityNumber}">
+            <label class="form-label" for="socialSecurityNumber">Social Security Number</label>
+            <input class="form-control" id="socialSecurityNumber" th:field="*{socialSecurityNumber}" type="text">
         </div>
 
         <!--        <div class="mb-3">-->
         <!--            <label class="form-label" for="formFile4">Pet Name</label>-->
         <!--            <input class="form-control" id="formFile4" type="text" th:field="*{pet.name}">-->
         <!--        </div>-->
+
+        <!-- select pet -->
         <div class=" mb-3">
-            <label class="form-label" for="formFile4"> Pets </label>
+            <label class="form-label" for="petSelect">Pets</label>
+
             <div>
-                <select class="form-control" th:field="${adoptionDto.pet}" id="formFile4" required>
+                <select class="form-control" id="petSelect" required th:field="${adoptionDto.pet}">
                     <th:block>
                         <!--                        <option selected th:value="null">Select a pet to adopt</option>-->
                         <option th:each="pet : ${pets}"
@@ -80,10 +93,12 @@
         <!--            </div>-->
 
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit</button>
             <a class="btn btn-secondary" th:href="@{/home}" type="button">Cancel</a>
+            <button class="btn btn-primary" type="submit">Adopt pet</button>
         </div>
     </form>
+
 </div>
+
 </body>
 </html>
