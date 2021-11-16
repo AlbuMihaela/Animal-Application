@@ -11,4 +11,5 @@ public class PetInfo {
     private String description;
     private boolean isAvailable;
 
+    private String photo;
 }

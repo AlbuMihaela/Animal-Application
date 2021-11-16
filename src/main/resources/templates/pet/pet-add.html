@@ -55,7 +55,13 @@
 </nav>
 <h2>Add pet</h2>
 
-<form class="row g-3 needs-validation" method="post" novalidate th:action="@{/pets/add}" th:object="${petDto}">
+<form class="row g-3 needs-validation" method="post" novalidate th:action="@{/pets/add}" th:object="${petDto}" enctype="multipart/form-data">
+
+        <div>
+            <label>Photo: </label>
+            <input type="file" name="image" accept="image/png, image/jpeg" />
+        </div>
+
     <div>
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Name</label>
