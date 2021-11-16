@@ -1,15 +1,17 @@
 package com.sda.project.controller;
 
+import com.sda.project.config.FileUploadUtil;
 import com.sda.project.dto.PetDto;
 import com.sda.project.model.Category;
 import com.sda.project.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 public class PetController {
@@ -42,7 +44,17 @@ public class PetController {
     }
 
     @PostMapping("/pets/add")
-    public String addPetForm(@ModelAttribute("petDto") PetDto petDto) {
+    public String addPetForm(@ModelAttribute("petDto") PetDto petDto,
+                             @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        petDto.setPhoto(fileName);
+
+
+
+        String uploadDir = "pet-photos/" + petDto.getId();
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
         petService.save(petDto);
         return "redirect:/pets";
     }

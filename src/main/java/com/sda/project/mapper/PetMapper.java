@@ -28,6 +28,7 @@ public class PetMapper {
         entity.setDescription(dto.getDescription());
         entity.setAdoption(dto.getAdoption());
         entity.setAvailable(dto.isAvailable());
+        entity.setPhoto(dto.getPhoto());
         return entity;
     }
 
@@ -37,6 +38,7 @@ public class PetMapper {
         petToUpdate.setCategory(Category.valueOf(data.getCategory()));
         petToUpdate.setDescription(data.getDescription());
         petToUpdate.setAvailable(data.isAvailable());
+        petToUpdate.setPhoto(data.getPhoto());
         return petToUpdate;
     }
 
@@ -49,6 +51,7 @@ public class PetMapper {
         dto.setDescription(entity.getDescription());
         dto.setAdoption(entity.getAdoption());
         dto.setAvailable(entity.isAvailable());
+        dto.setPhoto(entity.getPhoto());
         return dto;
     }
 
@@ -59,6 +62,7 @@ public class PetMapper {
         entity.setCategory(petInfo.getCategory());
         entity.setDescription(petInfo.getDescription());
         entity.setAvailable(petInfo.isAvailable());
+        entity.setPhoto(petInfo.getPhoto());
         return entity;
     }
 
@@ -69,6 +73,7 @@ public class PetMapper {
         petInfo.setCategory(entity.getCategory());
         petInfo.setDescription(entity.getDescription());
         petInfo.setAvailable(entity.isAvailable());
+        petInfo.setPhoto(entity.getPhoto());
         return petInfo;
     }
 }

@@ -26,6 +26,8 @@
             <!-- table body -->
             <tbody>
             <tr th:each="petDto : ${petsDto}">
+<!--                <img th:src="/@{${petDto.photosImagePath}}" />-->
+
                 <td th:text="${petDto.name}"></td>
                 <td th:text="${petDto.category}"></td>
                 <td th:text="${petDto.description}"></td>

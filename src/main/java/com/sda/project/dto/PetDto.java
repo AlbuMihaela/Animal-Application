@@ -6,6 +6,8 @@ import com.sda.project.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Transient;
+
 @Getter
 @Setter
 public class PetDto {
@@ -18,6 +20,8 @@ public class PetDto {
     private boolean isAvailable;
     private Adoption adoption;
 
+    private String photo;
+
 
 
     public Adoption getAdoption() {
@@ -28,6 +32,19 @@ public class PetDto {
         this.adoption = adoption;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
 
+    @Transient
+    public String getPhotosImagePath() {
+        if (photo == null || id == null) return null;
+
+        return "/pet-photos/" + id + "/" + photo;
+    }
 }

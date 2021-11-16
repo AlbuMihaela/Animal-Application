@@ -22,6 +22,8 @@ public class Pet {
     private String description;
     private boolean isAvailable;
 
+    private String photo;
+
     @OneToOne(mappedBy = "pet",
             fetch = FetchType.LAZY)
     private Adoption adoption;
@@ -43,6 +45,7 @@ public class Pet {
     public void setAdoption(Adoption adoption) {
         this.adoption = adoption;
     }
+
 }
 
 
