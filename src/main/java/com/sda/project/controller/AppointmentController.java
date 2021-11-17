@@ -42,7 +42,7 @@ public class AppointmentController {
     public String getAppointmentForm(Model model) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         User loggedUser = userService.findByEmail(email);
-        List<PetDto> pets = petService.getUserPetsAvailable();
+        List<PetDto> pets = petService.getAvailablePets();
         AppointmentDto appointmentDto = new AppointmentDto(loggedUser, null, null);
         model.addAttribute("appointmentDto", appointmentDto);
         model.addAttribute("loggedUser", loggedUser);
