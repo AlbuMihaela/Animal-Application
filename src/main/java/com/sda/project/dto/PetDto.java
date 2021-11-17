@@ -42,9 +42,9 @@ public class PetDto {
 
 
     @Transient
-    public String getPhotosImagePath() {
+    public String getPhotoImagePath() {
         if (photo == null || id == null) return null;
 
-        return "/pet-photos/" + id + "/" + photo;
+        return "/resources/static/images/pet-photos/" + id + "/" + photo;
     }
 }

@@ -51,7 +51,7 @@ public class PetController {
 
 
 
-        String uploadDir = "pet-photos/" + petDto.getId();
+        String uploadDir = "/resources/static/images/pet-photos/" + petDto.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
