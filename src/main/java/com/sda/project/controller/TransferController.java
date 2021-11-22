@@ -39,8 +39,8 @@ public class TransferController {
         return "transfer/transfer-add";
     }
 
-    @PostMapping("transfers/add")
-    public String addDonationForm(@ModelAttribute("transferDto") TransferDto transferDto) {
+    @PostMapping("/transfers/add")
+    public String addDonationForm(@ModelAttribute TransferDto transferDto) {
         transferService.save(transferDto);
         return "redirect:/home";
     }

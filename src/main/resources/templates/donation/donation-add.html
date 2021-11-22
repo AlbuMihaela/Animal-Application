@@ -14,7 +14,7 @@
 </div>
 
 <div>
-        <!-- form header -->
+    <!-- form header -->
     <h2>Donate</h2>
 </div>
 
@@ -74,15 +74,26 @@
 
         <div class="form-outline">
             <label class="form-label">Details</label>
-            <textarea class="form-control" id="textAreaExample" rows="4" th:field="*{details}"></textarea>
+<!--            <div th:switch="${user.gender}">-->
+<!--                <p th:case="'F'">Female</p>-->
+<!--                <p th:case="'M'">Male</p>-->
+<!--                <p th:case="*">Not specified</p>-->
+<!--            </div>-->
+
+            <textarea class="form-control" id="textAreaExample" rows="4"
+                      th:field="*{details}">Details</textarea>
         </div>
 
         <!-- actions -->
         <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
             <button class="btn btn-outline-success" type="submit">Donate</button>
-            <a th:href="@{/donations}">
+
+            <a th:href="@{/home}">
                 <button class="btn btn-outline-secondary" id="cancel" name="cancel" type="button">Cancel</button>
             </a>
+
+
+
             <!--            <a class="btn btn-outline-secondary" th:href="@{/donations}" type="button">Cancel</a>-->
         </div>
     </form>

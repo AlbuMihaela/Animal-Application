@@ -4,6 +4,7 @@ import com.sda.project.dto.AddDonation;
 import com.sda.project.dto.DonationInfo;
 import com.sda.project.mapper.DonationMapper;
 import com.sda.project.model.Donation;
+import com.sda.project.model.Product;
 import com.sda.project.model.User;
 import com.sda.project.repository.DonationRepository;
 import com.sda.project.repository.UserRepository;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.webjars.NotFoundException;
 
 import java.util.List;
@@ -41,6 +43,10 @@ public class DonationService {
     public void save(AddDonation addDonation) {
         User loggedUser = userService.findLoggedUser();
         Donation donationToSave = donationMapper.mapToDonation(addDonation, loggedUser);
+        if(donationToSave.getProduct().equals(Product.MONEY)){
+            donationToSave.setDetails("transfer");
+
+        }
         donationRepository.save(donationToSave);
     }
 

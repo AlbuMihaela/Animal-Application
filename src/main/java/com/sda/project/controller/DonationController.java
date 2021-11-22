@@ -2,6 +2,7 @@ package com.sda.project.controller;
 
 import com.sda.project.dto.AddDonation;
 import com.sda.project.dto.DonationInfo;
+import com.sda.project.model.Product;
 import com.sda.project.model.User;
 import com.sda.project.service.DonationService;
 import com.sda.project.service.UserService;
@@ -28,11 +29,11 @@ public class DonationController {
         this.userService = userService;
     }
 
-        @GetMapping("/donations")
-        public String getDonationsPage(Model model) {
-            model.addAttribute("donations", donationService.findAll());
-            return "donation/donations";
-        }
+    @GetMapping("/donations")
+    public String getDonationsPage(Model model) {
+        model.addAttribute("donations", donationService.findAll());
+        return "donation/donations";
+    }
 
     @GetMapping("/donations/add")
     public String getDonationsForm(Model model) {
@@ -50,8 +51,15 @@ public class DonationController {
 
     @PostMapping("donations/add")
     public String add(@ModelAttribute("donation") AddDonation addDonation) {
-        donationService.save(addDonation);
-        return "redirect:/my-donations";
+        if (addDonation.getProduct().equals(Product.MONEY)) {
+            addDonation.setDetails("transfer");
+            donationService.save(addDonation);
+            return "redirect:/transfers/add";
+        } else {
+            donationService.save(addDonation);
+            return "redirect:/home";
+        }
+
     }
 
     @GetMapping("/my-donations")

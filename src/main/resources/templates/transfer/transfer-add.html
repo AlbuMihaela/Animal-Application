@@ -40,40 +40,42 @@
                                        title="Credit card number-16 digits">
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-12" th:text="${transferDto.cardExpirationDate}">Card expiration
+                                <label class="col-md-12" >Card expiration
                                     date</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="cc_exp_mo" size="0">
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
-                                        <option value="05">05</option>
-                                        <option value="06">06</option>
-                                        <option value="07">07</option>
-                                        <option value="08">08</option>
-                                        <option value="09">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="cc_exp_yr" size="0">
-                                        <option>2021</option>
-                                        <option>2022</option>
-                                        <option>2023</option>
-                                        <option>2024</option>
-                                        <option>2025</option>
-                                    </select>
-                                </div>
+                                <input type="date" th:text="${transferDto.cardExpirationDate}">
+                            </div>
+<!--                                <div class="col-md-4">-->
+<!--                                    <select class="form-control" name="cc_exp_mo" size="0">-->
+<!--                                        <option value="01">01</option>-->
+<!--                                        <option value="02">02</option>-->
+<!--                                        <option value="03">03</option>-->
+<!--                                        <option value="04">04</option>-->
+<!--                                        <option value="05">05</option>-->
+<!--                                        <option value="06">06</option>-->
+<!--                                        <option value="07">07</option>-->
+<!--                                        <option value="08">08</option>-->
+<!--                                        <option value="09">09</option>-->
+<!--                                        <option value="10">10</option>-->
+<!--                                        <option value="11">11</option>-->
+<!--                                        <option value="12">12</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4">-->
+<!--                                    <select class="form-control" name="cc_exp_yr" size="0">-->
+<!--                                        <option>2021</option>-->
+<!--                                        <option>2022</option>-->
+<!--                                        <option>2023</option>-->
+<!--                                        <option>2024</option>-->
+<!--                                        <option>2025</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" autocomplete="off" maxlength="3"
                                            pattern="\d{3}" title="Three digits at back of your card" required=""
                                            placeholder="CVC" th:text="${transferDto.cvc}">
                                 </div>
-                            </div>
-                            <br>
+<!--                            </div>-->
+<!--                            <br>-->
                             <div class="row">
                                 <label class="col-md-12">Amount</label>
                             </div>

@@ -18,7 +18,9 @@ public class TransferMapper {
         transfer.setCardExpirationDate(LocalDate.parse(transferDto.getCardExpirationDate()));
         transfer.setCvc(transferDto.getCvc());
         transfer.setAmount(Double.valueOf(transferDto.getAmount()));
-        transfer.setTransferDate(transferDto.getTransferDate());
+        transfer.setTransferDate(LocalDate.now());
+//        transfer.setTransferDate(transferDto.getTransferDate());
+
         return transfer;
     }
 
