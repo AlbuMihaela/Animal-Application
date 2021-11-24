@@ -6,6 +6,23 @@
 </head>
 
 <body>
+<!--exemplu-->
+<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="col" style="width:400px" th:each="dog:${dogs}">
+    <img class="card-img-top" src="/images/cat_food.png" alt="Card image" style="width:100%">
+    <div class="card" >
+        <h4 class="card-title" th:text="${dog.name}"></h4>
+        <p class="card-text" th:text="${dog.description}"></p>
+        <a th:href="@{/adoptions/add}">
+        <button class="btn btn-primary">Adopt me </button>
+        </a>
+        <a th:href="@{/appointments/add}">
+        <button class="btn btn-secondary">Visit me</button>
+        </a>
+    </div>
+    <br>
+</div>
+
 <!--facut de mine pe 3 coloane-->
 <div class="card-group">
     <div class="card" th:each="dog:${dogs}">
