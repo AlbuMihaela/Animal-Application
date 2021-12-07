@@ -18,5 +18,6 @@ public class AddDonation {
     private Long userId;
         private Product product;
     private String details;
+    private String email;
 
 }

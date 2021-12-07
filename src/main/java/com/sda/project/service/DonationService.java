@@ -69,7 +69,7 @@ public class DonationService {
         Long currentUserId = 1L;
 
         // set current user id on dto
-        return new AddDonation(currentUserId, null, null);
+        return new AddDonation(currentUserId, null, null,null);
     }
 
     public Set<DonationInfo> findDonationByUser(User user) {

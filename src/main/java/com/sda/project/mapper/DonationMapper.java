@@ -28,6 +28,7 @@ public class DonationMapper {
     public AddDonation mapToDonationAddDto(Donation entity) {
         AddDonation addDonationDto = new AddDonation();
         addDonationDto.setUserId(entity.getUser().getId());
+        addDonationDto.setEmail(entity.getUser().getEmail());
         addDonationDto.setProduct(entity.getProduct());
         addDonationDto.setDetails(entity.getDetails());
         return addDonationDto;

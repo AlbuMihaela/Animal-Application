@@ -43,7 +43,7 @@ public class DonationController {
         User loggedUser = userService.findByEmail(email);
         Long loggedUserId = loggedUser.getId();
 
-        AddDonation donation = new AddDonation(loggedUserId, null, null);
+        AddDonation donation = new AddDonation(loggedUserId, null, null,null);
         model.addAttribute("donation", donation);
         model.addAttribute("loggedUser", loggedUser);
         return "donation/donation-add";

@@ -13,19 +13,18 @@
             <!-- table header -->
             <thead>
             <tr>
+                <th scope="col">User E-mail</th>
                 <th scope="col">Products</th>
                 <th scope="col">Details</th>
-                <th scope="col">User E-mail</th>
-                //TODO sa adaugam si userul sa apara la admin in lista lui de donatii
             </tr>
             </thead>
 
             <!-- table body -->
             <tbody>
             <tr th:each="donation : ${donations}">
-                <td th:text="${donation.product}"></td>
+                <td th:text="${donation.email}"></td>
+                    <td th:text="${donation.product}"></td>
                 <td th:text="${donation.details}"></td>
-                <td th:text="${donation.userId}"></td>
             </tr>
             </tbody>
         </table>
