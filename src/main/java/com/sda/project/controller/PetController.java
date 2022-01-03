@@ -36,6 +36,11 @@ public class PetController {
         model.addAttribute("petsDto", petService.findAll());
         return "pet/pets";
     }
+    @GetMapping("/pets_user")
+    public String getPetsPageForUser(Model model) {
+        model.addAttribute("petsDto", petService.findAll());
+        return "pet/pets_user";
+    }
 
     @GetMapping("/pets/add")
     public String getAddForm(Model model) {

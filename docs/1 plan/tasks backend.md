@@ -69,3 +69,37 @@
 - acceptance testing
 - unit testing (mocks)
 - integration testing
+
+
+
+## backend
+- create schema
+- database connection 
+  - springboot parent 
+  - mysql connector
+  - spring data jpa 
+- main springboot class
+- entity
+- repository
+- service
+- controller
+- unit test
+- integration test
+
+
+## frontend
+- form template
+  - first name input
+  - last name input
+  - email input
+  - password input
+  - submit button `Create account`
+
+
+## test
+- go to index page 
+- click `Sign up` 
+- input data 
+- click `Create account`
+##
+##

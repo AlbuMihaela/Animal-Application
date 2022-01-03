@@ -22,7 +22,6 @@
 
 - add form
 - edit form
-- frontend validation
 - date picker
 
 ## fragments

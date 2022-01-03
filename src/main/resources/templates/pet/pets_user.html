@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <div th:replace="fragments/head-css :: head-css"/>
+    <title>Pets</title>
+</head>
+
+<body>
+<!--<div th:replace="fragments/header-admin :: navbar"/>-->
+<div class="container-fluid">
+    <div class="container">
+        <table class="table" method="get" th:action="@{/pets_user.html}" th:object="${petsDto}">
+            <!-- table header -->
+            <thead>
+            <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Description</th>
+<!--                <th scope="col">Availability</th>-->
+<!--                <th scope="col">Edit</th>-->
+<!--                <th scope="col">Delete</th>-->
+<!--                <th scope="col">User</th>-->
+<!--                <th scope="col"></th>-->
+            </tr>
+            </thead>
+
+            <!-- table body -->
+            <tbody>
+            <tr th:each="petDto : ${petsDto}">
+                <td>
+                <img th:src="@{${petDto.photoImagePath}}" />
+                </td>
+                <td th:text="${petDto.name}"></td>
+                <td th:text="${petDto.category}"></td>
+                <td th:text="${petDto.description}"></td>
+<!--                <td th:if="${petDto.adoption}" >-->
+                    <!--  cum afisez aici e-mailul userului care a facut adoptia? -->
+<!--                    <p th:text="${petDto.adoption.user.email}"></p>-->
+                </td>
+<!--                <td th:text="${petDto.isAvailable}"></td>-->
+<!--                &lt;!&ndash; actions &ndash;&gt;-->
+<!--                <td>-->
+<!--                    &lt;!&ndash; edit button &ndash;&gt;-->
+<!--                    <a th:href="@{/pets/{id}/edit (id= ${petDto.id})}">-->
+<!--                        &lt;!&ndash; pencil icon &ndash;&gt;-->
+<!--                        &lt;!&ndash; TODO cum facem ca butonul de editare sa apara doar pe pagina de admin? &ndash;&gt;-->
+<!--                        <i class="fas fa-edit" sec:authorize="hasRole('ADMIN')" style="color: green"></i>-->
+<!--                    </a>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    &lt;!&ndash; delete button &ndash;&gt;-->
+<!--                    <a th:href="@{/pets/{id}/delete (id= ${petDto.id})}">-->
+<!--                        &lt;!&ndash; trash icon &ndash;&gt;-->
+<!--                        &lt;!&ndash; TODO cum facem ca butonul de editare sa apara doar pe pagina de admin?&ndash;&gt;-->
+<!--                        <i class="fas fa-trash" sec:authorize="hasRole('ADMIN')" style="color:red;"></i>-->
+<!--                    </a>-->
+<!--                </td>-->
+<!--            </tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="fragments/footer-js :: footer-js"/>
+</body>
+
+</html>
