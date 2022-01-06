@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<div th:replace="fragments/header :: navbar"/>
 <!--exemplu-->
 <div class="row row-cols-1 row-cols-md-3 g-4">
 <div class="col" style="width:400px" th:each="dog:${dogs}">
