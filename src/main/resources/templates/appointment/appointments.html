@@ -24,9 +24,9 @@
             <tr th:each="appointmentDto : ${appointmentsDto}">
 
 
-                <td th:text="${appointmentDto.user.firstName}"></td>
-                <td th:text="${appointmentDto.user.lastName}"></td>
                 <td th:text="${appointmentDto.user}"></td>
+                <td th:text="${appointmentDto.user}"></td>
+                <td th:text="${appointmentDto.pets}"></td>
                 <td th:text="${appointmentDto.date}"></td>
             </tr>
             </tbody>

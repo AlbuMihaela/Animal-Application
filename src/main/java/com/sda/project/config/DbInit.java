@@ -89,8 +89,47 @@ public class DbInit {
             Pet rexTheDog = createDog2();
             petRepository.save(rexTheDog);
 
+            Pet zynTheDog = createDog3();
+            petRepository.save(zynTheDog);
+
+            Pet sparkTheDog = createDog4();
+            petRepository.save(zynTheDog);
+
+            Pet jackTheDog = createDog5();
+            petRepository.save(jackTheDog);
+
             Pet cat = createCat();
             petRepository.save(cat);
+
+            Pet siriTheCat = createCat1();
+            petRepository.save(siriTheCat);
+
+            Pet gremTheCat = createCat3();
+            petRepository.save(gremTheCat);
+
+            Pet lunaTheCat = createCat2();
+            petRepository.save(lunaTheCat);
+
+            Pet lizzTheCat = createCat4();
+            petRepository.save(lizzTheCat);
+
+            Pet bird = createBird();
+            petRepository.save(bird);
+
+            Pet rocTheBird = createBird2();
+            petRepository.save(rocTheBird);
+
+            Pet pepperTheRabbit = createRabbit1();
+            petRepository.save(pepperTheRabbit);
+
+            Pet peterTheRabbit = createRabbit2();
+            petRepository.save(peterTheRabbit);
+
+            Pet harryTheGuinea = createGuinea1();
+            petRepository.save(harryTheGuinea);
+
+            Pet raffTheGuinea = createGuinea2();
+            petRepository.save(raffTheGuinea);
 
             PetDto catDto = createPetDto();
             petService.update2(catDto);
@@ -159,7 +198,7 @@ public class DbInit {
         Pet pet = new Pet();
         pet.setName("Mike");
         pet.setCategory(Category.DOG);
-        pet.setDescription("small dog, brown with white spots");
+        pet.setDescription("Mike is an active boy looking for an active home. He is in need of some training and socialization with other dogs. Is friendly, playful, athletic, brown with white spots");
         pet.setAvailable(true);
         return pet;
     }
@@ -168,7 +207,34 @@ public class DbInit {
         Pet pet = new Pet();
         pet.setName("Rex");
         pet.setCategory(Category.DOG);
-        pet.setDescription("cute dog");
+        pet.setDescription("White dog with brown ears");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createDog3(){
+        Pet pet = new Pet();
+        pet.setName("Zyn");
+        pet.setCategory(Category.DOG);
+        pet.setDescription("Zyn is a 5–6-month-old neutered male happy, friendly and goofy pup. He would love a home and humans committed to teaching him canine good citizenship and providing opportunities for exercise and fun!");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createDog4() {
+        Pet pet = new Pet();
+        pet.setName("Spark");
+        pet.setCategory(Category.DOG);
+        pet.setDescription("Spark is an 8 week old smart and playful dog.He is absolutely the sweetest boy and has just as much energy as his sweetness. He loves to play until he just drops");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createDog5() {
+        Pet pet = new Pet();
+        pet.setName("Jack");
+        pet.setCategory(Category.DOG);
+        pet.setDescription("Jack is a big beautiful boy looking for a new home. He needs training to be better socialized as he can be selective with other dogs. He loves people and food!");
         pet.setAvailable(true);
         return pet;
     }
@@ -182,6 +248,96 @@ public class DbInit {
         return pet;
     }
 
+    private Pet createCat1() {
+        Pet pet = new Pet();
+        pet.setName("Siri");
+        pet.setCategory(Category.CAT);
+        pet.setDescription("Siri is a quiet and gently little girl. She is just over 1 year old. Is friendly, affectionate, gentle, playful, smart, curious, funny, loves kisses");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createCat2() {
+        Pet pet = new Pet();
+        pet.setName("Luna");
+        pet.setCategory(Category.CAT);
+        pet.setDescription("Luna is a 10 year old female who is quiet and keeps to herself. She loves to snuggle and will make sure your bed is kept warm while you are away.She is good with cats, dogs and kids.");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createCat3() {
+        Pet pet = new Pet();
+        pet.setName("Grem");
+        pet.setCategory(Category.CAT);
+        pet.setDescription("Grem is around 9 or 10 years old and is such a lover. He loves to cuddle with his people and will gladly sit on your lap and purr to his heart's content");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createCat4() {
+        Pet pet = new Pet();
+        pet.setName("Lizz");
+        pet.setCategory(Category.CAT);
+        pet.setDescription("Is a very special girl who needs a patient human that wants to learn her behaviors and her quirky personality.");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+
+    private Pet createBird() {
+      Pet pet = new Pet();
+      pet.setName("Coco");
+      pet.setCategory(Category.BIRD);
+      pet.setDescription("Red bird with blue wings. Shy bird by nature. Is a great choice for beginning pet parents.");
+      pet.setAvailable(true);
+      return pet;
+    }
+
+    private Pet createBird2() {
+        Pet pet = new Pet();
+        pet.setName("Roc");
+        pet.setCategory(Category.BIRD);
+        pet.setDescription("Roc is a small and colorful bird. Is the best singer");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createRabbit1() {
+        Pet pet = new Pet();
+        pet.setName("Pepper");
+        pet.setCategory(Category.RABBIT);
+        pet.setDescription("Pepper is a foodie with a passion for coriander. He will climb on our laps to get closer to the salad bowl and is happy to be stroked and petted. Pepper will stretch up to greet you and is calm sweet boy.");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createRabbit2() {
+        Pet pet = new Pet();
+        pet.setName("Peter");
+        pet.setCategory(Category.RABBIT);
+        pet.setDescription("Peter is a 6 year old bunny; He likes his treats and fresh daily greens.Peter would be best in a quiet home with someone willing to earn his trust.");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createGuinea1() {
+        Pet pet = new Pet();
+        pet.setName("Harry");
+        pet.setCategory(Category.GUINEA_PIG);
+        pet.setDescription("Harry was born on 19th June 2020.He is looking for a loving forever home. Harry has a long coat and will need to be regularly groomed.");
+        pet.setAvailable(true);
+        return pet;
+    }
+
+    private Pet createGuinea2() {
+        Pet pet = new Pet();
+        pet.setName("Raff");
+        pet.setCategory(Category.GUINEA_PIG);
+        pet.setDescription("Raff was born on 20th January 2020. He is cute and very naughty so will need an experienced guinea pig home who will appreciate his great sense of humour.");
+        pet.setAvailable(true);
+        return pet;
+    }
 
 
     private Adoption createAdoption(Pet pet, User user) {

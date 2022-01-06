@@ -12,11 +12,10 @@
 
 ## admin
     admin can create, update, delete data
-
     admin can confirm the appointments and adoptions
+
 ## pets
     can be filtered by category, name
-## pets
     have a description and they can be visited and adopted
 
 ## appointment
