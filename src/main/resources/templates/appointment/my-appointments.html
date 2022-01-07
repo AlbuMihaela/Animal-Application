@@ -6,7 +6,7 @@
 </head>
 
 <body>
-
+<div th:replace="fragments/header :: navbar"/>
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/my-appointments}" th:object="${myAppointmentsInfo}">
@@ -20,13 +20,11 @@
             <!-- table body -->
             <tbody>
             <tr th:each="myAppointmentInfo : ${myAppointmentsInfo}">
-                <td th:text="${myAppointmentInfo.date}" ></td>
+                <td th:text="${myAppointmentInfo.date.toString()}" ></td>
                 <td th:each="pet : ${myAppointmentInfo.pets}">
                     <p th:text="${pet.name}"></p>
                 </td>
-<!--                <td th:text="${myAppointmentInfo.pets}"></td>-->
 
-                     <!--  //TODO cum facem sa ne afiseze numele de pets din lista de mai sus  -->
                 <!-- actions -->
             </tr>
             </tbody>

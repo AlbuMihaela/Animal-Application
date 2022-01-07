@@ -44,10 +44,7 @@
             <!-- label -->
             <label for="donationType" class="form-label">Donation type</label>
 
-            <!-- select -->
 
-            <!-- th:text = Money -->
-            <!-- th:value = MONEY -->
             <select id="donationType" name="donationType" th:field="*{product}">
                 <!-- pre selected value, not a real option -->
                 <option selected th:value="null">What do you want to donate?</option>
@@ -62,9 +59,7 @@
         </div>
 
         <!-- TODO: move to my donations -->
-        <a th:href="@{/transfer/add}">
-            <button class="btn btn-secondary" id="payment" type="button">Add payment details</button>
-        </a>
+
 
         <div class="alert alert-light" role="alert">
             Address: Filimon Street 81, Bucharest, Romania"
@@ -74,15 +69,7 @@
 
         <div class="form-outline">
             <label class="form-label">Details</label>
-<!--            <div th:switch="${user.gender}">-->
-<!--                <p th:case="'F'">Female</p>-->
-<!--                <p th:case="'M'">Male</p>-->
-<!--                <p th:case="*">Not specified</p>-->
-<!--            </div>-->
 
-            <textarea class="form-control" id="textAreaExample" rows="4"
-                      th:field="*{details}">Details</textarea>
-        </div>
 
         <!-- actions -->
         <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
@@ -94,7 +81,7 @@
 
 
 
-            <!--            <a class="btn btn-outline-secondary" th:href="@{/donations}" type="button">Cancel</a>-->
+        </div>
         </div>
     </form>
 </div>

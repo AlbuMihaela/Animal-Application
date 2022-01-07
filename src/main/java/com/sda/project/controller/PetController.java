@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.io.IOException;
 
@@ -49,18 +51,18 @@ public class PetController {
     }
 
     @PostMapping("/pets/add")
-    public String addPetForm(@ModelAttribute("petDto") PetDto petDto,
+    public String addPetForm(PetDto petDto,
                              @RequestParam("image") MultipartFile multipartFile) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         petDto.setPhoto(fileName);
+PetDto savedPetDto = petService.save(petDto);
 
 
-
-        String uploadDir = "/resources/static/images/pet-photos/" + petDto.getId();
+        String uploadDir = "pet-photos" + savedPetDto.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-        petService.save(petDto);
+//        petService.save(petDto);
         return "redirect:/pets";
     }
 

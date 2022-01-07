@@ -11,6 +11,7 @@
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/pets}" th:object="${petsDto}">
+
             <!-- table header -->
             <thead>
             <tr>
@@ -18,34 +19,26 @@
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
                 <th scope="col">Description</th>
-                <th scope="col">Availability</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
-<!--                <th scope="col">User</th>-->
-<!--                <th scope="col"></th>-->
+                <th scope="col">Availability</th>
+                <th scope="col">Adopted by </th>
+
             </tr>
             </thead>
-
             <!-- table body -->
             <tbody>
-            <tr th:each="petDto : ${petsDto}">
+            <tr th:each="petDto : ${petsDto} ">
                 <td>
-                <img th:src="@{${petDto.photoImagePath}}" />
+                    <img style="width: 200px;height: 200px" th:src="@{${petDto.photoImagePath}}"/>
                 </td>
                 <td th:text="${petDto.name}"></td>
                 <td th:text="${petDto.category}"></td>
-                <td th:text="${petDto.description}"></td>
-<!--                <td th:if="${petDto.adoption}" >-->
-                    <!--  cum afisez aici e-mailul userului care a facut adoptia? -->
-<!--                    <p th:text="${petDto.adoption.user.email}"></p>-->
-                </td>
-                <td th:text="${petDto.isAvailable}"></td>
-                <!-- actions -->
+                <td th:text="${petDto.description}">
                 <td>
                     <!-- edit button -->
                     <a th:href="@{/pets/{id}/edit (id= ${petDto.id})}">
                         <!-- pencil icon -->
-                        <!-- TODO cum facem ca butonul de editare sa apara doar pe pagina de admin? -->
                         <i class="fas fa-edit" sec:authorize="hasRole('ADMIN')" style="color: green"></i>
                     </a>
                 </td>
@@ -53,10 +46,17 @@
                     <!-- delete button -->
                     <a th:href="@{/pets/{id}/delete (id= ${petDto.id})}">
                         <!-- trash icon -->
-                        <!-- TODO cum facem ca butonul de editare sa apara doar pe pagina de admin?-->
+
                         <i class="fas fa-trash" sec:authorize="hasRole('ADMIN')" style="color:red;"></i>
                     </a>
                 </td>
+                <td th:text="${petDto.isAvailable}"></td>
+
+                <td th:if="${petDto.adoption}" >
+                    <p th:text="${petDto.adoption.user.email}"></p>
+                </td>
+                <!-- actions -->
+
             </tr>
             </tbody>
         </table>

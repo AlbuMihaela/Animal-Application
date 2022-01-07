@@ -60,7 +60,10 @@
 
         <div>
             <label>Photo: </label>
-            <input type="file" name="image" accept="image/png, image/jpeg" />
+            <input type="file" name="image" accept="image/png"/>
+            <td>
+                <img style="width: 200px;height: 200px" th:src="@{${petDto.photoImagePath}}"/>
+            </td>
         </div>
 
     <div>
