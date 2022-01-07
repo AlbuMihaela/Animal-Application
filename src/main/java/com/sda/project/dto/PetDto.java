@@ -45,6 +45,6 @@ public class PetDto {
     public String getPhotoImagePath() {
         if (photo == null || id == null) return null;
 
-        return "pet-photos/" + id + "/" + photo;
+        return "/pet-photos/" + id + "/" + photo;
     }
 }
