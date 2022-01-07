@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <div th:replace="fragments/head-css :: head-css"/>
 </head>
 <body>
-
+<div th:replace="fragments/header :: navbar"/>
+<div th:replace="fragments/footer-js :: footer-js"/>
 </body>
 </html>
