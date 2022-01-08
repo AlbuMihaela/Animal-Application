@@ -6,7 +6,13 @@
 
 <body>
 <h2>Update pet</h2>
-<form class="row g-3" method="post" th:action="@{/pets/{id}/edit (id = ${petDto.id})}" th:object="${petDto}">
+<form class="row g-3" method="post" th:action="@{/pets/{id}/edit (id = ${petDto.id})}" th:object="${petDto}"
+      enctype="multipart/form-data">
+    <div>
+        <label>Photo: </label>
+        <input type="file" name="image" accept="image/png, image/jpeg"/>
+
+    </div>
     <div>
         <!-- pet name -->
         <div class="col-md-4 form-group required">

@@ -109,10 +109,9 @@ public class PetService {
         petToUpdate.setDescription(dto.getDescription());
         petToUpdate.setAvailable(dto.isAvailable());
 
-       return petRepository.save( petToUpdate);
+        return petRepository.save(petToUpdate);
     }
 
     public void deleteById(Long id) {
         petRepository.deleteById(id);
-    }
-}
+    }}
