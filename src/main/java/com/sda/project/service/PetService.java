@@ -105,6 +105,7 @@ public class PetService {
                 .orElseThrow(() -> {
                     throw new ResourceNotFoundException("pet not found");
                 });
+        petToUpdate.setPhoto(dto.getPhoto());
         petToUpdate.setName(dto.getName());
         petToUpdate.setDescription(dto.getDescription());
         petToUpdate.setAvailable(dto.isAvailable());

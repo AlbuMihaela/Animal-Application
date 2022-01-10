@@ -88,7 +88,7 @@ public class PetController {
                          @ModelAttribute PetDto petDto,
     @RequestParam ("image") MultipartFile multipartFile) throws IOException  {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        petDto.setPhoto(fileName);
+//        petDto.setPhoto(fileName);
         Pet savedPetDto = petService.update2(petDto);
 
 

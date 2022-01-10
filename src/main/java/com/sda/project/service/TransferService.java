@@ -28,9 +28,9 @@ public class TransferService {
 
 
     public Transfer save(TransferDto transferDto) {
-        return transferRepository.save(transferMapper.map(transferDto));
+        Transfer transfer = transferMapper.map(transferDto);
+        return transferRepository.save(transfer);
     }
-    //TODO ?? Este mai bine ca o functie de save sa returneze un obiect sau void???
 
     public List<TransferDto> findAll() {
         return transferRepository.findAll().stream()

@@ -200,6 +200,7 @@ public class DbInit {
         pet.setCategory(Category.DOG);
         pet.setDescription("Mike is an active boy looking for an active home. He is in need of some training and socialization with other dogs. Is friendly, playful, athletic, brown with white spots");
         pet.setAvailable(true);
+        pet.setPhoto("/Mike.jpg");
         return pet;
     }
 

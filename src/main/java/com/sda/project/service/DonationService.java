@@ -78,4 +78,5 @@ public class DonationService {
                .map(donation -> donationMapper.mapFromDonationToDonationInfo(donation))
                 .collect(Collectors.toSet());
     }
+
 }

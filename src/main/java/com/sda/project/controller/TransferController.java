@@ -32,7 +32,7 @@ public class TransferController {
         return "transfer/transfers";
     }
 
-    // FIXME: implement later
+
     @GetMapping("/transfers/add")
     public String getTransferForm(Model model) {
         model.addAttribute("transferDto", new TransferDto());
@@ -40,7 +40,7 @@ public class TransferController {
     }
 
     @PostMapping("/transfers/add")
-    public String addDonationForm(@ModelAttribute TransferDto transferDto) {
+    public String addTransferForm(@ModelAttribute TransferDto transferDto) {
         transferService.save(transferDto);
         return "redirect:/home";
     }
