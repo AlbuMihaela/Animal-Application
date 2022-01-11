@@ -2,6 +2,7 @@ package com.sda.project.service;
 
 import com.sda.project.dto.AppointmentDto;
 import com.sda.project.dto.AppointmentInfo;
+import com.sda.project.dto.AppointmentInfo2;
 import com.sda.project.mapper.AppointmentMapper;
 import com.sda.project.model.Appointment;
 import com.sda.project.model.User;
@@ -45,6 +46,14 @@ public class AppointmentService {
         return appointmentRepository.findAll().stream()
                 .filter(appointment -> appointment.getUser().equals(user))
                 .map(appointment -> appointmentMapper.mapFromAppointmentToAppointmentInfo(appointment))
+                .collect(Collectors.toList());
+
+    }
+
+    public List<AppointmentInfo2> findAppointmentsByUser2(User user) {
+        return appointmentRepository.findAll().stream()
+                .filter(appointment -> appointment.getUser().equals(user))
+                .map(appointment -> appointmentMapper.mapFromAppointmentToAppointmentInfo2(appointment))
                 .collect(Collectors.toList());
 
     }

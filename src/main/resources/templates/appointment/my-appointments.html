@@ -9,7 +9,7 @@
 <div th:replace="fragments/header :: navbar"/>
 <div class="container-fluid">
     <div class="container">
-        <table class="table" method="get" th:action="@{/my-appointments}" th:object="${myAppointmentsInfo}">
+        <table class="table" method="get" th:action="@{/my-appointments}" th:object="${myAppointmentsInfo2}">
             <!-- table header -->
             <thead>
             <tr>
@@ -19,10 +19,10 @@
             </thead>
             <!-- table body -->
             <tbody>
-            <tr th:each="myAppointmentInfo : ${myAppointmentsInfo}">
-                <td th:text="${myAppointmentInfo.date.toString()}" ></td>
-                <td th:each="pet : ${myAppointmentInfo.pets}">
-                    <p th:text="${pet.name}"></p>
+            <tr th:each="myAppointmentInfo2 : ${myAppointmentsInfo2}">
+                <td th:text="${myAppointmentInfo2.date.toString()}" ></td>
+                <td th:each="pet : ${myAppointmentInfo2.pets}">
+                    <p th:text="${pet}"></p>
                 </td>
 
                 <!-- actions -->

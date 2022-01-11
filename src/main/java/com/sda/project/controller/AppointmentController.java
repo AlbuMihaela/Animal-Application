@@ -2,6 +2,7 @@ package com.sda.project.controller;
 
 import com.sda.project.dto.AppointmentDto;
 import com.sda.project.dto.AppointmentInfo;
+import com.sda.project.dto.AppointmentInfo2;
 import com.sda.project.dto.PetDto;
 import com.sda.project.model.User;
 import com.sda.project.service.AppointmentService;
@@ -66,8 +67,8 @@ public class AppointmentController {
     @GetMapping("/my-appointments")
     public String getMyAppointmentsPage(Model model) {
         User user = userService.findLoggedUser();
-        List<AppointmentInfo> myAppointments = appointmentService.findAppointmentsByUser(user);
-        model.addAttribute("myAppointmentsInfo", myAppointments);
+        List<AppointmentInfo2> myAppointments = appointmentService.findAppointmentsByUser2(user);
+        model.addAttribute("myAppointmentsInfo2", myAppointments);
         return "appointment/my-appointments";
     }
 }
