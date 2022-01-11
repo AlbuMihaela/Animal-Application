@@ -27,8 +27,9 @@ public class TransferService {
     }
 
 
-    public Transfer save(TransferDto transferDto) {
+    public Transfer save(TransferDto transferDto, User user) {
         Transfer transfer = transferMapper.map(transferDto);
+        user.addTransfer(transfer);
         return transferRepository.save(transfer);
     }
 
@@ -38,8 +39,8 @@ public class TransferService {
                 .collect(Collectors.toList());
     }
 
-    public Set<TransferInfo> findTransfersByUser(User user){
-       return transferRepository.findAll().stream()
+    public Set<TransferInfo> findTransfersByUser(User user) {
+        return transferRepository.findAll().stream()
                 .filter(transfer -> transfer.getUser().equals(user))
                 .map(transfer -> transferMapper.mapFromTransferToTransferInfo(transfer))
                 .collect(Collectors.toSet());

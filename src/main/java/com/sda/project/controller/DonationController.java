@@ -54,6 +54,7 @@ public class DonationController {
         if (addDonation.getProduct().equals(Product.MONEY)) {
             addDonation.setDetails("transfer");
             donationService.save(addDonation);
+
             return "redirect:/transfers/add";
         } else {
             donationService.save(addDonation);

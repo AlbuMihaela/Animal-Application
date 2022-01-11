@@ -41,7 +41,7 @@ public class TransferController {
 
     @PostMapping("/transfers/add")
     public String addTransferForm(@ModelAttribute TransferDto transferDto) {
-        transferService.save(transferDto);
+        transferService.save(transferDto, userService.findLoggedUser());
         return "redirect:/home";
     }
 
