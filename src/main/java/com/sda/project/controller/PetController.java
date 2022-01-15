@@ -48,7 +48,6 @@ public class PetController {
     }
 
 
-
     @GetMapping("/pets/add")
     public String getAddForm(Model model) {
         model.addAttribute("petDto", new PetDto());
@@ -88,13 +87,14 @@ public class PetController {
                          @ModelAttribute PetDto petDto,
     @RequestParam ("image") MultipartFile multipartFile) throws IOException  {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//        petDto.setPhoto(fileName);
+        petDto.setPhoto(fileName);
         Pet savedPetDto = petService.update2(petDto);
-
 
         String uploadDir = "pet-photos/" + savedPetDto.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+
         // update
 //        petService.update(petDto);
 

@@ -93,7 +93,7 @@ public class DbInit {
             petRepository.save(zynTheDog);
 
             Pet sparkTheDog = createDog4();
-            petRepository.save(zynTheDog);
+            petRepository.save(sparkTheDog);
 
             Pet jackTheDog = createDog5();
             petRepository.save(jackTheDog);
@@ -104,11 +104,11 @@ public class DbInit {
             Pet siriTheCat = createCat1();
             petRepository.save(siriTheCat);
 
-            Pet gremTheCat = createCat3();
-            petRepository.save(gremTheCat);
-
             Pet lunaTheCat = createCat2();
             petRepository.save(lunaTheCat);
+
+            Pet gremTheCat = createCat3();
+            petRepository.save(gremTheCat);
 
             Pet lizzTheCat = createCat4();
             petRepository.save(lizzTheCat);
@@ -130,6 +130,9 @@ public class DbInit {
 
             Pet raffTheGuinea = createGuinea2();
             petRepository.save(raffTheGuinea);
+
+            Pet ambraTheDog = createDog6();
+            petRepository.save(ambraTheDog);
 
             PetDto catDto = createPetDto();
             petService.update2(catDto);
@@ -198,7 +201,7 @@ public class DbInit {
         Pet pet = new Pet();
         pet.setName("Mike");
         pet.setCategory(Category.DOG);
-        pet.setDescription("Mike is an active boy looking for an active home. He is in need of some training and socialization with other dogs. Is friendly, playful, athletic, brown with white spots");
+        pet.setDescription("Mike is an active boy looking for an active home. He is in need of some training and socialization with other dogs. Is friendly, playful, athletic with a white colour as snow");
         pet.setAvailable(true);
         pet.setPhoto("/Mike.jpg");
         return pet;
@@ -210,6 +213,7 @@ public class DbInit {
         pet.setCategory(Category.DOG);
         pet.setDescription("White dog with brown ears");
         pet.setAvailable(true);
+        pet.setPhoto("rex.jpg");
         return pet;
     }
 
@@ -219,6 +223,7 @@ public class DbInit {
         pet.setCategory(Category.DOG);
         pet.setDescription("Zyn is a 5–6-month-old neutered male happy, friendly and goofy pup. He would love a home and humans committed to teaching him canine good citizenship and providing opportunities for exercise and fun!");
         pet.setAvailable(true);
+        pet.setPhoto("Zyn.jpg");
         return pet;
     }
 
@@ -228,6 +233,7 @@ public class DbInit {
         pet.setCategory(Category.DOG);
         pet.setDescription("Spark is an 8 week old smart and playful dog.He is absolutely the sweetest boy and has just as much energy as his sweetness. He loves to play until he just drops");
         pet.setAvailable(true);
+        pet.setPhoto("Spark.jpg");
         return pet;
     }
 
@@ -237,6 +243,7 @@ public class DbInit {
         pet.setCategory(Category.DOG);
         pet.setDescription("Jack is a big beautiful boy looking for a new home. He needs training to be better socialized as he can be selective with other dogs. He loves people and food!");
         pet.setAvailable(true);
+        pet.setPhoto("Jack.jpg");
         return pet;
     }
 
@@ -246,6 +253,7 @@ public class DbInit {
         pet.setCategory(Category.CAT);
         pet.setDescription("small cat, blue eyes");
         pet.setAvailable(true);
+        pet.setPhoto("Mussy.jpg");
         return pet;
     }
 
@@ -255,6 +263,7 @@ public class DbInit {
         pet.setCategory(Category.CAT);
         pet.setDescription("Siri is a quiet and gently little girl. She is just over 1 year old. Is friendly, affectionate, gentle, playful, smart, curious, funny, loves kisses");
         pet.setAvailable(true);
+        pet.setPhoto("Siri.jpg");
         return pet;
     }
 
@@ -264,6 +273,7 @@ public class DbInit {
         pet.setCategory(Category.CAT);
         pet.setDescription("Luna is a 10 year old female who is quiet and keeps to herself. She loves to snuggle and will make sure your bed is kept warm while you are away.She is good with cats, dogs and kids.");
         pet.setAvailable(true);
+        pet.setPhoto("Luna.jpg");
         return pet;
     }
 
@@ -273,6 +283,7 @@ public class DbInit {
         pet.setCategory(Category.CAT);
         pet.setDescription("Grem is around 9 or 10 years old and is such a lover. He loves to cuddle with his people and will gladly sit on your lap and purr to his heart's content");
         pet.setAvailable(true);
+        pet.setPhoto("Grem.jpg");
         return pet;
     }
 
@@ -282,6 +293,7 @@ public class DbInit {
         pet.setCategory(Category.CAT);
         pet.setDescription("Is a very special girl who needs a patient human that wants to learn her behaviors and her quirky personality.");
         pet.setAvailable(true);
+        pet.setPhoto("Lizz.jpg");
         return pet;
     }
 
@@ -292,6 +304,7 @@ public class DbInit {
       pet.setCategory(Category.BIRD);
       pet.setDescription("Red bird with blue wings. Shy bird by nature. Is a great choice for beginning pet parents.");
       pet.setAvailable(true);
+        pet.setPhoto("Coco.jpg");
       return pet;
     }
 
@@ -301,6 +314,7 @@ public class DbInit {
         pet.setCategory(Category.BIRD);
         pet.setDescription("Roc is a small and colorful bird. Is the best singer");
         pet.setAvailable(true);
+        pet.setPhoto("Roc.jpg");
         return pet;
     }
 
@@ -310,6 +324,7 @@ public class DbInit {
         pet.setCategory(Category.RABBIT);
         pet.setDescription("Pepper is a foodie with a passion for coriander. He will climb on our laps to get closer to the salad bowl and is happy to be stroked and petted. Pepper will stretch up to greet you and is calm sweet boy.");
         pet.setAvailable(true);
+        pet.setPhoto("Pepper.jpg");
         return pet;
     }
 
@@ -319,6 +334,7 @@ public class DbInit {
         pet.setCategory(Category.RABBIT);
         pet.setDescription("Peter is a 6 year old bunny; He likes his treats and fresh daily greens.Peter would be best in a quiet home with someone willing to earn his trust.");
         pet.setAvailable(true);
+        pet.setPhoto("Peter.jpg");
         return pet;
     }
 
@@ -328,6 +344,7 @@ public class DbInit {
         pet.setCategory(Category.GUINEA_PIG);
         pet.setDescription("Harry was born on 19th June 2020.He is looking for a loving forever home. Harry has a long coat and will need to be regularly groomed.");
         pet.setAvailable(true);
+        pet.setPhoto("Harry.jpg");
         return pet;
     }
 
@@ -337,8 +354,20 @@ public class DbInit {
         pet.setCategory(Category.GUINEA_PIG);
         pet.setDescription("Raff was born on 20th January 2020. He is cute and very naughty so will need an experienced guinea pig home who will appreciate his great sense of humour.");
         pet.setAvailable(true);
+        pet.setPhoto("Raff.jpg");
         return pet;
     }
+
+    private Pet createDog6() {
+        Pet pet = new Pet();
+        pet.setName("Ambra");
+        pet.setCategory(Category.DOG);
+        pet.setDescription("Ambra is a big beautiful black girl looking for a new home. She is playful and love the kids.");
+        pet.setAvailable(true);
+        pet.setPhoto("Ambra.png");
+        return pet;
+    }
+
 
 
     private Adoption createAdoption(Pet pet, User user) {
@@ -348,7 +377,6 @@ public class DbInit {
         adoption.setAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
         adoption.setPet(pet);
         pet.setAvailable(false);
-
         adoption.setUser(user);
 
         return adoption;

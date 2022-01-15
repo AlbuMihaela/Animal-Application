@@ -30,7 +30,7 @@
             <tbody>
             <tr th:each="petDto : ${petsDto} ">
                 <td>
-                    <img style="width: 200px;height: 200px" th:src="@{${petDto.photoImagePath}}"/>
+                    <img style="width: 200px;height: 200px" th:src="@{${petDto.getPhotoImagePath()}}"/>
                 </td>
                 <td th:text="${petDto.name}"></td>
                 <td th:text="${petDto.category}"></td>
