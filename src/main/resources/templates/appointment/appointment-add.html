@@ -36,12 +36,13 @@
         </div>
 
         <!--    check box with multiple choices-->
-        <!--    //TODO cum facem ca userul sa poata bifa doar 2 animale din toata lista?-->
-            <th:block th:each="pet : ${pets}" >
-                <input type="checkbox" name="selectedActive" th:text="${pet.name}" th:value="${pet.id}" th:field="${appointmentDto.pets}">
-                <label  th:value="${pet.id}"></label>
+
+            <th:block th:each="petName : ${appointmentDto.petsNames}" >
+                <input type="checkbox" id="pets-names" name="selectedActive" th:text="${petName}" th:value="${petName}" th:field="${appointmentDto.petsNames}">
+                <label for="pets-names"  th:field="${appointmentDto.petsNames}" ></label>
                 <br/>
             </th:block>
+
 
         <div class="d-grid gap-2 col-6 mx-auto">
 
