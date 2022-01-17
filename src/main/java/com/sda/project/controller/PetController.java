@@ -14,6 +14,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -83,22 +84,16 @@ public class PetController {
 
     // update
     @PostMapping("/pets/{id}/edit")
-    public String update(@PathVariable Long id,
-                         @ModelAttribute PetDto petDto,
-    @RequestParam ("image") MultipartFile multipartFile) throws IOException  {
+    public String update(@ModelAttribute PetDto petDto,
+                         @RequestParam("image") MultipartFile multipartFile) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         petDto.setPhoto(fileName);
         Pet savedPetDto = petService.update2(petDto);
 
-        String uploadDir = "pet-photos/" + savedPetDto.getId();
+//        String uploadDir = "pet-photos/" + savedPetDto.getId();
 
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+//        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-
-        // update
-//        petService.update(petDto);
-
-        // after update
         return "redirect:/pets";
     }
 

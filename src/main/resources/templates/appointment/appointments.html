@@ -9,8 +9,12 @@
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/appointments}" th:object="${appointmentsDto}">
+
             <!-- table header -->
             <thead>
+            <div class="container-sm" style="background-color: #8fc4b7; border-radius: 25px">
+                <div class="row gx-5" style="text-align: center"><b> APPOINTMENTS </b></div>
+            </div>
             <tr>
                 <th scope="col">First name</th>
                 <th scope="col">Last Name</th>

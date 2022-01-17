@@ -8,6 +8,7 @@
 <h2>Update pet</h2>
 <form class="row g-3" method="post" th:action="@{/pets/{id}/edit (id = ${petDto.id})}" th:object="${petDto}"
       enctype="multipart/form-data">
+
     <div>
         <label>Photo: </label>
         <input type="file" name="image" accept="image/png, image/jpeg"/>
@@ -16,11 +17,19 @@
     <div>
         <!-- pet name -->
         <div class="col-md-4 form-group required">
+            <label for="availability" class="form-label">Available</label>
+            <input id="availability" type="checkbox" class="custom-control-input" th:checked="${petDto.isAvailable}"
+                   th:id="|${petDto.isAvailable}-${!petDto.isAvailable}|"
+            />
+
+        </div>
+        <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" id="name" placeholder="Pet name" required th:field="*{name}" type="text">
         </div>
-        <br>
         <!-- category -->
+        <br>
+        </select>
         <div class="col-md-4 form-group required">
             <label for="category">Category</label>
             <br>
@@ -33,20 +42,13 @@
                 </option>
             </select>
         </div>
-        </select>
-        <br>
         <!-- description -->
+        <br>
+
         <div class="col-md-4 form-group required">
             <label for="name" class="form-label">Description</label>
             <input class="form-control" id="description" placeholder="Pet description" required
                    th:field="*{description}" type="text">
-        </div>
-
-        <div class="col-md-4 form-group required">
-            <label for="availability" class="form-label">Available</label>
-            <input id="availability"type="checkbox" class="custom-control-input" th:checked="${petDto.isAvailable}"
-                   th:id="|${petDto.isAvailable}-${!petDto.isAvailable}|" />
-
         </div>
         <!--        //TODO acum merge, dar schimba o soingura data... daca ii dau din nou update, nu ma lasa, nu schimba setarea
         -->
@@ -63,13 +65,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 <!--<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">-->

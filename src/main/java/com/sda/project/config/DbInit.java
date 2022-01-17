@@ -377,6 +377,7 @@ public class DbInit {
         adoption.setAddress("str. Calea Victoriei nr.1, bl. 1, sc. 1, et. 1, ap. 1, sector 1, Bucuresti");
         adoption.setPet(pet);
         pet.setAvailable(false);
+        petRepository.save(pet);
         adoption.setUser(user);
 
         return adoption;
