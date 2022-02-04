@@ -21,7 +21,6 @@ public class Pet {
     private Category category;
     private String description;
     private boolean isAvailable;
-
     private String photo;
 
     @OneToOne(mappedBy = "pet",
@@ -32,7 +31,6 @@ public class Pet {
             mappedBy = "pets",
             fetch = FetchType.LAZY)
     private Set<Appointment> appointments = new HashSet<>();
-
 
     public Adoption getAdoption() {
         return adoption;

@@ -37,13 +37,10 @@ public class DonationController {
 
     @GetMapping("/donations/add")
     public String getDonationsForm(Model model) {
-        // TODO move to service
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        // TODO: map user to user info
         User loggedUser = userService.findByEmail(email);
         Long loggedUserId = loggedUser.getId();
-
-        AddDonation donation = new AddDonation(loggedUserId, null, null,null);
+        AddDonation donation = new AddDonation(loggedUserId, null, null, null);
         model.addAttribute("donation", donation);
         model.addAttribute("loggedUser", loggedUser);
         return "donation/donation-add";
@@ -54,7 +51,6 @@ public class DonationController {
         if (addDonation.getProduct().equals(Product.MONEY)) {
             addDonation.setDetails("transfer");
             donationService.save(addDonation);
-
             return "redirect:/transfers/add";
         } else {
             donationService.save(addDonation);

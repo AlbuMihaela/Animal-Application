@@ -50,8 +50,7 @@
             <input class="form-control" id="description" placeholder="Pet description" required
                    th:field="*{description}" type="text">
         </div>
-        <!--        //TODO acum merge, dar schimba o soingura data... daca ii dau din nou update, nu ma lasa, nu schimba setarea
-        -->
+
     </div>
     <div class="col-12">
         <a th:href="@{/pets}">
@@ -65,70 +64,3 @@
 
 </body>
 </html>
-
-
-<!--<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">-->
-<!--<head>-->
-<!--    <div th:replace="fragments/head-css :: head-css"/>-->
-<!--    <title>Pet update</title>-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<h2>Update pet</h2>-->
-<!--<form class="row g-3" method="post" th:action="@{/pets/{id}/edit (id = ${petDto.id})}" th:object="${petDto}"-->
-<!--      enctype="multipart/form-data">-->
-<!--    <div>-->
-<!--        <label>Photo: </label>-->
-<!--        <input type="file" name="image" accept="image/png, image/jpeg"/>-->
-
-<!--    </div>-->
-<!--    <div>-->
-<!--        &lt;!&ndash; pet name &ndash;&gt;-->
-<!--        <div class="col-md-4 form-group required">-->
-<!--            <label for="name" class="form-label">Name</label>-->
-<!--            <input class="form-control" id="name" placeholder="Pet name" required th:field="*{name}" type="text">-->
-<!--        </div>-->
-<!--        <br>-->
-<!--        &lt;!&ndash; category &ndash;&gt;-->
-<!--        <div class="col-md-4 form-group required">-->
-<!--            <label for="category">Category</label>-->
-<!--            <br>-->
-<!--            <select class="custom-select tm-select-accounts" id="category" value="Select category"-->
-<!--                    th:field="*{category}" required>-->
-<!--                <option value="" disabled>Select category</option>-->
-<!--                <option th:each="category : ${T(com.sda.project.model.Category).values()}"-->
-<!--                        th:value="${category}"-->
-<!--                        th:text="${category}">-->
-<!--                </option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        </select>-->
-<!--        <br>-->
-<!--        &lt;!&ndash; description &ndash;&gt;-->
-<!--        <div class="col-md-4 form-group required">-->
-<!--            <label for="name" class="form-label">Description</label>-->
-<!--            <input class="form-control" id="description" placeholder="Pet description" required-->
-<!--                   th:field="*{description}" type="text">-->
-<!--        </div>-->
-
-<!--        <div class="col-md-4 form-group required">-->
-<!--            <label for="availability" class="form-label">Available</label>-->
-<!--            <input id="availability"type="checkbox" class="custom-control-input" th:checked="${petDto.isAvailable}"-->
-<!--                   th:id="|${petDto.isAvailable}-${!petDto.isAvailable}|" />-->
-
-<!--        </div>-->
-<!--&lt;!&ndash;        //TODO acum merge, dar schimba o soingura data... daca ii dau din nou update, nu ma lasa, nu schimba setarea-->
-<!--&ndash;&gt;-->
-<!--    </div>-->
-<!--    <div class="col-12">-->
-<!--        <a th:href="@{/pets}">-->
-<!--            <button class="btn btn-secondary" id="cancel" type="button">Cancel</button>-->
-<!--        </a>-->
-<!--        <button class="btn btn-primary" id="save" type="submit">Update pet</button>-->
-<!--    </div>-->
-<!--</form>-->
-
-<!--<div th:replace="fragments/footer-js :: footer-js"/>-->
-
-<!--</body>-->
-<!--</html>-->

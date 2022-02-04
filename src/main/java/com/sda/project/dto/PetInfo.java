@@ -10,6 +10,5 @@ public class PetInfo {
     private Category category;
     private String description;
     private boolean isAvailable;
-
     private String photo;
 }

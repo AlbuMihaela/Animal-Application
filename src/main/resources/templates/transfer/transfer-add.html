@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="d-flex justify-content-center">
-                    <img alt="logo" height="110px" src="images/logo.png" width="110px" style="padding-bottom:0cm">
+                    <img alt="logo" height="110px" src="/images/logo.png" width="110px" style="padding-bottom:0cm">
                 </div>
                 <!-- form card cc payment -->
                 <div class="card card-outline-secondary">
@@ -31,8 +31,6 @@
                                 <input type="text" class="form-control" id="cc_name" pattern="\w+ \w+.*"
                                        required="required" th:field="${transferDto.cardholderName}"
                                        title="First and last name">
-<!--                                <label th:if="${#fields.hasErrors('cc_name')}" th:class="'error'" th:errors="*{cc_name}"-->
-<!--                                       class="col-lg-4 control-label" style="color:red;"></label>-->
 
                             </div>
                             <br>
@@ -72,7 +70,7 @@
                                 <!-- cancel button -->
                                 <a class="btn btn-outline-secondary" th:href="@{/donations/add}"
                                    type="button">Cancel</a>
-u                                <!-- submit button -->
+                                <!-- submit button -->
                                 <button class="btn btn-outline-success" type="submit">Pay using this card</button>
                             </div>
                         </form>

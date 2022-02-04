@@ -3,15 +3,11 @@ package com.sda.project.mapper;
 import com.sda.project.dto.AppointmentDto;
 import com.sda.project.dto.AppointmentInfo;
 import com.sda.project.dto.AppointmentInfo2;
-import com.sda.project.dto.PetDto;
 import com.sda.project.model.Appointment;
-import com.sda.project.model.AppointmentStatus;
 import com.sda.project.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 

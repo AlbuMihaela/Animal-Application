@@ -50,7 +50,6 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void save(UserDto userDto) {
         log.info("save user {}", userDto);
-
         String email = userDto.getEmail();
         userRepository.findByEmail(email)
                 .map(existingUser -> {
@@ -60,9 +59,19 @@ public class UserService implements UserDetailsService {
                 .orElseGet(() -> saveUser(userDto));
     }
 
+    private User saveUser(UserDto userDto) {
+        Role userRole = roleRepository.findByType(RoleType.USER)
+                .orElseThrow(() -> new ResourceNotFoundException("role not found"));
+        // convert user dto to user
+        User user = userMapper.mapToUser(userDto);
+        // encode password
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.addRole(userRole);
+        return userRepository.save(user);
+    }
+
     public List<UserDto> findAll() {
         log.info("find list of userDto");
-
         return (userRepository.findAll().stream()
                 .map(user -> userMapper.mapToUserDto(user))
                 .collect(Collectors.toList()));
@@ -70,7 +79,6 @@ public class UserService implements UserDetailsService {
 
     public User findByEmail(String email) {
         log.info("find user by email {}", email);
-
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(email + " not found"));
     }
@@ -95,14 +103,12 @@ public class UserService implements UserDetailsService {
 
     public User findById(long id) {
         log.info("find user {}", id);
-
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("not found"));
     }
 
     public void update(User user) {
         log.info("update user {}", user);
-
         userRepository.save(user);
     }
 
@@ -113,7 +119,6 @@ public class UserService implements UserDetailsService {
 
     public void enable(Long id) {
         log.info("enable user {}", id);
-
         userRepository.findById(id)
                 .map(foundUser -> {
                     foundUser.setEnabled(true);
@@ -124,7 +129,6 @@ public class UserService implements UserDetailsService {
 
     public void disable(Long id) {
         log.info("disable user {}", id);
-
         Role adminRole = roleRepository.findByType(RoleType.ADMIN)
                 .orElseThrow(() -> new ResourceNotFoundException("role not found"));
         long enabledAdminsCount = userRepository.findAll().stream()
@@ -138,24 +142,9 @@ public class UserService implements UserDetailsService {
                         return userRepository.save(foundUser);
                     })
                     .orElseThrow(() -> new ResourceNotFoundException("user not found"));
-
         } else {
             throw new RuntimeException("can't disable last admin");
         }
     }
-
-    private User saveUser(UserDto userDto) {
-        Role userRole = roleRepository.findByType(RoleType.USER)
-                .orElseThrow(() -> new ResourceNotFoundException("role not found"));
-
-        // convert user dto to user
-        User user = userMapper.mapToUser(userDto);
-        // encode password
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.addRole(userRole);
-        return userRepository.save(user);
-    }
-
-
 
 }

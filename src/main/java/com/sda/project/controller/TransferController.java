@@ -32,7 +32,6 @@ public class TransferController {
         return "transfer/transfers";
     }
 
-
     @GetMapping("/transfers/add")
     public String getTransferForm(Model model) {
         model.addAttribute("transferDto", new TransferDto());

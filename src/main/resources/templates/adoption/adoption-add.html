@@ -62,11 +62,6 @@
             <input class="form-control" id="socialSecurityNumber" th:field="*{socialSecurityNumber}" type="text">
         </div>
 
-        <!--        <div class="mb-3">-->
-        <!--            <label class="form-label" for="formFile4">Pet Name</label>-->
-        <!--            <input class="form-control" id="formFile4" type="text" th:field="*{pet.name}">-->
-        <!--        </div>-->
-
         <!-- select pet -->
         <div class=" mb-3">
             <label class="form-label" for="petSelect"><b>Pets</b></label>
@@ -74,7 +69,7 @@
             <div>
                 <select class="form-control" id="petSelect" required th:field="${adoptionDto.pet}">
                     <th:block>
-                        <!--                        <option selected th:value="null">Select a pet to adopt</option>-->
+
                         <option th:each="pet : ${pets}"
                                 th:text="${pet.name}"
                                 th:value="${pet.id}"/>
@@ -83,14 +78,6 @@
             </div>
 
         </div>
-
-        <!--            <div class="col-md-4">-->
-        <!--                <label class="form-label" for="inputState">Pet</label>-->
-        <!--                <select class="form-select" id="inputState">-->
-        <!--                    <option selected>Choose...</option>-->
-        <!--                    <option>...</option>-->
-        <!--                </select>-->
-        <!--            </div>-->
 
         <div class="col-12">
 

@@ -46,7 +46,6 @@
                     <!-- delete button -->
                     <a th:href="@{/pets/{id}/delete (id= ${petDto.id})}">
                         <!-- trash icon -->
-
                         <i class="fas fa-trash" sec:authorize="hasRole('ADMIN')" style="color:red;"></i>
                     </a>
                 </td>

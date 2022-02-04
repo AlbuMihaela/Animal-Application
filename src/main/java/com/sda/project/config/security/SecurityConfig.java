@@ -28,32 +28,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // common
                 .antMatchers("/", "/index", "/register/**", "/login").permitAll()
 
-                // includes pets, pets/add, pets/edit
-                .antMatchers("/pets/**").permitAll()
-                .antMatchers("/adoptions/**").permitAll()
-                .antMatchers("/donations/**").permitAll()
-                .antMatchers("/transfers/**").permitAll()
-                .antMatchers("/appointments/**").permitAll()
-
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**", "/images/pet-photos/**").permitAll()
 
-                // features and permissions
-                .antMatchers("/home").hasAnyRole("USER", "ADMIN")
-
-                .antMatchers("/my-pets").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/my-transfers").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/my-appointments").hasAnyRole("USER", "ADMIN")
-
-                .antMatchers("/dogs").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/birds").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/cats").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/rabbits").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/guinea-pigs").hasAnyRole("USER", "ADMIN")
+                // user only
+                .antMatchers("/home").hasAnyRole("USER")
+                .antMatchers("/adoption-add").hasAnyRole("USER")
+                .antMatchers("/adoptions-about").hasAnyRole("USER")
+                .antMatchers("/my-pets").hasAnyRole("USER")
+                .antMatchers("/appointment-add").hasAnyRole("USER")
+                .antMatchers("/appointments-about").hasAnyRole("USER")
+                .antMatchers("/my-appointments").hasAnyRole("USER")
+                .antMatchers("/donation-add").hasAnyRole("USER")
+                .antMatchers("/donations-about").hasAnyRole("USER")
+                .antMatchers("/pets-user").hasAnyRole("USER")
+                .antMatchers("/my-transfers").hasAnyRole("USER")
+                .antMatchers("/transfer-add").hasAnyRole("USER")
 
                 // admin only
                 .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/users").hasRole("ADMIN")
+                .antMatchers("/adoptions").hasRole("ADMIN")
+                .antMatchers("/appointments").hasRole("ADMIN")
+                .antMatchers("/donations").hasRole("ADMIN")
+                .antMatchers("/pets").hasRole("ADMIN")
+                .antMatchers("/pet-edit").hasRole("ADMIN")
+                .antMatchers("/pet-add").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         // add custom login form
@@ -109,7 +108,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthenticationSuccessHandler customAuthSuccessHandler(){
+    public AuthenticationSuccessHandler customAuthSuccessHandler() {
         return new CustomAuthSuccessHandler();
     }
 

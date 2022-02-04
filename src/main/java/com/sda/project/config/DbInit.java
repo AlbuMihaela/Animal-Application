@@ -41,9 +41,6 @@ public class DbInit {
     private AdoptionRepository adoptionRepository;
 
     @Autowired
-    private AdoptionMapper adoptionMapper;
-
-    @Autowired
     private AppointmentRepository appointmentRepository;
 
     @Autowired
@@ -51,14 +48,6 @@ public class DbInit {
 
     @Autowired
     private TransferRepository transferRepository;
-
-    @Autowired
-    private PetMapper petMapper;
-
-    @Autowired
-    private PetService petService;
-
-
 
     @Bean
     public CommandLineRunner initialData() {
@@ -133,22 +122,12 @@ public class DbInit {
 
             Pet ambraTheDog = createDog6();
             petRepository.save(ambraTheDog);
-//
-//            PetDto catDto = createPetDto();
-//            petService.update2(catDto);
 
             Appointment appointment = createAppointment(cat, mikeTheDog);
             user.addAppointment(appointment);
             appointmentRepository.save(appointment);
 
-            // after creating an entity relationship
-            // create paren
-            // create child
-            // set child on parent or add parent to child
-
             Adoption adoption = createAdoption(mikeTheDog, user);
-                   // save child or parent
-
             adoptionRepository.save(adoption);
 
             Donation donation = createDonation();
@@ -203,7 +182,7 @@ public class DbInit {
         pet.setCategory(Category.DOG);
         pet.setDescription("Mike is an active boy looking for an active home. He is in need of some training and socialization with other dogs. Is friendly, playful, athletic with a white colour as snow");
         pet.setAvailable(true);
-        pet.setPhoto("/Mike.jpg");
+        pet.setPhoto("Mike.jpg");
         return pet;
     }
 
@@ -217,7 +196,7 @@ public class DbInit {
         return pet;
     }
 
-    private Pet createDog3(){
+    private Pet createDog3() {
         Pet pet = new Pet();
         pet.setName("Zyn");
         pet.setCategory(Category.DOG);
@@ -299,13 +278,13 @@ public class DbInit {
 
 
     private Pet createBird() {
-      Pet pet = new Pet();
-      pet.setName("Coco");
-      pet.setCategory(Category.BIRD);
-      pet.setDescription("Red bird with blue wings. Shy bird by nature. Is a great choice for beginning pet parents.");
-      pet.setAvailable(true);
+        Pet pet = new Pet();
+        pet.setName("Coco");
+        pet.setCategory(Category.BIRD);
+        pet.setDescription("Red bird with blue wings. Shy bird by nature. Is a great choice for beginning pet parents.");
+        pet.setAvailable(true);
         pet.setPhoto("Coco.jpg");
-      return pet;
+        return pet;
     }
 
     private Pet createBird2() {
@@ -369,7 +348,6 @@ public class DbInit {
     }
 
 
-
     private Adoption createAdoption(Pet pet, User user) {
         Adoption adoption = new Adoption();
         adoption.setAdoptionDate(LocalDate.now());
@@ -398,16 +376,6 @@ public class DbInit {
         return donation;
     }
 
-//    private PetDto createPetDto(){
-//        PetDto pet = new PetDto();
-//        pet.setId(21L);
-//        pet.setName("AssHall");
-//        pet.setCategory(String.valueOf(Category.DOG));
-//        pet.setDescription("big odg, green eyes");
-//        pet.setAvailable(true);
-//        return pet;
-//    }
-
     private Transfer createTransfer(User user) {
         Transfer transfer = new Transfer();
         transfer.setCardholderName("Mihaela Albu");
@@ -418,7 +386,6 @@ public class DbInit {
         transfer.setTransferDate(LocalDate.now());
         return transfer;
     }
-
 
     @Transactional
     Role createRoleIfNotFound(RoleType type, Set<Privilege> privileges) {
@@ -441,6 +408,5 @@ public class DbInit {
                 })
                 .orElseGet(() -> privilegeRepository.save(new Privilege(name)));
     }
-
 
 }

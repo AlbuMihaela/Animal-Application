@@ -16,7 +16,7 @@ public class AddDonation {
 
     // logged user id
     private Long userId;
-        private Product product;
+    private Product product;
     private String details;
     private String email;
 

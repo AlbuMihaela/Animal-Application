@@ -19,10 +19,9 @@ import java.util.Set;
 public class AppointmentDto {
 
     private User user;
-
     private Set<String> petsNames;
-
     private String date;
+
 
     public User getUser() {
         return user;

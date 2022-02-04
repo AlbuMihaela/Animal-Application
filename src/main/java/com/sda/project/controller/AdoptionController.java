@@ -42,17 +42,13 @@ public class AdoptionController {
     @GetMapping("/adoptions/add")
     public String getAdoptionsPage(Model model) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        // TODO: map user to user info
         User loggedUser = userService.findByEmail(email);
         List<PetDto> pets = petService.getAvailablePets();
-
         AdoptionDto adoptionDto = new AdoptionDto(loggedUser, null, null, null, null);
-
         model.addAttribute("adoptionDto", adoptionDto);
         model.addAttribute("loggedUser", loggedUser);
         model.addAttribute("pets", pets);
         model.addAttribute("localDate", LocalDate.now());
-
         return "adoption/adoption-add";
     }
 

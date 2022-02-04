@@ -46,7 +46,6 @@
                 <!-- pre selected value, not a real option -->
                 <option selected th:value="null"><b>What do you want to donate?</b></option>
 
-                <!-- TODO: captialize not working -->
                 <!-- options from db -->
                 <option th:each="product : ${T(com.sda.project.model.Product).values()}"
                         th:text="|${#strings.capitalize(product)}|"
@@ -54,9 +53,6 @@
                 </option>
             </select>
         </div>
-
-        <!-- TODO: move to my donations -->
-
 
         <div class="alert alert-light" role="alert">
             <b>Address: Filimon Street 81, Bucharest, Romania"</b>

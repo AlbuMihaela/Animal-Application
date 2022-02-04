@@ -18,7 +18,6 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private LocalDateTime date;
 
     @ManyToOne(fetch = FetchType.LAZY)

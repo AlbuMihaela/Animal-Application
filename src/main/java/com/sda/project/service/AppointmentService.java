@@ -29,6 +29,10 @@ public class AppointmentService {
         this.userService = userService;
     }
 
+    public Appointment save(AppointmentDto appointmentDto) {
+        appointmentDto.setUser(userService.findLoggedUser());
+        return appointmentRepository.save(appointmentMapper.map(appointmentDto));
+    }
 
     public List<AppointmentDto> findAll() {
         return appointmentRepository.findAll().stream()
@@ -36,21 +40,7 @@ public class AppointmentService {
                 .collect(Collectors.toList());
     }
 
-    public Appointment save(AppointmentDto appointmentDto) {
-        appointmentDto.setUser(userService.findLoggedUser());
-
-        return appointmentRepository.save(appointmentMapper.map(appointmentDto));
-    }
-
-    public List<AppointmentInfo> findAppointmentsByUser(User user) {
-        return appointmentRepository.findAll().stream()
-                .filter(appointment -> appointment.getUser().equals(user))
-                .map(appointment -> appointmentMapper.mapFromAppointmentToAppointmentInfo(appointment))
-                .collect(Collectors.toList());
-
-    }
-
-    public List<AppointmentInfo2> findAppointmentsByUser2(User user) {
+    public List<AppointmentInfo2> findAppointmentsByUser(User user) {
         return appointmentRepository.findAll().stream()
                 .filter(appointment -> appointment.getUser().equals(user))
                 .map(appointment -> appointmentMapper.mapFromAppointmentToAppointmentInfo2(appointment))

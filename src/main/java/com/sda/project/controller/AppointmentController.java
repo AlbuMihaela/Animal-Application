@@ -1,9 +1,7 @@
 package com.sda.project.controller;
 
 import com.sda.project.dto.AppointmentDto;
-import com.sda.project.dto.AppointmentInfo;
 import com.sda.project.dto.AppointmentInfo2;
-import com.sda.project.dto.PetDto;
 import com.sda.project.model.User;
 import com.sda.project.service.AppointmentService;
 import com.sda.project.service.PetService;
@@ -38,7 +36,8 @@ public class AppointmentController {
 
     @GetMapping("/appointments")
     public String getAppointmentsPage(Model model) {
-        model.addAttribute("appointmentsDto", appointmentService.findAll());
+        model.addAttribute("appointmentsDto",
+                appointmentService.findAll());
         return "appointment/appointments";
     }
 
@@ -46,18 +45,18 @@ public class AppointmentController {
     public String getAppointmentForm(Model model) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         User loggedUser = userService.findByEmail(email);
-        Set<String> petsNames = petService.getAvailablePets().stream().map(petDto -> petDto.getName()).collect(Collectors.toSet());
-        AppointmentDto appointmentDto = new AppointmentDto(loggedUser, petsNames, LocalDateTime.now().toString());
-        model.addAttribute("appointmentDto",  appointmentDto);
+        Set<String> petsNames = petService.getAvailablePets().stream()
+                .map(petDto -> petDto.getName()).collect(Collectors.toSet());
+        AppointmentDto appointmentDto = new AppointmentDto(loggedUser, petsNames,
+                LocalDateTime.now().toString());
+        model.addAttribute("appointmentDto", appointmentDto);
         model.addAttribute("loggedUser", loggedUser);
-//        model.addAttribute("pets", pets);
-//        model.addAttribute("localDateTime", LocalDateTime.now());
         return "appointment/appointment-add";
     }
 
-    //TODO de ce nu putem salva un appointment in baza de date? ne da eroare!
     @PostMapping("/appointments/add")
-    public String addAppointmentForm(@ModelAttribute ("appointmentDto") AppointmentDto appointmentDto) {
+    public String addAppointmentForm(@ModelAttribute("appointmentDto")
+                                             AppointmentDto appointmentDto) {
         appointmentService.save(appointmentDto);
         return "redirect:/home";
     }
@@ -70,7 +69,7 @@ public class AppointmentController {
     @GetMapping("/my-appointments")
     public String getMyAppointmentsPage(Model model) {
         User user = userService.findLoggedUser();
-        List<AppointmentInfo2> myAppointments = appointmentService.findAppointmentsByUser2(user);
+        List<AppointmentInfo2> myAppointments = appointmentService.findAppointmentsByUser(user);
         model.addAttribute("myAppointmentsInfo2", myAppointments);
         return "appointment/my-appointments";
     }

@@ -28,14 +28,6 @@ public class PetController {
         this.petService = petService;
     }
 
-    /*
-        POST   /pets 			(json body)
-        GET    /pets            @GetMapping("/pets")
-        GET    /pets/{id}
-        POST   /pets/{id} 		(json body)
-        DELETE /pets/{id}
-     */
-
     @GetMapping("/pets")
     public String getPetsPage(Model model) {
         model.addAttribute("petsDto", petService.findAll());
@@ -47,7 +39,6 @@ public class PetController {
         model.addAttribute("petsDto", petService.findAll());
         return "pet/pets_user";
     }
-
 
     @GetMapping("/pets/add")
     public String getAddForm(Model model) {
@@ -61,43 +52,27 @@ public class PetController {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         petDto.setPhoto(fileName);
         PetDto savedPetDto = petService.save(petDto);
-
-
         String uploadDir = "pet-photos/" + savedPetDto.getId();
-
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
-//        petService.save(petDto);
         return "redirect:/pets";
     }
 
-    // show edit form
     @GetMapping("/pets/{id}/edit")
     public String getEditForm(Model model, @PathVariable Long id) {
-        // need pet data from db
         PetDto petToUpdate = petService.findById(id);
-
-        // add data to model
         model.addAttribute("petDto", petToUpdate);
         return "pet/pet-edit";
     }
 
-    // update
     @PostMapping("/pets/{id}/edit")
     public String update(@ModelAttribute PetDto petDto,
                          @RequestParam("image") MultipartFile multipartFile) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         petDto.setPhoto(fileName);
         Pet savedPetDto = petService.update2(petDto);
-
-//        String uploadDir = "pet-photos/" + savedPetDto.getId();
-
-//        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
         return "redirect:/pets";
     }
 
-    // TODO IS NOT WORKING. PLS CHECK!
     @GetMapping("/pets/{id}/delete")
     public String delete(@PathVariable Long id) {
         petService.deleteById(id);
@@ -110,33 +85,4 @@ public class PetController {
         return "adoption/my-pets";
     }
 
-    @GetMapping("/dogs")
-    public String getDogsPage(Model model) {
-        model.addAttribute("dogs", petService.findByCategory(Category.DOG));
-        return "pet/dogs";
-    }
-
-    @GetMapping("/cats")
-    public String getCatsPage(Model model) {
-        model.addAttribute("cats", petService.findByCategory(Category.CAT));
-        return "pet/cats";
-    }
-
-    @GetMapping("/rabbits")
-    public String getRabbitsPage(Model model) {
-        model.addAttribute("rabbits", petService.findByCategory(Category.RABBIT));
-        return "pet/rabbits";
-    }
-
-    @GetMapping("/guinea-pigs")
-    public String getGuineaPage(Model model) {
-        model.addAttribute("guinea-pigs", petService.findByCategory(Category.GUINEA_PIG));
-        return "pet/guinea-pigs";
-    }
-
-    @GetMapping("/birds")
-    public String getBirdsPage(Model model) {
-        model.addAttribute("birds", petService.findByCategory(Category.BIRD));
-        return "pet/birds";
-    }
 }

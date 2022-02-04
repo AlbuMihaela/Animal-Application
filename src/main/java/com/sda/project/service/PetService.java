@@ -33,7 +33,6 @@ public class PetService {
     }
 
     public PetDto save(PetDto petDto) {
-        // TODO cosmin: use lambda
         petDto.setAvailable(true);
         Pet pet = petMapper.map(petDto);
         Pet savedPet = petRepository.save(pet);
@@ -54,17 +53,13 @@ public class PetService {
 
     public PetDto findById(Long id) {
         log.info("finding pet with id {}", id);
-
-        // find by id from repo
         return petRepository.findById(id)
-                // convert to dto
                 .map(pet -> petMapper.map(pet))
                 .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
 
     public List<PetInfo> getUserPets() {
         log.info("get user pets");
-
         User user = userService.findLoggedUser();
         return user.getAdoptions().stream()
                 .map(adoption -> adoption.getPet())
@@ -74,7 +69,6 @@ public class PetService {
 
     public List<PetDto> getAvailablePets() {
         log.info("get available pets");
-
         return findAll().stream()
                 .filter(petDto -> petDto.isAvailable())
                 .collect(Collectors.toList());
@@ -82,21 +76,9 @@ public class PetService {
 
     public void update(PetDto dto) {
         log.info("updating pet with id {} with data {}", dto.getId(), dto);
-
-        // find entity by id
         petRepository.findById(dto.getId())
-                // copy values from dto to entity
-                .map(pet -> petMapper.update(pet, dto)) // transform pet to pet
-                // save the updated pet
-                .map(updatedPet -> petRepository.save(updatedPet))  // pet -> save pet
-                .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
-    }
-
-    public List<PetInfo> findByCategory(Category category) {
-        log.info("find pets by category {}", category);
-
-        return petRepository.findByCategory(category)
-                .map(pets -> petMapper.mapPetsToDtos(pets))
+                .map(pet -> petMapper.update(pet, dto))
+                .map(updatedPet -> petRepository.save(updatedPet))
                 .orElseThrow(() -> new ResourceNotFoundException("pet not found"));
     }
 
@@ -109,10 +91,10 @@ public class PetService {
         petToUpdate.setName(dto.getName());
         petToUpdate.setDescription(dto.getDescription());
         petToUpdate.setAvailable(dto.isAvailable());
-
         return petRepository.save(petToUpdate);
     }
 
     public void deleteById(Long id) {
         petRepository.deleteById(id);
-    }}
+    }
+}

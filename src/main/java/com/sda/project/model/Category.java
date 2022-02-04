@@ -1,7 +1,7 @@
 package com.sda.project.model;
 
 public enum Category {
-    DOG, // Category.DOG.name() -> string "DOG"
+    DOG,
     CAT,
     BIRD,
     RABBIT,

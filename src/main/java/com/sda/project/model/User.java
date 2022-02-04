@@ -9,8 +9,6 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
 
-    // fields
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,15 +19,10 @@ public class User {
     private String phoneNumber;
     private Boolean enabled;
 
-    // relationships
-
     @OneToMany(mappedBy = "user",
             fetch = FetchType.LAZY)
     private Set<Appointment> appointments = new HashSet<>();
 
-    // display user adoptions
-    // user knows his adoptions
-    // bidirectional one to many
     @OneToMany(mappedBy = "user",
             fetch = FetchType.LAZY)
     private Set<Adoption> adoptions = new HashSet<>();
@@ -72,8 +65,6 @@ public class User {
         adoption.setUser(this);
     }
 
-    // helper methods
-
     public void addAppointment(Appointment appointment) {
         this.appointments.add(appointment);
         appointment.setUser(this);
@@ -88,8 +79,6 @@ public class User {
         this.transfers.add(transfer);
         transfer.setUser(this);
     }
-
-    // getters and setters
 
     public Long getId() {
         return id;
