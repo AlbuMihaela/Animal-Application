@@ -133,9 +133,9 @@ public class DbInit {
 
             Pet ambraTheDog = createDog6();
             petRepository.save(ambraTheDog);
-
-            PetDto catDto = createPetDto();
-            petService.update2(catDto);
+//
+//            PetDto catDto = createPetDto();
+//            petService.update2(catDto);
 
             Appointment appointment = createAppointment(cat, mikeTheDog);
             user.addAppointment(appointment);
@@ -332,7 +332,7 @@ public class DbInit {
         Pet pet = new Pet();
         pet.setName("Peter");
         pet.setCategory(Category.RABBIT);
-        pet.setDescription("Peter is a 6 year old bunny; He likes his treats and fresh daily greens.Peter would be best in a quiet home with someone willing to earn his trust.");
+        pet.setDescription("Peter is a 6 year old bunny; He likes his treats and fresh daily greens. Peter would be best in a quiet home with someone willing to earn his trust.");
         pet.setAvailable(true);
         pet.setPhoto("Peter.jpg");
         return pet;
@@ -398,15 +398,15 @@ public class DbInit {
         return donation;
     }
 
-    private PetDto createPetDto(){
-        PetDto pet = new PetDto();
-        pet.setId(3L);
-        pet.setName("Mussy");
-        pet.setCategory(String.valueOf(Category.CAT));
-        pet.setDescription("big cat, green eyes");
-        pet.setAvailable(true);
-        return pet;
-    }
+//    private PetDto createPetDto(){
+//        PetDto pet = new PetDto();
+//        pet.setId(21L);
+//        pet.setName("AssHall");
+//        pet.setCategory(String.valueOf(Category.DOG));
+//        pet.setDescription("big odg, green eyes");
+//        pet.setAvailable(true);
+//        return pet;
+//    }
 
     private Transfer createTransfer(User user) {
         Transfer transfer = new Transfer();
