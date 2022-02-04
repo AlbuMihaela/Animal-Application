@@ -11,14 +11,17 @@
     <button class="btn btn-secondary" type="button" width="30px" style="text-align: center">Go back
     </button>
 </a>
+<div style="text-align: center;color: darkcyan; height: 50px">
+<i class="fas fa-hand-holding-heart"></i> <span class="ms-1 d-none d-sm-inline">My donations</span>
+</div>
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/my-donations}" th:object="${myDonations}">
             <!-- table header -->
             <thead>
             <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Details</th>
+                <th scope="col" style="color: darkcyan">Product</th>
+                <th scope="col" style="color: darkcyan">Details</th>
             </tr>
             </thead>
             <!-- table body -->

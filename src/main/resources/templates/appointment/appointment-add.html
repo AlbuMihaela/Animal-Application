@@ -39,7 +39,7 @@
 
             <th:block th:each="petName : ${appointmentDto.petsNames}" >
                 <input type="checkbox" id="pets-names" name="selectedActive" th:text="${petName}" th:value="${petName}" th:field="${appointmentDto.petsNames}">
-                <label for="pets-names"  th:field="${appointmentDto.petsNames}" ></label>
+                <label for="pets-names" th:field="${appointmentDto.petsNames}" ></label>
                 <br/>
             </th:block>
 

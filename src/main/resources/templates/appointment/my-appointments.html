@@ -11,18 +11,21 @@
     <button class="btn btn-secondary" type="button" width="30px" style="text-align: center">Go back
     </button>
 </a>
+<div style="text-align: center;color: darkgreen; height: 50px">
+<i class="fas fa-calendar-day"></i> <span class="ms-1 d-none d-sm-inline">My appointments</span>
+</div>
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/my-appointments}" th:object="${myAppointmentsInfo2}">
             <!-- table header -->
             <thead>
             <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Pets</th>
+                <th scope="col"style="color: darkgreen">Date</th>
+                <th scope="col" style="color: darkgreen">Pets</th>
             </tr>
             </thead>
             <!-- table body -->
-            <tbody>
+            <tbody style="empty-cells: show">
             <tr th:each="myAppointmentInfo2 : ${myAppointmentsInfo2}">
                 <td th:text="${myAppointmentInfo2.date.toString()}" ></td>
                 <td th:each="pet : ${myAppointmentInfo2.pets}">
