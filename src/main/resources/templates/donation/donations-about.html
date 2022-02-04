@@ -9,7 +9,10 @@
 <!--navbar-->
 <div th:replace="fragments/header :: navbar"/>
 <!--    content-->
-
+<a th:href="@{/home}">
+    <button class="btn btn-secondary" type="button" width="30px" style="text-align: center">Go back
+    </button>
+</a>
 <div class="card text-center">
     <!--    <div class="card-header">-->
     <!--        How to donate-->
@@ -47,6 +50,7 @@
         &#9829&#9829&#9829
     </div>
 </div>
+
 <!--<div class="container-fluid" style="background-color: #8fc4b7; border-radius: 25px">-->
 <!--    <div class="row" style="text-align: center"><b>&#9829 How to make a donation &#9829</b></div>-->
 <!--</div>-->

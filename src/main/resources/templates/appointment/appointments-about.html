@@ -9,6 +9,10 @@
 <body>
 <!--navbar-->
 <div th:replace="fragments/header :: navbar"/>
+<a th:href="@{/home}">
+    <button class="btn btn-secondary" type="button" width="30px" style="text-align: center">Go back
+    </button>
+</a>
 <!-- content-->
 <div class="container-fluid" style="background-color: #8fc4b7;">
 <div style="text-align: center"><b>How to make an appointment</b></div>

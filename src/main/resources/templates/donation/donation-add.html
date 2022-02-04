@@ -8,31 +8,30 @@
 <body>
 <div class="d-flex justify-content-center">
 
-    <!-- load image with thymeleaf -->
     <!-- logo -->
-    <img th:src="@{images/logo.png}">
+    <img style="width: 100px; height: 100px" th:src="@{/images/logo.png} ">
 </div>
 
 <div>
     <!-- form header -->
-    <h2>Donate</h2>
+    <h6 style="text-align:center"><b>Donation Form:</b></h6>
 </div>
 
 <!-- form -->
 <div class="d-flex justify-content-center">
-    <form class="row g-3" method="post" th:action="@{/donations/add}" th:object="${donation}">
+    <form class="form-outline mb-0" method="post" th:action="@{/donations/add}" th:object="${donation}">
 
-        <div class="col-md-6">
+        <div class="col-md-1">
             <!-- name -->
-            <label class="form-label">Name</label>
+            <label class="form-label"><b>Name</b> </label>
             <p th:text="|${loggedUser.firstName} ${loggedUser.lastName}|"></p>
 
             <!-- phone number -->
-            <label class="form-label">Phone</label>
+            <label class="form-label"><b>Phone</b></label>
             <p th:text="${loggedUser.phoneNumber}"></p>
 
             <!-- email -->
-            <label class="form-label">Email</label>
+            <label class="form-label"><b>Email</b></label>
             <p th:text="${loggedUser.email}"></p>
         </div>
 
@@ -42,12 +41,10 @@
         <div class="form-group">
 
             <!-- label -->
-            <label for="donationType" class="form-label">Donation type</label>
-
-
+            <label for="donationType" class="form-label"><b>Donation type</b></label>
             <select id="donationType" name="donationType" th:field="*{product}">
                 <!-- pre selected value, not a real option -->
-                <option selected th:value="null">What do you want to donate?</option>
+                <option selected th:value="null"><b>What do you want to donate?</b></option>
 
                 <!-- TODO: captialize not working -->
                 <!-- options from db -->
@@ -62,27 +59,24 @@
 
 
         <div class="alert alert-light" role="alert">
-            Address: Filimon Street 81, Bucharest, Romania"
+            <b>Address: Filimon Street 81, Bucharest, Romania"</b>
         </div>
 
         <!-- details -->
 
         <div class="form-outline">
-            <label class="form-label">Details</label>
+            <label class="form-label"><b>Details</b></label>
             <input th:field="*{details}" type="text">
 
 
-        <!-- actions -->
-        <div class="d-grid gap-2 col-6 mx-auto form-outline mb-0">
-            <button class="btn btn-outline-success" type="submit">Donate</button>
+            <!-- actions -->
+            <div class="d-lg-flex gap-2 col-6 my-xxl-5 form-outline mb-4">
+                <button class="btn btn-outline-success" id="donate" name="donate" type="submit">Donate</button>
 
-            <a th:href="@{/home}">
-                <button class="btn btn-outline-secondary" id="cancel" name="cancel" type="button">Cancel</button>
-            </a>
-
-
-
-        </div>
+                <a th:href="@{/home}">
+                    <button class="btn btn-outline-secondary" id="cancel" name="cancel" type="button">Cancel</button>
+                </a>
+            </div>
         </div>
     </form>
 </div>

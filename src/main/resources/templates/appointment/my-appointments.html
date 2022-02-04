@@ -7,6 +7,10 @@
 
 <body>
 <div th:replace="fragments/header :: navbar"/>
+<a th:href="@{/home}">
+    <button class="btn btn-secondary" type="button" width="30px" style="text-align: center">Go back
+    </button>
+</a>
 <div class="container-fluid">
     <div class="container">
         <table class="table" method="get" th:action="@{/my-appointments}" th:object="${myAppointmentsInfo2}">

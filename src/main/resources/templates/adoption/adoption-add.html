@@ -21,44 +21,44 @@
 
         <!-- first name -->
         <div class="col-md-6">
-            <label class="form-label" for="inputFirstName">First Name</label>
+            <label class="form-label" for="inputFirstName"><b>First Name</b></label>
             <input class="form-control" id="inputFirstName" type="text" th:field="${loggedUser.firstName}">
         </div>
 
         <!-- last name -->
         <div class="col-md-6">
-            <label class="form-label" for="inputLastName">Last Name</label>
+            <label class="form-label" for="inputLastName"><b>Last Name</b></label>
             <input class="form-control" id="inputLastName" type="text" th:field="${loggedUser.lastName}">
         </div>
 
         <!-- email -->
         <div class="col-12">
-            <label class="form-label" for="email">E-mail</label>
+            <label class="form-label" for="email"><b>E-mail</b></label>
             <input class="form-control" id="email" type="email" th:field="${loggedUser.email}">
         </div>
 
         <!-- phone number -->
         <div class="col-12">
-            <label class="form-label" for="phoneNumber">Phone Number</label>
+            <label class="form-label" for="phoneNumber"><b>Phone Number</b></label>
             <input class="form-control" id="phoneNumber" type="text" th:field="${loggedUser.phoneNumber}">
         </div>
 
         <!-- social security number -->
         <div class="mb-3">
-            <label class="form-label" for="address">Address</label>
+            <label class="form-label" for="address"><b>Address</b></label>
             <input class="form-control" id="address" th:field="${adoptionDto.address}" type="text">
         </div>
 
         <!-- adoption date -->
         <div>
-            <label class="form-label" for="adoptionDate">Date</label>
+            <label class="form-label" for="adoptionDate"><b>Date</b></label>
             <input class="form-select" id="adoptionDate" th:field="${adoptionDto.date}" type="date">
             <!--&lt;!&ndash;&ndash;&gt;th:text="${#temporals.format(localDate, 'dd-MM-yyyy')}"-->
         </div>
 
         <!-- social security number -->
         <div class="mb-3">
-            <label class="form-label" for="socialSecurityNumber">Social Security Number</label>
+            <label class="form-label" for="socialSecurityNumber"><b>Social Security Number</b></label>
             <input class="form-control" id="socialSecurityNumber" th:field="*{socialSecurityNumber}" type="text">
         </div>
 
@@ -69,7 +69,7 @@
 
         <!-- select pet -->
         <div class=" mb-3">
-            <label class="form-label" for="petSelect">Pets</label>
+            <label class="form-label" for="petSelect"><b>Pets</b></label>
 
             <div>
                 <select class="form-control" id="petSelect" required th:field="${adoptionDto.pet}">
@@ -93,8 +93,10 @@
         <!--            </div>-->
 
         <div class="col-12">
+
+            <button class="btn btn-success" type="submit">Adopt pet</button>
             <a class="btn btn-secondary" th:href="@{/home}" type="button">Cancel</a>
-            <button class="btn btn-primary" type="submit">Adopt pet</button>
+
         </div>
     </form>
 
