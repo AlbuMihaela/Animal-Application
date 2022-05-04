@@ -1,5 +1,5 @@
 ## PROJECT  animal-app
-## REPO     https://github.com/2danaciupe/animal-app
+## REPO    https://gitlab.com/AlbuMihaela/animal-app.git
 ## TEAM     SOUL
 - GIT       Madalina-Viziteu
 - GIT       AlbuMihaela
